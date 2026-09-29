@@ -93,7 +93,7 @@ figcaption button:focus-visible{outline:2px solid var(--blue);outline-offset:2px
 
   <div class="ctl" id="ctl">
     <b>C · ปรับ pixel</b>
-    <label>ความทึบ <input type="range" id="c-alpha" min="0" max="60" value="22"><output>22%</output></label>
+    <label>ความทึบ <input type="range" id="c-alpha" min="0" max="60" value="17"><output>17%</output></label>
     <label>ความหนาแน่น <input type="range" id="c-dens" min="0" max="100" value="45"><output>45%</output></label>
     <label>ขนาด cell <input type="range" id="c-size" min="50" max="160" value="110"><output>110%</output></label>
     <label class="chk"><input type="checkbox" id="c-showB"> แสดง B ด้วย</label>
@@ -152,7 +152,7 @@ function pixel(cv,blobs,pal,cols){
 
 // soft base + sparse translucent pixels on the fringe of the glow
 const hash=(i,j,s)=>{let h=(i*374761393+j*668265263+s*2246822519)|0;h=Math.imul(h^(h>>>13),1274126177);return((h^(h>>>16))>>>0)/4294967296};
-const C={alpha:.22,dens:.45,size:1.1};
+const C={alpha:.17,dens:.45,size:1.1};
 function hybrid(cv,blobs,pal,baseCols){
   soft(cv,blobs,pal);
   const W=cv.width,H=cv.height,ar=W/H,ctx=cv.getContext('2d');
