@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 88" width="660" height="176">
+<style>
+g *{transform-box:fill-box;animation-fill-mode:both}
+.st{transform-origin:50% 100%;animation:kd-grow .35s cubic-bezier(.2,.8,.2,1)}
+.ar{transform-origin:0 88%;animation:kd-arm .4s .2s cubic-bezier(.2,.8,.2,1) both}
+.p1,.p2,.p3,.p4{animation:kd-px .3s steps(3,jump-end) both}
+.p1{animation-delay:.5s}.p2{animation-delay:.6s}.p3{animation-delay:.7s}.p4{animation-delay:.8s}
+.w1,.w2{animation:kd-word .5s cubic-bezier(.2,.8,.2,1) both}
+.w1{animation-delay:.7s}.w2{animation-delay:.82s}
+@keyframes kd-grow{from{transform:scaleY(0)}}
+@keyframes kd-arm{from{transform:scale(0)}}
+@keyframes kd-px{from{opacity:0;transform:translate(-9px,-9px)}}
+@keyframes kd-word{from{opacity:0;transform:translateX(-8px)}}
+@media (prefers-reduced-motion:reduce){g *{animation:none!important}}
+</style>
+<g transform="translate(-8,-8)"><rect class="st" x="12" y="12" width="22" height="76" rx="2" fill="#041A53"/><path class="ar" d="M34 50 L62 12 H88 L52 62 H34Z" fill="#0059FF"/><rect class="p1" x="52" y="58" width="14" height="14" rx="2" fill="#0059FF"/><rect class="p2" x="69" y="71" width="12" height="12" rx="2" fill="#0059FF"/><rect class="p3" x="84" y="84" width="8" height="8" rx="1.5" fill="#7FAEFF"/><rect class="p4" x="72" y="56" width="7" height="7" rx="1.5" fill="#7FAEFF"/></g>
+<g><text class="w1" x="102" y="47" font-family="Red Hat Display, sans-serif" font-weight="700" font-size="37" letter-spacing="-0.55" fill="#041A53">Krabi Digital</text><text class="w2" x="103" y="69" font-family="Red Hat Display, sans-serif" font-weight="600" font-size="14" letter-spacing="6.2" fill="#041A53" fill-opacity=".72">SOLUTIONS</text></g>
+</svg>

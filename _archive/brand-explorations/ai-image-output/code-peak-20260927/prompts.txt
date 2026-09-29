@@ -1,0 +1,9 @@
+Generated with built-in image_gen.
+
+1. Flat vector logo symbol for a tech company in Krabi, Thailand. A pair of code angle brackets "< >" in navy blue #0B2A4A, with a stylized limestone karst peak between them: tall, rounded top slightly leaning right, like Krabi's iconic sea cliffs. Under the peak, one short cyan #22B8CF wave line representing the Andaman Sea. Bold geometric shapes, consistent stroke weight, rounded corners, lots of negative space. Pure white background, centered, no text, no gradient, no shadow, no 3D. Must stay readable as a 32px favicon.
+
+2. Horizontal logo for "Krabi Digital Solutions". Left: symbol of code angle brackets "< >" in navy #0B2A4A with a stylized rounded karst peak between them and a small cyan #22B8CF wave underneath. Right: text "KRABI DIGITAL" in bold geometric sans-serif (like Poppins SemiBold), navy #0B2A4A; below it "SOLUTIONS" in smaller light weight with wide letter spacing, deep blue #1E4E8C. Symbol height equals both text lines. Spell the text exactly: KRABI DIGITAL / SOLUTIONS. Flat vector, pure white background, no gradient, no shadow, clean professional tech agency branding.
+
+3. Wordmark logo reading exactly "KRABI DIGITAL" with "SOLUTIONS" underneath. Bold geometric sans-serif, navy #0B2A4A. The letter "A" in KRABI has no crossbar and is shaped like a rounded karst peak, with a small cyan #22B8CF wave line in place of the crossbar. "SOLUTIONS" in small light caps with wide tracking, deep blue #1E4E8C, same width as the line above. Flat vector, pure white background, no icon, no gradient, no shadow.
+
+Wordmark edit: increase tracking of SOLUTIONS to align its left and right edges with KRABI DIGITAL; preserve all other elements.

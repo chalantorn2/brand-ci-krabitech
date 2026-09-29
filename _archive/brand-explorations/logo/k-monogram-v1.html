@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>K Monogram Round 1</title>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#041A53;--blue:#0059FF}
+*{box-sizing:border-box}
+body{margin:0;background:#EEF1F7;color:var(--navy);font-family:"Plus Jakarta Sans",sans-serif}
+header{max-width:1200px;margin:auto;padding:28px 16px 4px}
+h1{font:800 28px "Red Hat Display";margin:0 0 6px}
+header p{margin:0;color:#5B6785;font-size:14px}
+main{max-width:1200px;margin:auto;padding:16px;display:flex;flex-direction:column;gap:22px}
+.concept{background:#fff;border-radius:18px;padding:16px;border:1px solid #E1E6F0}
+.head{display:flex;gap:10px;align-items:baseline;margin-bottom:12px;flex-wrap:wrap}
+.num{font:800 14px "Red Hat Display";color:var(--blue)}
+.name{font:800 19px "Red Hat Display"}
+.story{font-size:13px;color:#5B6785;flex-basis:100%}
+.tiles{display:grid;grid-template-columns:2fr 2fr 1fr 1fr;gap:10px}
+@media(max-width:820px){.tiles{grid-template-columns:1fr 1fr}}
+.tile{border-radius:14px;min-height:150px;display:grid;place-items:center;padding:14px;background:var(--bg)}
+/* tile themes: m1 main, m2 light, m3 contrast/structure, on = knockout on m1 */
+.t-dark{--bg:#041A53;--m1:#0059FF;--m2:#6FA3FF;--m3:#FFFFFF;--on:#FFFFFF;color:#fff}
+.t-light{--bg:#FFFFFF;--m1:#0059FF;--m2:#7FAEFF;--m3:#041A53;--on:#FFFFFF;color:var(--navy);border:1px solid #E1E6F0}
+.t-app{--bg:transparent;--m1:#FFFFFF;--m2:#BFD4FF;--m3:#FFFFFF;--on:#0059FF}
+.t-mono{--bg:#FFFFFF;--m1:#041A53;--m2:#041A53;--m3:#041A53;--on:#FFFFFF;border:1px solid #E1E6F0}
+.lock{display:flex;align-items:center;gap:14px}
+.lock svg{width:64px;height:64px;flex:none}
+.wm .a{font:700 27px/1 "Red Hat Display";letter-spacing:-.015em}
+.wm .b{font:600 11px/1 "Red Hat Display";letter-spacing:.42em;margin-top:7px;opacity:.75}
+.app{width:96px;height:96px;border-radius:26px;background:linear-gradient(145deg,#1A6BFF,#0040C8);display:grid;place-items:center;box-shadow:0 10px 24px rgba(0,89,255,.3)}
+.app svg{width:56px;height:56px}
+.sizes{display:flex;flex-direction:column;align-items:center;gap:12px}
+.sizes .r{display:flex;gap:14px;align-items:center}
+.sizes svg{display:block}
+.cap{font-size:10px;color:#8A94AE;text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <h1>K Monogram · Round 1</h1>
+  <p>แนวตาม reference: lettermark ทรงทึบ, น้ำเงินไฟฟ้าบน navy/ขาว, กระบี่ซ่อนอยู่ใน detail · ดู 4 ช่อง: dark / light / app icon / mono + ขนาดเล็ก</p>
+</header>
+<main id="m"></main>
+<script>
+const M1='var(--m1)',M2='var(--m2)',M3='var(--m3)',ON='var(--on)',BG='var(--bg)';
+const p=(d,f)=>`<path d="${d}" fill="${f}"/>`;
+const s=(d,c,w,x='')=>`<path d="${d}" fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" ${x}/>`;
+const r=(x,y,w,h,f,rx=2)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${rx}" fill="${f}"/>`;
+
+const C=[
+{n:'Fold K',st:'K จากริบบิ้น 2 เส้นพับทับกัน (แนว STAWAV) · สื่อการเชื่อมต่อ ธุรกิจ + เทคโนโลยี',
+ g:p("M12 12 H34 V88 H12Z",M3)+p("M40 50 L78 88 H54 L34 68 V46Z",M2)+p("M34 58 L68 12 H92 L40 80 H34Z",M1)},
+{n:'Stencil K',st:'K ทึบตัวเดียว ถูกเฉือนด้วย slash แนวทแยง (แนว ApexLab) · ความแม่นยำ/engineering',
+ g:p("M12 12 H34 V42 L62 12 H90 L56 48 L92 88 H64 L34 58 V88 H12Z",M1)+s("M2 92 L70 22",BG,5,'stroke-linecap="butt"')},
+{n:'Karst K',st:'ก้าน K ยอดแหลมเป็นเขาหินปูน · มีเส้นน้ำอันดามันเฉือนผ่าน · กระบี่แบบไม่ต้องวาดวิว',
+ g:p("M12 88 V24 Q12 14 20 12 L34 8 V88Z",M3)+p("M38 50 L64 14 Q67 10 72 10 H92 L58 54Z",M1)+p("M42 56 H60 L92 88 H70Z",M1)+s("M-2 74 Q14 68 30 74 T62 74 T94 74 T126 74",BG,4.5,'stroke-linecap="butt"')},
+{n:'Code K',st:'K = "|" + "<" · แท่ง + วงเล็บ code · อ่านเป็น K ได้ทันที เรียบสุด',
+ g:`<rect x="12" y="12" width="20" height="76" rx="3" fill="var(--m3)"/>`+p("M64 12 H90 L60 50 L90 88 H64 L38 50Z",M1)},
+{n:'Soft K',st:'เส้นหนาหัวมน เป็นมิตร (แนว addiba/chipchat) · แขนล่างแยกออกเป็นชิ้น ดูเบาและทันสมัย',
+ g:s("M26 18 V82",M3,18)+s("M78 18 L46 50",M1,18)+s("M50 54 L78 82",M1,18)},
+{n:'Badge K',st:'วงกลมทึบ + K knockout · ใช้เป็น avatar/สติ๊กเกอร์/ตราประทับได้ง่าย',
+ g:`<circle cx="50" cy="50" r="44" fill="var(--m1)"/>`+p("M30 24 H43 V76 H30Z",ON)+p("M43 49 L61 24 H76 L55 52Z",ON)+p("M50 50 L58 45 L77 76 H62Z",ON)},
+{n:'Chat K',st:'bubble แชทที่มี K อยู่ข้างใน · สื่อ Local AI / chatbot ซึ่งเป็นจุดขายหลัก',
+ g:p("M22 8 H78 Q92 8 92 22 V64 Q92 78 78 78 H42 L20 94 V78 Q8 78 8 64 V22 Q8 8 22 8Z",M1)+p("M28 22 H40 V64 H28Z",ON)+p("M40 44 L57 22 H71 L51 47Z",ON)+p("M45 46 L53 41 L72 64 H58Z",ON)},
+{n:'Pixel K',st:'แขนล่างของ K แตกเป็น pixel · จาก physical สู่ digital',
+ g:r(12,12,22,76,M3,2)+p("M34 50 L62 12 H88 L52 62 H34Z",M1)+r(52,58,14,14,M1)+r(69,71,12,12,M1)+r(84,84,8,8,M2,1.5)+r(72,56,7,7,M2,1.5)},
+{n:'Sword K',nw:1,st:'"กระบี่" = ดาบ · ตราจังหวัดมีดาบไขว้ · แขน K 2 ข้างเป็นใบดาบคู่ ปลายแหลม',
+ g:r(12,12,22,76,M3,2)+p("M34 46 L78 12 L94 4 L86 20 L44 58 H34Z",M1)+p("M42 60 L54 50 L86 82 L94 94 L82 90Z",M1)+s("M40 34 L56 56",M2,6)},
+{n:'Longtail K',nw:1,st:'แขนบน K โค้งขึ้นเป็นหัวเรือหางยาว ปลายมีผ้าแพรผูกหัวเรือ',
+ g:r(12,12,22,76,M3,2)+s("M34 58 Q66 54 76 16",M1,16,'stroke-linecap="butt"')+p("M70 14 L92 4 L84 20Z",M2)+p("M46 58 H62 L90 88 H68Z",M1)},
+{n:'Skyline K',nw:1,st:'ขอบบนของ tile เป็นแนวเขาหินปูน (เขาขนาบน้ำ) · K เจาะเป็นสีขาวกลาง tile',
+ g:p("M8 82 V44 Q8 36 14 35 L19 20 Q21 14 27 16 L32 35 H42 L48 12 Q50 5 58 6 L76 12 Q82 16 76 20 L68 22 L72 35 H84 Q92 36 92 44 V82 Q92 92 82 92 H18 Q8 92 8 82Z",M1)+p("M30 42 H42 V80 H30Z",ON)+p("M42 60 L57 42 H70 L52 63Z",ON)+p("M47 62 L54 57 L71 80 H58Z",ON)},
+{n:'Andaman K',nw:1,st:'แขนล่าง K ม้วนเป็นคลื่นทะเลอันดามัน',
+ g:r(12,12,22,76,M3,2)+p("M34 50 L62 12 H88 L56 56 H34Z",M1)+s("M48 58 C62 66 68 84 82 84 C92 84 94 72 86 68",M1,14)},
+{n:'Sunset K',nw:1,st:'พระอาทิตย์ตกอ่าวนาง · ครึ่งล่างเป็นเงาสะท้อนแบบเส้น (แนว elevra) · K เจาะกลาง',
+ g:(()=>{let o=p("M6 52 A44 44 0 0 1 94 52Z",M1);for(let y=56;y<92;y+=8){const h=Math.sqrt(Math.max(0,44*44-(y+2.5-50)**2));o+=r((50-h).toFixed(1),y,(2*h).toFixed(1),5,M1,2.5)}
+ return o+p("M32 22 H44 V78 H32Z",ON)+p("M44 48 L60 22 H74 L55 51Z",ON)+p("M50 50 L58 45 L76 78 H61Z",ON)})()}
+];
+const svg=g=>`<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">${g}</svg>`;
+const wm=`<div class="wm"><div class="a">Krabi Digital</div><div class="b">SOLUTIONS</div></div>`;
+document.getElementById('m').innerHTML=C.map((c,i)=>`
+<section class="concept">
+  <div class="head"><span class="num">K${i+1}</span><span class="name">${c.n}</span>${c.nw?'<span class="num" style="background:#0059FF;color:#fff;padding:2px 8px;border-radius:99px;font-size:11px">NEW · กระบี่</span>':''}<span class="story">${c.st}</span></div>
+  <div class="tiles">
+    <div class="tile t-dark"><div class="lock">${svg(c.g)}${wm}</div></div>
+    <div class="tile t-light"><div class="lock">${svg(c.g)}${wm}</div></div>
+    <div class="tile t-light" style="--bg:#F4F7FD"><div class="app t-app">${svg(c.g).replace('<svg','<svg style="--bg:#0B5BF0"')}</div></div>
+    <div class="tile t-mono"><div class="sizes"><div class="r">${svg(c.g).replace('<svg','<svg width="48" height="48"')}${svg(c.g).replace('<svg','<svg width="32" height="32"')}${svg(c.g).replace('<svg','<svg width="16" height="16"')}</div><div class="cap">mono · 48 / 32 / 16</div></div></div>
+  </div>
+</section>`).join('');
+
+// ---- Round 2: multi-letter marks (KD / KDS / logotype) ----
+const T=(t,x,y,sz,f,x2='')=>`<text x="${x}" y="${y}" font-family="Red Hat Display" font-weight="800" font-size="${sz}" fill="${f}" ${x2}>${t}</text>`;
+const L=[
+{n:'KD Ligature',st:'K กับ D ต่อกัน ปลายแขน K แตะก้าน D · อ่านเป็น KD ได้ชัด',vb:'0 0 112 100',
+ g:r(6,12,18,76,M3,2)+p("M24 46 L48 12 H62 L32 58 H24Z",M3)+p("M30 54 L38 48 L62 88 H48Z",M3)+p("M62 12 H74 A38 38 0 0 1 74 88 H62Z",M1)+p("M76 30 A20 20 0 0 1 76 70Z",BG)},
+{n:'D-Frame K',st:'ตัว D ทึบเป็นกรอบ มี K เจาะอยู่ข้างใน · Krabi อยู่ใน Digital',
+ g:p("M10 10 H52 A40 40 0 0 1 52 90 H10Z",M1)+p("M24 27 H35 V73 H24Z",ON)+p("M35 49 L52 27 H65 L46 52Z",ON)+p("M40 51 L48 46 L66 73 H52Z",ON)},
+{n:'KD Sunset',st:'D เป็นพระอาทิตย์ตกทะเล ครึ่งล่างเป็นเส้นเงาสะท้อน · K ทึบนำหน้า',vb:'0 0 112 100',
+ g:(()=>{let o=r(6,12,18,76,M3,2)+p("M24 46 L48 12 H62 L32 58 H24Z",M3)+p("M30 54 L38 48 L58 88 H44Z",M3)+p("M62 12 H72 A38 38 0 0 1 110 50 H62Z",M1);
+ for(let y=55;y<88;y+=8){const h=Math.sqrt(Math.max(0,38*38-(y+2.5-50)**2));o+=r(62,y,(10+h).toFixed(1),5,M1,2.5)}return o})()},
+{n:'KD Overlap',st:'K กับ D ซ้อนกันแบบโปร่ง ส่วนที่ทับกันเกิดสีใหม่ · สื่อการผสาน local + digital',vb:'0 0 110 100',
+ g:r(6,12,20,76,M3,3)+p("M26 48 L52 12 H76 L42 60 H26Z",M3)+p("M32 56 L44 48 L76 88 H52Z",M3)+`<path d="M44 12 H66 A38 38 0 0 1 66 88 H44Z" fill="var(--m1)" opacity=".82"/>`},
+{n:'KDS Tile',st:'ตัวย่อ KDS ใน tile ทึบ + เส้นคลื่น · เรียบแบบ corporate ใช้เป็น app icon ได้ทันที',
+ g:`<rect x="6" y="6" width="88" height="88" rx="24" fill="var(--m1)"/>`+T('KDS',50,60,30,ON,'text-anchor="middle" textLength="64" lengthAdjust="spacingAndGlyphs"')+s("M28 72 Q39 66 50 72 T72 72",ON,4)},
+{n:'kd lowercase',st:'k กับ d ตัวพิมพ์เล็ก geometric มนๆ (แนว addiba) · วงกลม d ประกบแขน k',vb:'0 0 104 100',
+ g:r(6,8,15,84,M3,7.5)+s("M21 70 L40 46",M3,14)+s("M28 68 L42 88",M3,14)+`<circle cx="68" cy="66" r="20" fill="none" stroke="var(--m1)" stroke-width="14"/>`+r(83,8,15,84,M1,7.5)},
+{n:'krabi logotype',solo:1,st:'ใช้คำว่า "krabi" เป็นโลโก้เลย · จุดตัว i เปลี่ยนเป็นยอดเขาหินปูนสีน้ำเงิน',vb:'0 0 190 80',
+ g:T('krab',2,66,74,M3,'textLength="150" lengthAdjust="spacingAndGlyphs"')+r(158,30,14,36,M3,2)+p("M156 22 L162 6 Q165 1 170 3 L176 8 Q178 11 174 12 L172 13 L175 22Z",M1)},
+{n:'kds. logotype',solo:1,st:'ตัวย่อพิมพ์เล็ก "kds" + จุดสีน้ำเงินเป็นเกาะ · สั้น จำง่าย แนว startup',vb:'0 0 156 80',
+ g:T('kds',2,64,78,M3,'textLength="118" lengthAdjust="spacingAndGlyphs"')+p("M126 64 L131 50 Q133 46 137 47 L143 52 L146 64Z",M1)+s("M122 72 Q130 68 138 72 T152 72",M1,3)}
+];
+const sv=(c,h,x='')=>`<svg viewBox="${c.vb||'0 0 100 100'}" style="height:${h}px;width:auto;${x}" xmlns="http://www.w3.org/2000/svg">${c.g}</svg>`;
+const wm2=`<div class="wm"><div class="b" style="line-height:1.5;margin:0">DIGITAL<br>SOLUTIONS</div></div>`;
+document.getElementById('m').insertAdjacentHTML('beforeend',`<h1 style="margin:18px 0 0">Round 2 · เพิ่มตัวอักษร (KD / KDS / logotype)</h1>`+L.map((c,i)=>`
+<section class="concept">
+  <div class="head"><span class="num">L${i+1}</span><span class="name">${c.n}</span><span class="num" style="background:#041A53;color:#fff;padding:2px 8px;border-radius:99px;font-size:11px">NEW · ตัวอักษร</span><span class="story">${c.st}</span></div>
+  <div class="tiles">
+    <div class="tile t-dark"><div class="lock">${sv(c,c.solo?54:64)}${c.solo?wm2:wm}</div></div>
+    <div class="tile t-light"><div class="lock">${sv(c,c.solo?54:64)}${c.solo?wm2:wm}</div></div>
+    <div class="tile t-light" style="--bg:#F4F7FD"><div class="app t-app" style="--bg:#0B5BF0">${sv(c,c.solo?26:52,'max-width:78px')}</div></div>
+    <div class="tile t-mono"><div class="sizes"><div class="r">${sv(c,48)}${sv(c,32)}${sv(c,16)}</div><div class="cap">mono · 48 / 32 / 16</div></div></div>
+  </div>
+</section>`).join(''));
+</script>
+</body>
+</html>

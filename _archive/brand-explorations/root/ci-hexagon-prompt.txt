@@ -1,0 +1,15 @@
+Use case: logo-brand.
+Create a simple professional brand identity board for the tech company "Krabi Digital Solutions" from Krabi, Thailand. Landscape 16:9. Clean grid layout, minimal modern flat vector presentation, crisp precise edges and ample white space.
+
+SYMBOL: A bold regular hexagon outline, like a tech/chip badge. Inside it a sharp geometric silhouette of a steep limestone karst peak rises from the bottom. The bottom edge of the hexagon bends into a smooth ocean wave flowing under the peak, integrated with the outline. One corner of the hexagon has a small gap with a SINGLE circular node dot. Uniform outline weight, balanced symmetrical overall structure and precise geometry. Strong simple iconic silhouette. All three logo applications must use EXACTLY the same symbol geometry. Every logo is strictly single color.
+
+LAYOUT:
+Left large panel, about 50% canvas width, solid uniform navy #041A53 background. Center a large white stacked primary logo: symbol on top; wordmark beneath. Text exactly "KRABI DIGITAL" in uppercase on one line, wide extended sleek futuristic tech typeface like Michroma. Underneath exact text "SOLUTIONS", smaller, with very wide letter spacing.
+Right half white background.
+Top right: same stacked logo in navy #041A53 on white, identical geometry and wordmark typography.
+Middle right: symbol only in white centered inside electric blue #0059FF rounded-square app icon. Flat solid color, no dimensional effects.
+Bottom right: four color swatches in one horizontal row, labeled underneath respectively "#041A53", "#0059FF", "#09FFFF", "#FFFFFF". Swatches use those exact colors; white swatch may have a fine navy border.
+Small typography sample on right: exact text "Aa  Michroma" in Michroma-style typography.
+Keep all content aligned with generous margins and whitespace.
+
+Only the specified wordmarks, swatch labels and typography sample appear as text. No titles, no extra text or taglines. Flat vector aesthetic only. NO gradients, shadows, 3D, photos, textures, mockups, decorative background elements. Strict palette navy #041A53, electric blue #0059FF, cyan #09FFFF and white #FFFFFF. Professional futuristic tech brand.

@@ -1,0 +1,368 @@
+<!doctype html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Social Kit · Krabi Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:"LINE Seed Sans TH";font-weight:700;src:url(../fonts/LINESeedSansTH_Bd.woff2) format("woff2")}
+@font-face{font-family:"LINE Seed Sans TH";font-weight:800;src:url(../fonts/LINESeedSansTH_XBd.woff2) format("woff2")}
+:root{--navy:#041A53;--blue:#0059FF;--cyan:#09FFFF;--sky:#7FAEFF;--mist:#EEF3FC;--line:#DCE3F0;--slate:#56627F;--ink:#0B1633;
+--head:"Red Hat Display","LINE Seed Sans TH",system-ui,sans-serif;--body:"Plus Jakarta Sans","IBM Plex Sans Thai",system-ui,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:#fff;color:var(--ink);font:400 15px/1.65 var(--body)}
+a{color:var(--blue)}
+header.top{background:var(--navy);color:#fff;padding:56px 24px 40px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+header.top .wrap{padding:0}
+.eb{font:600 12px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--sky);display:flex;gap:10px;align-items:center}
+.eb:before{content:"";width:10px;height:10px;border-radius:2px;background:var(--blue)}
+header.top .eb:before{background:var(--cyan)}
+h1{font:800 44px/1.15 var(--head);margin:14px 0 10px}
+h2{font:800 30px/1.2 var(--head);margin:0 0 6px;color:var(--navy)}
+h3{font:700 19px/1.3 var(--head);margin:28px 0 12px;color:var(--navy)}
+.lead{max-width:680px;opacity:.8;margin:0}
+nav.toc{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav.toc .wrap{display:flex;gap:4px;overflow-x:auto;padding-top:10px;padding-bottom:10px}
+nav.toc a{font:600 13px/1 var(--body);color:var(--slate);text-decoration:none;padding:9px 12px;border-radius:8px;white-space:nowrap}
+nav.toc a:hover{background:var(--mist);color:var(--navy)}
+section{padding:56px 0;border-bottom:1px solid var(--line)}section.tint{background:var(--mist)}
+.sub{color:var(--slate);margin:0 0 24px;max-width:720px}
+.grid{display:grid;gap:20px}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.asset{margin:0;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 12px 28px -18px rgb(4 26 83/.35)}
+.asset img{display:block;width:100%;height:auto;background:var(--mist)}
+.asset figcaption{padding:12px 14px;display:flex;flex-direction:column;gap:2px;font-size:13px}
+.asset figcaption b{font:700 14px/1.4 var(--head);color:var(--navy)}.asset figcaption span{color:var(--slate)}
+.dl{display:flex;gap:8px;margin-top:6px}.dl a{font:600 12px/1 var(--body);padding:6px 10px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--navy)}
+.dl a:hover{border-color:var(--blue);color:var(--blue)}
+.field{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:12px}
+.fh{display:flex;align-items:center;gap:10px}.fh b{font:600 14px/1.4 var(--body);color:var(--navy);flex:1}
+.cnt{font:600 12px/1 var(--body);color:var(--slate);background:var(--mist);padding:5px 8px;border-radius:6px}.cnt.over{background:#FFE4E4;color:#B00020}
+button.cp{font:600 12px/1 var(--body);border:0;background:var(--navy);color:#fff;padding:8px 12px;border-radius:8px;cursor:pointer}
+button.cp:hover{background:var(--blue)}button.cp.ok{background:#0A7A45}
+pre{white-space:pre-wrap;word-break:break-word;font:400 14px/1.7 var(--body);margin:10px 0 0;color:var(--ink)}
+.note{font-size:13px;color:var(--slate);margin:8px 0 0;padding-left:10px;border-left:2px solid var(--sky)}
+/* mockups */
+.mock{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.fb .cv{position:relative}.fb .cv img{display:block;width:100%}
+.fb .safe{position:absolute;top:0;bottom:0;left:16.16%;right:16.16%;border-left:2px dashed var(--cyan);border-right:2px dashed var(--cyan);display:none}
+.fb.show .safe{display:block}
+.fb .pp{position:relative;padding:0 24px 20px;display:flex;align-items:flex-end;gap:16px;margin-top:-56px}
+.fb .pp img{width:132px;height:132px;border-radius:50%;border:4px solid #fff}
+.fb .pp div b{display:block;font:800 26px/1.2 var(--head);color:var(--ink)}.fb .pp div span{color:var(--slate);font-size:14px}
+.tg{font:600 13px/1 var(--body);margin:12px 0 0;display:inline-flex;gap:8px;align-items:center;cursor:pointer;color:var(--slate)}
+.ig{padding:24px;max-width:520px}
+.ig .hd{display:flex;gap:20px;align-items:center}.ig .hd img{width:88px;height:88px;border-radius:50%}
+.ig .hd b{font:700 16px/1.3 var(--body)}.ig .bio{white-space:pre-line;font-size:14px;margin:12px 0 16px}
+.ig .hl{display:flex;gap:12px;overflow-x:auto;padding-bottom:6px}.ig .hl figure{margin:0;text-align:center;font-size:12px;flex:none;width:64px}
+.ig .hl img{width:64px;height:64px;border-radius:50%;border:2px solid var(--line);padding:2px;background:#fff}
+.ig .gr{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin:16px -24px -24px}
+.ig .gr img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+.ln{max-width:380px;margin:0 auto;border-radius:36px;border:10px solid var(--ink);overflow:hidden;background:#8CABD9}
+.ln .bar{background:#fff;padding:12px 16px;font:700 14px/1 var(--body);display:flex;gap:10px;align-items:center}
+.ln .bar img{width:28px;height:28px;border-radius:50%}
+.ln .chat{padding:16px;min-height:220px;display:flex;flex-direction:column;gap:10px}
+.ln .msg{background:#fff;border-radius:16px;padding:10px 12px;font-size:12.5px;line-height:1.55;max-width:88%;white-space:pre-line}
+.ln .rm img{display:block;width:100%}.ln .cb{background:#fff;text-align:center;font:600 12px/1 var(--body);padding:10px;color:var(--slate)}
+.post{display:grid;grid-template-columns:260px 1fr;gap:20px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:16px}
+.post img{width:100%;border-radius:10px;display:block}.post .when{font:600 12px/1 var(--body);color:var(--blue);letter-spacing:.06em}
+.post .pin{background:var(--navy);color:#fff;border-radius:6px;padding:4px 8px;margin-left:8px;font-size:11px}
+.post pre{max-height:340px;overflow:auto}
+ol.chk{padding-left:22px;margin:0}ol.chk li{margin:6px 0}
+.cols{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:28px;align-items:start}
+footer{padding:32px 0;color:var(--slate);font-size:13px}
+@media (max-width:860px){.g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.cols,.g2{grid-template-columns:1fr}.post{grid-template-columns:1fr}h1{font-size:34px}}
+@media (max-width:480px){.g3,.g4{grid-template-columns:1fr}}
+</style></head><body>
+<header class="top"><div class="wrap"><div class="eb">Social Kit · v1.0</div><h1>ชุดตั้งค่าเพจ Krabi Digital</h1>
+<p class="lead">Facebook · Instagram · LINE OA ครบทั้งภาพและข้อความ ภาพทุกชิ้นมีทั้ง PNG ขนาดตรง spec และ SVG สำหรับแก้ใน Figma ข้อความกดคัดลอกไปวางได้ทันที</p></div></header>
+<nav class="toc"><div class="wrap"><a href="#start">เช็กลิสต์</a><a href="#fb">Facebook</a><a href="#ig">Instagram</a><a href="#line">LINE OA</a><a href="#posts">9 โพสต์แรก</a><a href="#tpl">Templates</a><a href="#files">ไฟล์ทั้งหมด</a></div></nav>
+
+<section id="start"><div class="wrap cols"><div><div class="eb">เริ่มตรงนี้</div><h2>เช็กลิสต์ตั้งค่า</h2><p class="sub">ทำตามลำดับ ใช้เวลาประมาณ 1–2 ชั่วโมง</p>
+<ol class="chk"><li>ตั้งรูปโปรไฟล์ (profile-navy.png) ทั้ง 3 แพลตฟอร์ม</li><li>Facebook: อัปโหลด fb-cover.png แล้วเช็กบนมือถือว่าข้อความไม่โดนตัด</li><li>Facebook: ใส่ชื่อ username หมวดหมู่ Bio รายละเอียด ข้อมูลติดต่อ เวลาทำการ</li><li>Facebook: เพิ่มแท็บบริการ 6 รายการ และตั้งปุ่ม "ส่งข้อความ"</li><li>Messenger: ตั้งข้อความทักทาย ตอบกลับทันที นอกเวลา และคำถามที่พบบ่อย 4 ข้อ</li><li>Instagram: เปลี่ยนเป็นบัญชีธุรกิจ เชื่อมกับเพจ Facebook แล้วใส่ชื่อ bio ลิงก์</li><li>LINE OA: ใส่ข้อความสถานะ ภาพปก และข้อความทักทาย</li><li>LINE OA: สร้าง rich menu ใหญ่ ใส่ action 6 ช่อง ตั้งแถบเมนู "เมนูบริการ"</li><li>LINE OA: เปิดตอบกลับอัตโนมัติด้วยคีย์เวิร์ด และข้อความนอกเวลา</li><li>โพสต์ 01 ก่อน แล้วปักหมุดไว้บนเพจ Facebook</li><li>ทยอยโพสต์ 02–09 ตามตาราง (3 โพสต์ต่อสัปดาห์) ลงพร้อมกัน FB + IG</li><li>ทำ story อย่างน้อย 1 อันต่อ highlight แล้วตั้งภาพปก highlight 7 อัน</li></ol></div>
+<div class="grid g2"><figure class="asset"><img src="profile/profile-navy.png" alt="รูปโปรไฟล์ · หลัก" class="" loading="lazy"><figcaption><b>รูปโปรไฟล์ · หลัก</b><span>720 × 720 · ใช้ร่วม Facebook / Instagram / LINE OA (แสดงเป็นวงกลม)</span>
+    <span class="dl"><a href="profile/profile-navy.png" download>PNG</a><a href="profile/profile-navy.svg" download>SVG</a></span></figcaption></figure><figure class="asset"><img src="profile/profile-blue.png" alt="รูปโปรไฟล์ · สำรอง" class="" loading="lazy"><figcaption><b>รูปโปรไฟล์ · สำรอง</b><span>720 × 720 · ใช้เมื่อพื้นหลังแพลตฟอร์มเป็นสีเข้ม</span>
+    <span class="dl"><a href="profile/profile-blue.png" download>PNG</a><a href="profile/profile-blue.svg" download>SVG</a></span></figcaption></figure></div></div></section>
+
+<section id="fb" class="tint"><div class="wrap"><div class="eb">Facebook Page</div><h2>Facebook</h2><p class="sub">ภาพหน้าปกบนมือถือจะถูกตัดซ้ายขวา ข้อความทั้งหมดอยู่ในเส้นประ (safe zone)</p>
+<div class="mock fb" id="fbm"><div class="cv"><img src="facebook/fb-cover.png" alt="Facebook · ภาพหน้าปก" class="" loading="lazy"><div class="safe"></div></div>
+<div class="pp"><img src="profile/profile-navy.png" alt="รูปโปรไฟล์ · หลัก" class="" loading="lazy"><div><b>Krabi Digital Solutions</b><span>นักออกแบบเว็บไซต์ · กระบี่</span></div></div></div>
+<label class="tg"><input type="checkbox" onchange="document.getElementById('fbm').classList.toggle('show',this.checked)"> แสดง safe zone มือถือ</label>
+<div class="cols" style="margin-top:28px"><div><h3>ข้อมูลเพจ</h3><div class="field"><div class="fh"><b>ชื่อเพจ</b><button class="cp">คัดลอก</button></div>
+      <pre>Krabi Digital Solutions</pre></div><div class="field"><div class="fh"><b>Username</b><button class="cp">คัดลอก</button></div>
+      <pre>krabitech</pre><p class="note">ใช้ชื่อเดียวกับโดเมน ถ้าไม่ว่างใช้ krabidigital · ตั้งให้ตรงกับ IG</p></div><div class="field"><div class="fh"><b>หมวดหมู่ (เลือกได้ 3)</b><button class="cp">คัดลอก</button></div>
+      <pre>บริษัทซอฟต์แวร์ (Software Company)
+นักออกแบบเว็บไซต์ (Web Designer)
+เอเจนซีการตลาดดิจิทัล (Digital Marketing Agency)</pre></div><div class="field"><div class="fh"><b>Bio / แนะนำ (Intro)</b><span class="cnt">85 / 101</span><button class="cp">คัดลอก</button></div>
+      <pre>ทีม digital จากกระบี่ เว็บ แอป ออกแบบ การตลาด ระบบธุรกิจ และเซิร์ฟเวอร์ ครบในที่เดียว</pre></div><div class="field"><div class="fh"><b>รายละเอียด (About)</b><button class="cp">คัดลอก</button></div>
+      <pre>Krabi Digital Solutions คือทีม digital จากกระบี่ ทำให้ธุรกิจได้ครบในที่เดียว ตั้งแต่วางระบบ ออกแบบแบรนด์ ทำเว็บและแอป เชื่อมต่อระบบ ดูแลเซิร์ฟเวอร์ ไปจนถึงการตลาดออนไลน์ ทำงานให้โรงแรม รีสอร์ต วิลล่า ทัวร์ ร้านอาหาร และธุรกิจในภาคใต้
+
+เราเริ่มจากคุยว่าธุรกิจต้องการอะไร แล้วเลือกสิ่งที่พอดีกับขนาดและงบ ไม่ขายเกินจำเป็น ราคาและขั้นตอนบอกตรงๆ ใบเสนอราคาเป็นลายลักษณ์อักษรก่อนเริ่มงาน มีประกันหลังส่งงาน และแผนดูแลรายเดือน
+
+บริการ
+• เว็บไซต์และแอป: เว็บธุรกิจ Web App / SaaS แอป iOS / Android ระบบเฉพาะองค์กร แก้ไขและต่อยอดเว็บเดิม
+• ออกแบบและแบรนด์: Logo, Brand Identity, UX/UI, Artwork โซเชียล, Poster, Banner, Brochure, Booth และป้าย
+• การตลาดออนไลน์: ดูแล Facebook Page, Content และ Caption, Facebook Ads และวางแผนการตลาด
+• ระบบธุรกิจและการเชื่อมต่อ: ระบบหลังบ้าน Dashboard ฐานข้อมูล Workflow, API, Payment Gateway, LINE OA, ระบบสมาชิก และแจ้งเตือน
+• เซิร์ฟเวอร์และคลาวด์: VPS / Cloud, Domain DNS SSL, Deployment และ CI/CD, Backup, Monitoring, Migration
+• ท่องเที่ยวและระบบจอง: ระบบ Booking ระบบบริษัททัวร์ โปรแกรมทัวร์ ราคา และ Promotion
+
+ติดต่อ 080-893-0617 · LINE @982ghtqj · contact@krabitech.com
+จันทร์–เสาร์ 09:00–18:00 ตอบกลับภายใน 1 วันทำการ</pre></div><div class="field"><div class="fh"><b>ปุ่มหลักบนเพจ (CTA)</b><button class="cp">คัดลอก</button></div>
+      <pre>ส่งข้อความ</pre><p class="note">ให้ทักผ่าน Messenger ได้ทันที ถ้าอยากดันไป LINE ใช้ "ติดต่อเรา" แล้วใส่ลิงก์ https://line.me/R/ti/p/@982ghtqj</p></div><div class="field"><div class="fh"><b>ข้อมูลติดต่อ</b><button class="cp">คัดลอก</button></div>
+      <pre>โทร 080-893-0617
+อีเมล contact@krabitech.com
+เว็บไซต์ https://krabitech.com/th
+LINE @982ghtqj (เพิ่มในช่อง "ลิงก์โซเชียล")</pre></div><div class="field"><div class="fh"><b>เวลาทำการ</b><button class="cp">คัดลอก</button></div>
+      <pre>จันทร์–เสาร์ 09:00–18:00 · อาทิตย์ปิด</pre></div><div class="field"><div class="fh"><b>ที่ตั้ง / พื้นที่ให้บริการ</b><button class="cp">คัดลอก</button></div>
+      <pre>กระบี่ · พังงา · ภูเก็ต · ตรัง · สุราษฎร์ธานี</pre><p class="note">ถ้าไม่มีหน้าร้านให้ลูกค้าเข้า เลือก "ไม่แสดงที่อยู่" แล้วตั้งเป็นพื้นที่ให้บริการแทน</p></div><div class="field"><div class="fh"><b>แท็บบริการ · เว็บไซต์และแอป</b><button class="cp">คัดลอก</button></div>
+      <pre>เว็บไซต์ธุรกิจ บริษัท ร้านค้า Web Application / SaaS และแอป iOS / Android ออกแบบตามงานของธุรกิจ รองรับมือถือทุกขนาด รวมถึงแก้ไขและต่อยอดเว็บไซต์เดิม</pre></div><div class="field"><div class="fh"><b>แท็บบริการ · ออกแบบและแบรนด์</b><button class="cp">คัดลอก</button></div>
+      <pre>Logo และ Brand Identity, UX/UI เว็บและระบบ, Artwork Facebook / Instagram, Poster Banner Brochure สื่อโฆษณา ไปจนถึง Booth และป้ายสำหรับออกงาน หน้าตาเป็นชุดเดียวกันทุกช่องทาง</pre></div><div class="field"><div class="fh"><b>แท็บบริการ · การตลาดออนไลน์</b><button class="cp">คัดลอก</button></div>
+      <pre>ดูแลและจัดการ Facebook Page ทำ Content และ Caption ยิง Facebook Ads พร้อมวิเคราะห์ผล และวางแผนการตลาดออนไลน์ให้เหมาะกับงบของธุรกิจ</pre></div><div class="field"><div class="fh"><b>แท็บบริการ · ระบบธุรกิจและการเชื่อมต่อ</b><button class="cp">คัดลอก</button></div>
+      <pre>ออกแบบระบบและ Workflow ทำระบบหลังบ้าน Dashboard และฐานข้อมูล พัฒนา API / Backend เชื่อมต่อ Payment Gateway, LINE OA, Google และระบบอื่น ระบบสมาชิก และแจ้งเตือนทาง Email / SMS / LINE</pre></div><div class="field"><div class="fh"><b>แท็บบริการ · เซิร์ฟเวอร์และคลาวด์</b><button class="cp">คัดลอก</button></div>
+      <pre>ติดตั้งและดูแล VPS / Cloud Server ตั้งค่า Domain DNS SSL และ Hosting ทำ Deployment และ CI/CD ระบบ Backup และ Recovery เฝ้าระบบ ปรับ Performance ย้ายระบบ และแก้ปัญหาเซิร์ฟเวอร์</pre></div><div class="field"><div class="fh"><b>แท็บบริการ · ท่องเที่ยวและระบบจอง</b><button class="cp">คัดลอก</button></div>
+      <pre>ระบบ Booking ให้แขกจองตรงผ่านเว็บ ระบบสำหรับบริษัททัวร์ และจัดทำโปรแกรมทัวร์ ราคา และ Promotion</pre></div></div><div><h3>Messenger</h3><div class="field"><div class="fh"><b>ข้อความทักทาย (Greeting)</b><span class="cnt">125 / 160</span><button class="cp">คัดลอก</button></div>
+      <pre>สวัสดีจากทีม Krabi Digital ที่กระบี่ อยากทำเว็บ แอป ระบบ งานออกแบบ หรือการตลาดออนไลน์ พิมพ์เล่าได้เลย ตอบกลับภายใน 1 วันทำการ</pre></div><div class="field"><div class="fh"><b>ตอบกลับทันที (Instant reply)</b><button class="cp">คัดลอก</button></div>
+      <pre>ขอบคุณที่ทักมา ทีมได้รับข้อความแล้ว จะตอบกลับภายใน 1 วันทำการ (จันทร์–เสาร์ 09:00–18:00)
+
+ถ้าอยากได้ใบเสนอราคา เล่าสั้นๆ ได้เลย
+1) ธุรกิจของคุณเป็นแบบไหน
+2) อยากได้อะไร เว็บ แอป ระบบ งานออกแบบ การตลาด หรือเซิร์ฟเวอร์
+3) มีระบบเดิมอยู่หรือยัง
+4) อยากเริ่มประมาณเมื่อไร</pre></div><div class="field"><div class="fh"><b>ข้อความนอกเวลา (Away)</b><button class="cp">คัดลอก</button></div>
+      <pre>ตอนนี้อยู่นอกเวลาทำการ ทีมจะตอบกลับในวันทำการถัดไป (จันทร์–เสาร์ 09:00–18:00) ฝากรายละเอียดไว้ได้เลย</pre></div><div class="field"><div class="fh"><b>คำถามที่พบบ่อย 1</b><button class="cp">คัดลอก</button></div>
+      <pre>Q: ทำเว็บไซต์ราคาเท่าไร
+A: ราคาขึ้นกับขอบเขตงาน เราไม่มีแพ็กเกจตายตัว เล่าให้ฟังว่าธุรกิจเป็นแบบไหนและอยากได้อะไร แล้วเราส่งใบเสนอราคาเป็นลายลักษณ์อักษรก่อนเริ่มงาน</pre></div><div class="field"><div class="fh"><b>คำถามที่พบบ่อย 2</b><button class="cp">คัดลอก</button></div>
+      <pre>Q: ใช้เวลาทำนานไหม
+A: เว็บไซต์ทั่วไปใช้ประมาณ 3–6 สัปดาห์ ระบบที่ซับซ้อนกว่านั้นจะใช้เวลามากขึ้น เราแจ้งไทม์ไลน์ในใบเสนอราคาทุกครั้ง</pre></div><div class="field"><div class="fh"><b>คำถามที่พบบ่อย 3</b><button class="cp">คัดลอก</button></div>
+      <pre>Q: ส่งงานแล้วมีคนดูแลต่อไหม
+A: มีประกันหลังส่งงานสำหรับข้อผิดพลาดของระบบ และมีแผนดูแลรายเดือน ทั้งอัปเดต ดูแลเซิร์ฟเวอร์ และพัฒนาฟีเจอร์เพิ่ม</pre></div><div class="field"><div class="fh"><b>คำถามที่พบบ่อย 4</b><button class="cp">คัดลอก</button></div>
+      <pre>Q: รับงานออกแบบและการตลาดด้วยไหม
+A: รับ ตั้งแต่ Logo, Artwork โซเชียล, สื่อสิ่งพิมพ์ ไปจนถึงดูแลเพจและยิงโฆษณา ทำคู่กับเว็บและระบบได้ในทีมเดียว</pre></div></div></div>
+</div></section>
+
+<section id="ig"><div class="wrap"><div class="eb">Instagram</div><h2>Instagram</h2><p class="sub">โพสต์ 4:5 แสดงบน grid เป็น 3:4 ขอบซ้ายขวาถูกตัดเล็กน้อย เนื้อหาทุกโพสต์เว้นขอบไว้แล้ว</p>
+<div class="cols"><div class="mock ig"><div class="hd"><img src="profile/profile-navy.png" alt="รูปโปรไฟล์ · หลัก" class="" loading="lazy"><div><b>krabitech</b><br><span style="color:var(--slate);font-size:14px">Krabi Digital | เว็บ แอป AI</span></div></div>
+<div class="bio">ทีม digital จากกระบี่
+เว็บ แอป ออกแบบ การตลาด ระบบ เซิร์ฟเวอร์
+เทคโนโลยีที่พอดีกับธุรกิจคุณ · LINE @982ghtqj
+<a href="https://krabitech.com/th">krabitech.com/th</a></div>
+<div class="hl"><figure><img src="instagram/highlight-01-web-app.png" alt="Highlight · เว็บ &amp; แอป" class="" loading="lazy"><figcaption>เว็บ &amp; แอป</figcaption></figure><figure><img src="instagram/highlight-02-design.png" alt="Highlight · ออกแบบ" class="" loading="lazy"><figcaption>ออกแบบ</figcaption></figure><figure><img src="instagram/highlight-03-marketing.png" alt="Highlight · การตลาด" class="" loading="lazy"><figcaption>การตลาด</figcaption></figure><figure><img src="instagram/highlight-04-systems.png" alt="Highlight · ระบบ" class="" loading="lazy"><figcaption>ระบบ</figcaption></figure><figure><img src="instagram/highlight-05-server.png" alt="Highlight · เซิร์ฟเวอร์" class="" loading="lazy"><figcaption>เซิร์ฟเวอร์</figcaption></figure><figure><img src="instagram/highlight-06-tourism.png" alt="Highlight · ท่องเที่ยว" class="" loading="lazy"><figcaption>ท่องเที่ยว</figcaption></figure><figure><img src="instagram/highlight-07-chat.png" alt="Highlight · ติดต่อ" class="" loading="lazy"><figcaption>ติดต่อ</figcaption></figure></div>
+<div class="gr"><img src="posts/post-09-contact.png" alt="09 · ติดต่อเรา" class="" loading="lazy"><img src="posts/post-08-why-us.png" alt="08 · ทำไมต้องเรา" class="" loading="lazy"><img src="posts/post-07-tourism.png" alt="07 · ท่องเที่ยวและระบบจอง" class="" loading="lazy"><img src="posts/post-06-server.png" alt="06 · เซิร์ฟเวอร์และคลาวด์" class="" loading="lazy"><img src="posts/post-05-systems.png" alt="05 · ระบบธุรกิจ" class="" loading="lazy"><img src="posts/post-04-marketing.png" alt="04 · การตลาดออนไลน์" class="" loading="lazy"><img src="posts/post-03-design.png" alt="03 · ออกแบบและแบรนด์" class="" loading="lazy"><img src="posts/post-02-web-app.png" alt="02 · เว็บไซต์และแอป" class="" loading="lazy"><img src="posts/post-01-intro.png" alt="01 · แนะนำตัว" class="" loading="lazy"></div></div>
+<div><div class="field"><div class="fh"><b>ชื่อ (Name) · ค้นหาเจอจากช่องนี้</b><span class="cnt over">31 / 30</span><button class="cp">คัดลอก</button></div>
+      <pre>Krabi Digital | เว็บ แอป ดีไซน์</pre></div><div class="field"><div class="fh"><b>Username</b><button class="cp">คัดลอก</button></div>
+      <pre>krabitech</pre><p class="note">ให้ตรงกับเพจ Facebook</p></div><div class="field"><div class="fh"><b>หมวดหมู่</b><button class="cp">คัดลอก</button></div>
+      <pre>บริษัทซอฟต์แวร์ (Software Company)</pre></div><div class="field"><div class="fh"><b>Bio</b><span class="cnt">108 / 150</span><button class="cp">คัดลอก</button></div>
+      <pre>ทีม digital จากกระบี่
+เว็บ แอป ออกแบบ การตลาด ระบบ เซิร์ฟเวอร์
+เทคโนโลยีที่พอดีกับธุรกิจคุณ · LINE @982ghtqj</pre></div><div class="field"><div class="fh"><b>ลิงก์</b><button class="cp">คัดลอก</button></div>
+      <pre>https://krabitech.com/th</pre><p class="note">ลิงก์ที่ 2: https://line.me/R/ti/p/@982ghtqj (ชื่อลิงก์ "แชต LINE")</p></div><div class="field"><div class="fh"><b>ปุ่มติดต่อ (บัญชีธุรกิจ)</b><button class="cp">คัดลอก</button></div>
+      <pre>อีเมล contact@krabitech.com
+โทร 080-893-0617</pre></div><div class="field"><div class="fh"><b>ชื่อ Highlight (ตามลำดับ)</b><button class="cp">คัดลอก</button></div>
+      <pre>เว็บ &amp; แอป · ออกแบบ · การตลาด · ระบบ · เซิร์ฟเวอร์ · ท่องเที่ยว · ติดต่อ</pre><p class="note">ใส่ story อย่างน้อย 1 อันต่อ highlight ใช้ template Story ทำได้</p></div></div></div>
+<h3>Highlight covers</h3><div class="grid g4"><figure class="asset"><img src="instagram/highlight-01-web-app.png" alt="Highlight · เว็บ &amp; แอป" class="" loading="lazy"><figcaption><b>Highlight · เว็บ &amp; แอป</b><span>1080 × 1080 · ไอคอนอยู่ในวงกลมกลางภาพ</span>
+    <span class="dl"><a href="instagram/highlight-01-web-app.png" download>PNG</a><a href="instagram/highlight-01-web-app.svg" download>SVG</a></span></figcaption></figure><figure class="asset"><img src="instagram/highlight-02-design.png" alt="Highlight · ออกแบบ" class="" loading="lazy"><figcaption><b>Highlight · ออกแบบ</b><span>1080 × 1080 · ไอคอนอยู่ในวงกลมกลางภาพ</span>
+    <span class="dl"><a href="instagram/highlight-02-design.png" download>PNG</a><a href="instagram/highlight-02-design.svg" download>SVG</a></span></figcaption></figure><figure class="asset"><img src="instagram/highlight-03-marketing.png" alt="Highlight · การตลาด" class="" loading="lazy"><figcaption><b>Highlight · การตลาด</b><span>1080 × 1080 · ไอคอนอยู่ในวงกลมกลางภาพ</span>
+    <span class="dl"><a href="instagram/highlight-03-marketing.png" download>PNG</a><a href="instagram/highlight-03-marketing.svg" download>SVG</a></span></figcaption></figure><figure class="asset"><img src="instagram/highlight-04-systems.png" alt="Highlight · ระบบ" class="" loading="lazy"><figcaption><b>Highlight · ระบบ</b><span>1080 × 1080 · ไอคอนอยู่ในวงกลมกลางภาพ</span>
+    <span class="dl"><a href="instagram/highlight-04-systems.png" download>PNG</a><a href="instagram/highlight-04-systems.svg" download>SVG</a></span></figcaption></figure><figure class="asset"><img src="instagram/highlight-05-server.png" alt="Highlight · เซิร์ฟเวอร์" class="" loading="lazy"><figcaption><b>Highlight · เซิร์ฟเวอร์</b><span>1080 × 1080 · ไอคอนอยู่ในวงกลมกลางภาพ</span>
+    <span class="dl"><a href="instagram/highlight-05-server.png" download>PNG</a><a href="instagram/highlight-05-server.svg" download>SVG</a></span></figcaption></figure><figure class="asset"><img src="instagram/highlight-06-tourism.png" alt="Highlight · ท่องเที่ยว" class="" loading="lazy"><figcaption><b>Highlight · ท่องเที่ยว</b><span>1080 × 1080 · ไอคอนอยู่ในวงกลมกลางภาพ</span>
+    <span class="dl"><a href="instagram/highlight-06-tourism.png" download>PNG</a><a href="instagram/highlight-06-tourism.svg" download>SVG</a></span></figcaption></figure><figure class="asset"><img src="instagram/highlight-07-chat.png" alt="Highlight · ติดต่อ" class="" loading="lazy"><figcaption><b>Highlight · ติดต่อ</b><span>1080 × 1080 · ไอคอนอยู่ในวงกลมกลางภาพ</span>
+    <span class="dl"><a href="instagram/highlight-07-chat.png" download>PNG</a><a href="instagram/highlight-07-chat.svg" download>SVG</a></span></figcaption></figure></div></div></section>
+
+<section id="line" class="tint"><div class="wrap"><div class="eb">LINE Official Account</div><h2>LINE OA</h2><p class="sub">Rich menu ใหญ่ 6 ช่องเป็นค่าหลัก ถ้าอยากให้เห็นแชตมากขึ้นใช้แบบเล็ก 3 ช่อง</p>
+<div class="cols"><div class="ln"><div class="bar"><img src="profile/profile-navy.png" alt="รูปโปรไฟล์ · หลัก" class="" loading="lazy">Krabi Digital Solutions</div>
+<div class="chat"><div class="msg">สวัสดีคุณ สมศรี ขอบคุณที่เพิ่ม Krabi Digital เป็นเพื่อน
+
+เราเป็นทีม digital จากกระบี่ ทำเว็บ แอป ระบบ งานออกแบบ การตลาดออนไลน์ และดูแลเซิร์ฟเวอร์
+
+อยากเริ่มโปรเจกต์ พิมพ์เล่าได้เลย หรือกดเมนูด้านล่าง ทีมตอบกลับภายใน 1 วันทำการ (จันทร์–เสาร์ 09:00–18:00)</div></div>
+<div class="rm"><img src="line-oa/richmenu-large.png" alt="LINE OA · Rich menu (ใหญ่ 6 ช่อง)" class="" loading="lazy"></div><div class="cb">เมนูบริการ ▾</div></div>
+<div><div class="field"><div class="fh"><b>ชื่อบัญชี</b><button class="cp">คัดลอก</button></div>
+      <pre>Krabi Digital Solutions</pre></div><div class="field"><div class="fh"><b>ข้อความสถานะ</b><span class="cnt over">21 / 20</span><button class="cp">คัดลอก</button></div>
+      <pre>ทีม digital จากกระบี่</pre></div><div class="field"><div class="fh"><b>ข้อความทักทายเพื่อนใหม่ (Greeting)</b><button class="cp">คัดลอก</button></div>
+      <pre>สวัสดีคุณ {Nickname} ขอบคุณที่เพิ่ม Krabi Digital เป็นเพื่อน
+
+เราเป็นทีม digital จากกระบี่ ทำเว็บ แอป ระบบ งานออกแบบ การตลาดออนไลน์ และดูแลเซิร์ฟเวอร์
+
+อยากเริ่มโปรเจกต์ พิมพ์เล่าได้เลย หรือกดเมนูด้านล่าง ทีมตอบกลับภายใน 1 วันทำการ (จันทร์–เสาร์ 09:00–18:00)</pre><p class="note">{Nickname} = ปุ่ม "ชื่อผู้ใช้" ใน LINE OA Manager</p></div><div class="field"><div class="fh"><b>ข้อความบนแถบเมนู (Chat bar)</b><span class="cnt">10 / 14</span><button class="cp">คัดลอก</button></div>
+      <pre>เมนูบริการ</pre></div><div class="field"><div class="fh"><b>Rich menu ใหญ่ · action 6 ช่อง</b><button class="cp">คัดลอก</button></div>
+      <pre>A บริการของเรา → ลิงก์ https://krabitech.com/th
+B ระบบจอง / ทัวร์ → ลิงก์ https://krabitech.com/th (ส่วนธุรกิจท่องเที่ยว)
+C ขอใบเสนอราคา → ข้อความ "ขอใบเสนอราคา"
+D คุยกับทีม → ข้อความ "ขอคุยกับทีม"
+E โทรหาเรา → ลิงก์ tel:0808930617
+F เว็บไซต์ → ลิงก์ https://krabitech.com/th</pre><p class="note">ช่องเรียงซ้ายบน→ขวาล่าง ตรงกับภาพ richmenu-large</p></div><div class="field"><div class="fh"><b>Rich menu เล็ก · action 3 ช่อง</b><button class="cp">คัดลอก</button></div>
+      <pre>A บริการของเรา → ลิงก์ https://krabitech.com/th
+B ขอใบเสนอราคา → ข้อความ "ขอใบเสนอราคา"
+C คุยกับทีม → ข้อความ "ขอคุยกับทีม"</pre></div><div class="field"><div class="fh"><b>ตอบกลับอัตโนมัติ · คีย์เวิร์ด "ขอใบเสนอราคา", "ราคา"</b><button class="cp">คัดลอก</button></div>
+      <pre>ยินดีช่วย ขอข้อมูลเบื้องต้น 4 ข้อ ทีมจะประเมินและส่งใบเสนอราคาเป็นลายลักษณ์อักษร
+
+1) ธุรกิจของคุณเป็นแบบไหน
+2) อยากได้อะไร เว็บ แอป ระบบ งานออกแบบ การตลาด หรือเซิร์ฟเวอร์
+3) มีระบบเดิมอยู่หรือยัง
+4) อยากเริ่มประมาณเมื่อไร</pre></div><div class="field"><div class="fh"><b>ตอบกลับอัตโนมัติ · คีย์เวิร์ด "ขอคุยกับทีม"</b><button class="cp">คัดลอก</button></div>
+      <pre>ได้เลย พิมพ์เรื่องที่อยากคุยไว้ได้เลย ทีมจะตอบกลับภายใน 1 วันทำการ ถ้าเร่งด่วนโทร 080-893-0617 (จันทร์–เสาร์ 09:00–18:00)</pre></div><div class="field"><div class="fh"><b>ตอบกลับอัตโนมัติ · นอกเวลาทำการ</b><button class="cp">คัดลอก</button></div>
+      <pre>ตอนนี้อยู่นอกเวลาทำการ ทีมจะตอบกลับในวันทำการถัดไป (จันทร์–เสาร์ 09:00–18:00) ฝากรายละเอียดไว้ได้เลย</pre></div></div></div>
+<div class="grid g3" style="margin-top:28px"><figure class="asset"><img src="line-oa/line-cover.png" alt="LINE OA · ภาพหน้าปก" class="" loading="lazy"><figcaption><b>LINE OA · ภาพหน้าปก</b><span>1080 × 878 · ข้อความอยู่ครึ่งบน รูปโปรไฟล์ทับด้านล่างได้</span>
+    <span class="dl"><a href="line-oa/line-cover.png" download>PNG</a><a href="line-oa/line-cover.svg" download>SVG</a></span></figcaption></figure><figure class="asset"><img src="line-oa/richmenu-large.png" alt="LINE OA · Rich menu (ใหญ่ 6 ช่อง)" class="" loading="lazy"><figcaption><b>LINE OA · Rich menu (ใหญ่ 6 ช่อง)</b><span>2500 × 1686 · ตั้ง template 6 ช่อง (3 × 2) · action ดูใน copy</span>
+    <span class="dl"><a href="line-oa/richmenu-large.png" download>PNG</a><a href="line-oa/richmenu-large.svg" download>SVG</a></span></figcaption></figure><figure class="asset"><img src="line-oa/richmenu-compact.png" alt="LINE OA · Rich menu (เล็ก 3 ช่อง)" class="" loading="lazy"><figcaption><b>LINE OA · Rich menu (เล็ก 3 ช่อง)</b><span>2500 × 843 · ตั้ง template 3 ช่อง</span>
+    <span class="dl"><a href="line-oa/richmenu-compact.png" download>PNG</a><a href="line-oa/richmenu-compact.svg" download>SVG</a></span></figcaption></figure></div></div></section>
+
+<section id="posts"><div class="wrap"><div class="eb">Content</div><h2>9 โพสต์แรก</h2><p class="sub">โพสต์ 01 → 09 ตามลำดับ ลงพร้อมกันทั้ง FB และ IG สัปดาห์ละ 3 โพสต์ เวลาเริ่มต้นแนะนำ 19:00–20:00 แล้วปรับตาม Insights เมื่อครบเดือน</p>
+<div class="post"><div><img src="posts/post-01-intro.png" alt="01 · แนะนำตัว" class="" loading="lazy"><span class="dl"><a href="posts/post-01-intro.png" download>PNG</a><a href="posts/post-01-intro.svg" download>SVG</a></span></div>
+<div><div class="fh"><span class="when">สัปดาห์ 1 · จันทร์<span class="pin">ปักหมุด</span></span><b style="flex:1"></b><button class="cp">คัดลอก caption</button></div><h3 style="margin:10px 0 0">01 · แนะนำตัว</h3><pre>สวัสดีจากกระบี่
+
+Krabi Digital คือทีม digital จากกระบี่ ทำให้ธุรกิจได้ครบในที่เดียว ตั้งแต่ออกแบบแบรนด์ ทำเว็บและแอป วางระบบหลังบ้าน ดูแลเซิร์ฟเวอร์ ไปจนถึงการตลาดออนไลน์ เราทำงานให้โรงแรม ทัวร์ ร้านอาหาร และธุรกิจในภาคใต้
+
+สิ่งที่เรายึดคือ เริ่มจากคุยว่าธุรกิจต้องการอะไร เลือกสิ่งที่พอดีกับขนาดและงบ ไม่ขายเกินจำเป็น และดูแลต่อหลังส่งงาน
+
+เพจนี้จะเล่าเรื่องเทคโนโลยี งานออกแบบ และการตลาดที่ธุรกิจท้องถิ่นใช้ได้จริง เขียนให้คนที่ไม่ใช่สาย tech อ่านเข้าใจ
+
+มีคำถาม ทักมาคุยได้ ตอบกลับภายใน 1 วันทำการ
+
+#KrabiDigital #กระบี่ #ธุรกิจกระบี่</pre></div></div><div class="post"><div><img src="posts/post-02-web-app.png" alt="02 · เว็บไซต์และแอป" class="" loading="lazy"><span class="dl"><a href="posts/post-02-web-app.png" download>PNG</a><a href="posts/post-02-web-app.svg" download>SVG</a></span></div>
+<div><div class="fh"><span class="when">สัปดาห์ 1 · พุธ</span><b style="flex:1"></b><button class="cp">คัดลอก caption</button></div><h3 style="margin:10px 0 0">02 · เว็บไซต์และแอป</h3><pre>เว็บและแอปที่ธุรกิจใช้ได้จริง
+
+เราทำตั้งแต่เว็บไซต์ธุรกิจ บริษัท ร้านค้า ไปจนถึง Web Application, SaaS และแอป iOS / Android
+
+• ออกแบบตามงานของธุรกิจ ไม่ใช้เทมเพลตสำเร็จรูป
+• รองรับมือถือทุกขนาด
+• มีเว็บเดิมอยู่แล้ว ก็แก้ไขและต่อยอดจากของเดิมได้
+
+ยังไม่แน่ใจว่าต้องมีแอปหรือแค่เว็บก็พอ ทักมาถามได้ บางธุรกิจเว็บที่ดีก็เพียงพอแล้ว
+
+#KrabiDigital #กระบี่ #ธุรกิจกระบี่ #ทำเว็บไซต์ #ทำแอป</pre></div></div><div class="post"><div><img src="posts/post-03-design.png" alt="03 · ออกแบบและแบรนด์" class="" loading="lazy"><span class="dl"><a href="posts/post-03-design.png" download>PNG</a><a href="posts/post-03-design.svg" download>SVG</a></span></div>
+<div><div class="fh"><span class="when">สัปดาห์ 1 · ศุกร์</span><b style="flex:1"></b><button class="cp">คัดลอก caption</button></div><h3 style="margin:10px 0 0">03 · ออกแบบและแบรนด์</h3><pre>แบรนด์ที่จำได้ ทุกช่องทาง
+
+ลูกค้าเห็นแบรนด์คุณจากหลายที่ ทั้งเพจ ป้ายหน้าร้าน โบรชัวร์ และบูธ ถ้าหน้าตาไม่เหมือนกัน ลูกค้าจะจำยาก
+
+งานออกแบบที่เราทำ
+• Logo และ Brand Identity
+• UX/UI เว็บไซต์และระบบ
+• Artwork Facebook / Instagram
+• Poster Banner Brochure และสื่อโฆษณา
+• Booth ป้าย และสื่อสำหรับออกงาน
+
+Brand Identity คือชุดกฎว่าแบรนด์ใช้สี ตัวอักษร และโลโก้อย่างไร ทำครั้งเดียว ใช้ได้กับทุกงานหลังจากนั้น
+
+#KrabiDigital #กระบี่ #ธุรกิจกระบี่ #ออกแบบโลโก้ #BrandIdentity</pre></div></div><div class="post"><div><img src="posts/post-04-marketing.png" alt="04 · การตลาดออนไลน์" class="" loading="lazy"><span class="dl"><a href="posts/post-04-marketing.png" download>PNG</a><a href="posts/post-04-marketing.svg" download>SVG</a></span></div>
+<div><div class="fh"><span class="when">สัปดาห์ 2 · จันทร์</span><b style="flex:1"></b><button class="cp">คัดลอก caption</button></div><h3 style="margin:10px 0 0">04 · การตลาดออนไลน์</h3><pre>เพจที่มีคนดูแล และวัดผลได้
+
+หลายธุรกิจเปิดเพจไว้แต่ไม่มีเวลาโพสต์ หรือยิงโฆษณาแล้วไม่รู้ว่าได้อะไรกลับมา
+
+เราช่วยได้
+• ดูแลและจัดการ Facebook Page
+• ทำ Content และเขียน Caption
+• Facebook Ads พร้อมรายงานว่าโฆษณาแต่ละตัวได้ผลแค่ไหน
+• วางแผนการตลาดออนไลน์ให้พอดีกับงบ
+
+#KrabiDigital #กระบี่ #ธุรกิจกระบี่ #การตลาดออนไลน์ #FacebookAds</pre></div></div><div class="post"><div><img src="posts/post-05-systems.png" alt="05 · ระบบธุรกิจ" class="" loading="lazy"><span class="dl"><a href="posts/post-05-systems.png" download>PNG</a><a href="posts/post-05-systems.svg" download>SVG</a></span></div>
+<div><div class="fh"><span class="when">สัปดาห์ 2 · พุธ</span><b style="flex:1"></b><button class="cp">คัดลอก caption</button></div><h3 style="margin:10px 0 0">05 · ระบบธุรกิจ</h3><pre>ระบบหลังบ้านที่คุยกันได้ทุกระบบ
+
+ถ้ายังต้องคัดลอกข้อมูลจากที่หนึ่งไปอีกที่ด้วยมือ ระบบช่วยได้
+
+• ออกแบบ Workflow และระบบหลังบ้านให้ตรงกับงานจริง
+• Dashboard ดูตัวเลขสำคัญได้ในหน้าเดียว
+• เชื่อมต่อ Payment Gateway, LINE OA, Google และระบบที่ใช้อยู่
+• ระบบสมาชิก และแจ้งเตือนทาง Email / SMS / LINE
+
+API คือช่องทางที่ให้โปรแกรมสองตัวส่งข้อมูลหากันได้เอง ไม่ต้องมีคนกรอกซ้ำ
+
+#KrabiDigital #กระบี่ #ธุรกิจกระบี่ #ระบบหลังบ้าน #API</pre></div></div><div class="post"><div><img src="posts/post-06-server.png" alt="06 · เซิร์ฟเวอร์และคลาวด์" class="" loading="lazy"><span class="dl"><a href="posts/post-06-server.png" download>PNG</a><a href="posts/post-06-server.svg" download>SVG</a></span></div>
+<div><div class="fh"><span class="when">สัปดาห์ 2 · ศุกร์</span><b style="flex:1"></b><button class="cp">คัดลอก caption</button></div><h3 style="margin:10px 0 0">06 · เซิร์ฟเวอร์และคลาวด์</h3><pre>เซิร์ฟเวอร์เสถียร มีคนดูแล
+
+เว็บล่ม SSL หมดอายุ หรือข้อมูลหาย มักเกิดตอนที่ไม่มีใครดูแลเซิร์ฟเวอร์ประจำ
+
+เราติดตั้งและดูแลให้
+• VPS / Cloud Server และ Hosting
+• Domain DNS และ SSL (ใบรับรองที่ทำให้เว็บขึ้นรูปแม่กุญแจ)
+• Backup, Recovery และเฝ้าระบบ แจ้งเตือนเมื่อมีปัญหา
+• ปรับความเร็ว และย้ายระบบไปเซิร์ฟเวอร์ใหม่
+
+ธุรกิจคุณทำงานต่อได้ ไม่ต้องมานั่งแก้ระบบเอง
+
+#KrabiDigital #กระบี่ #ธุรกิจกระบี่ #ดูแลเซิร์ฟเวอร์</pre></div></div><div class="post"><div><img src="posts/post-07-tourism.png" alt="07 · ท่องเที่ยวและระบบจอง" class="" loading="lazy"><span class="dl"><a href="posts/post-07-tourism.png" download>PNG</a><a href="posts/post-07-tourism.svg" download>SVG</a></span></div>
+<div><div class="fh"><span class="when">สัปดาห์ 3 · จันทร์</span><b style="flex:1"></b><button class="cp">คัดลอก caption</button></div><h3 style="margin:10px 0 0">07 · ท่องเที่ยวและระบบจอง</h3><pre>ระบบสำหรับธุรกิจท่องเที่ยว
+
+ทุกห้องหรือทุกทริปที่ขายผ่าน OTA มีค่าคอมมิชชันตามมาเสมอ ระบบจองบนเว็บของคุณเอง ช่วยให้แขกที่รู้จักคุณอยู่แล้วจองตรงได้
+
+• ระบบ Booking สำหรับโรงแรม ที่พัก และกิจกรรม
+• ระบบสำหรับบริษัททัวร์
+• จัดทำโปรแกรมทัวร์ ราคา และ Promotion
+
+อยากรู้ว่าธุรกิจคุณเหมาะกับระบบแบบไหน ทักมาเล่าให้ฟังได้
+
+#KrabiDigital #กระบี่ #ธุรกิจกระบี่ #ระบบจอง #บริษัททัวร์</pre></div></div><div class="post"><div><img src="posts/post-08-why-us.png" alt="08 · ทำไมต้องเรา" class="" loading="lazy"><span class="dl"><a href="posts/post-08-why-us.png" download>PNG</a><a href="posts/post-08-why-us.svg" download>SVG</a></span></div>
+<div><div class="fh"><span class="when">สัปดาห์ 3 · พุธ</span><b style="flex:1"></b><button class="cp">คัดลอก caption</button></div><h3 style="margin:10px 0 0">08 · ทำไมต้องเรา</h3><pre>ทำไมต้อง Krabi Digital
+
+ใกล้ตัว คนกระบี่ คุยภาษาเดียวกับเจ้าของธุรกิจ นัดเจอได้
+พอดี เสนอสิ่งที่ธุรกิจใช้จริง ขนาดพอดีกับงบและทีม ไม่ยัดฟีเจอร์
+ชัดเจน อธิบายเรื่องเทคนิคให้เข้าใจง่าย ราคาและขั้นตอนบอกตรงๆ
+อยู่ยาว มีประกันหลังส่งงานและแผนดูแลรายเดือน ติดต่อเราได้เสมอ
+
+#KrabiDigital #กระบี่ #ธุรกิจกระบี่</pre></div></div><div class="post"><div><img src="posts/post-09-contact.png" alt="09 · ติดต่อเรา" class="" loading="lazy"><span class="dl"><a href="posts/post-09-contact.png" download>PNG</a><a href="posts/post-09-contact.svg" download>SVG</a></span></div>
+<div><div class="fh"><span class="when">สัปดาห์ 3 · ศุกร์</span><b style="flex:1"></b><button class="cp">คัดลอก caption</button></div><h3 style="margin:10px 0 0">09 · ติดต่อเรา</h3><pre>พร้อมเริ่มโปรเจกต์?
+
+คุยกับทีมจากกระบี่ได้ทุกช่องทาง ตอบกลับภายใน 1 วันทำการ
+
+โทร 080-893-0617
+LINE @982ghtqj
+อีเมล contact@krabitech.com
+เว็บไซต์ krabitech.com
+จันทร์–เสาร์ 09:00–18:00
+
+เล่าสั้นๆ ว่าธุรกิจเป็นแบบไหนและอยากได้อะไร เราส่งใบเสนอราคาให้ก่อนเริ่มงาน
+
+#KrabiDigital #กระบี่ #ธุรกิจกระบี่</pre></div></div>
+</div></section>
+
+<section id="tpl" class="tint"><div class="wrap"><div class="eb">Reusable</div><h2>Templates</h2><p class="sub">ข้อความใน [วงเล็บ] คือช่องให้แทนที่ เปิดไฟล์ SVG ใน Figma (ติดตั้งฟอนต์ทั้ง 4 ตัวก่อน) แก้ข้อความ แล้ว export PNG ขนาดเดิม</p>
+<div class="grid g4"><figure class="asset"><img src="templates/tpl-process.png" alt="Template · 8 ขั้นตอนการทำงาน" class="" loading="lazy"><figcaption><b>Template · 8 ขั้นตอนการทำงาน</b><span>1080 × 1350 (4:5)</span>
+    <span class="dl"><a href="templates/tpl-process.png" download>PNG</a><a href="templates/tpl-process.svg" download>SVG</a></span></figcaption></figure><figure class="asset"><img src="templates/tpl-tip.png" alt="Template · เคล็ดลับ 3 ข้อ" class="" loading="lazy"><figcaption><b>Template · เคล็ดลับ 3 ข้อ</b><span>1080 × 1350</span>
+    <span class="dl"><a href="templates/tpl-tip.png" download>PNG</a><a href="templates/tpl-tip.svg" download>SVG</a></span></figcaption></figure><figure class="asset"><img src="templates/tpl-review.png" alt="Template · รีวิวลูกค้า" class="" loading="lazy"><figcaption><b>Template · รีวิวลูกค้า</b><span>1080 × 1350</span>
+    <span class="dl"><a href="templates/tpl-review.png" download>PNG</a><a href="templates/tpl-review.svg" download>SVG</a></span></figcaption></figure><figure class="asset"><img src="templates/tpl-case.png" alt="Template · ผลงาน" class="" loading="lazy"><figcaption><b>Template · ผลงาน</b><span>1080 × 1350 · ช่องภาพ 1080 × 700</span>
+    <span class="dl"><a href="templates/tpl-case.png" download>PNG</a><a href="templates/tpl-case.svg" download>SVG</a></span></figcaption></figure><figure class="asset"><img src="templates/tpl-announce.png" alt="Template · ประกาศ" class="" loading="lazy"><figcaption><b>Template · ประกาศ</b><span>1080 × 1350</span>
+    <span class="dl"><a href="templates/tpl-announce.png" download>PNG</a><a href="templates/tpl-announce.svg" download>SVG</a></span></figcaption></figure><figure class="asset"><img src="templates/tpl-carousel-1-cover.png" alt="Carousel · หน้าปก" class="" loading="lazy"><figcaption><b>Carousel · หน้าปก</b><span>1080 × 1350</span>
+    <span class="dl"><a href="templates/tpl-carousel-1-cover.png" download>PNG</a><a href="templates/tpl-carousel-1-cover.svg" download>SVG</a></span></figcaption></figure><figure class="asset"><img src="templates/tpl-carousel-2-inner.png" alt="Carousel · หน้าเนื้อหา" class="" loading="lazy"><figcaption><b>Carousel · หน้าเนื้อหา</b><span>1080 × 1350</span>
+    <span class="dl"><a href="templates/tpl-carousel-2-inner.png" download>PNG</a><a href="templates/tpl-carousel-2-inner.svg" download>SVG</a></span></figcaption></figure><figure class="asset"><img src="templates/tpl-carousel-3-end.png" alt="Carousel · หน้าปิด (ใช้ซ้ำได้)" class="" loading="lazy"><figcaption><b>Carousel · หน้าปิด (ใช้ซ้ำได้)</b><span>1080 × 1350</span>
+    <span class="dl"><a href="templates/tpl-carousel-3-end.png" download>PNG</a><a href="templates/tpl-carousel-3-end.svg" download>SVG</a></span></figcaption></figure><figure class="asset"><img src="templates/tpl-story.png" alt="Template · Story" class="" loading="lazy"><figcaption><b>Template · Story</b><span>1080 × 1920 · เนื้อหาใน y 250–1580 (บน/ล่างโดน UI บัง)</span>
+    <span class="dl"><a href="templates/tpl-story.png" download>PNG</a><a href="templates/tpl-story.svg" download>SVG</a></span></figcaption></figure></div></div></section>
+
+<section id="files"><div class="wrap"><div class="eb">Files</div><h2>ไฟล์ทั้งหมด</h2><p class="sub">อยู่ในโฟลเดอร์ brand/social/ แก้ข้อความหรือเลย์เอาต์ที่ build/assets.js และ build/copy.js แล้วรัน node build.js</p>
+<pre style="background:var(--mist);padding:16px;border-radius:12px">profile/profile-navy.png / .svg   720 × 720
+profile/profile-blue.png / .svg   720 × 720
+facebook/fb-cover.png / .svg   1640 × 624
+line-oa/line-cover.png / .svg   1080 × 878
+line-oa/richmenu-large.png / .svg   2500 × 1686
+line-oa/richmenu-compact.png / .svg   2500 × 843
+instagram/highlight-01-web-app.png / .svg   1080 × 1080
+instagram/highlight-02-design.png / .svg   1080 × 1080
+instagram/highlight-03-marketing.png / .svg   1080 × 1080
+instagram/highlight-04-systems.png / .svg   1080 × 1080
+instagram/highlight-05-server.png / .svg   1080 × 1080
+instagram/highlight-06-tourism.png / .svg   1080 × 1080
+instagram/highlight-07-chat.png / .svg   1080 × 1080
+posts/post-01-intro.png / .svg   1080 × 1350
+posts/post-02-web-app.png / .svg   1080 × 1350
+posts/post-03-design.png / .svg   1080 × 1350
+posts/post-04-marketing.png / .svg   1080 × 1350
+posts/post-05-systems.png / .svg   1080 × 1350
+posts/post-06-server.png / .svg   1080 × 1350
+posts/post-07-tourism.png / .svg   1080 × 1350
+posts/post-08-why-us.png / .svg   1080 × 1350
+posts/post-09-contact.png / .svg   1080 × 1350
+templates/tpl-process.png / .svg   1080 × 1350
+templates/tpl-tip.png / .svg   1080 × 1350
+templates/tpl-review.png / .svg   1080 × 1350
+templates/tpl-case.png / .svg   1080 × 1350
+templates/tpl-announce.png / .svg   1080 × 1350
+templates/tpl-carousel-1-cover.png / .svg   1080 × 1350
+templates/tpl-carousel-2-inner.png / .svg   1080 × 1350
+templates/tpl-carousel-3-end.png / .svg   1080 × 1350
+templates/tpl-story.png / .svg   1080 × 1920</pre></div></section>
+<footer><div class="wrap">Krabi Digital Solutions · Social Kit v1.0 · 2026-09-29</div></footer>
+<script>
+document.querySelectorAll('button.cp').forEach(b=>b.addEventListener('click',async()=>{
+  const pre=b.closest('.field,.post').querySelector('pre');
+  try{await navigator.clipboard.writeText(pre.textContent)}catch(e){const r=document.createRange();r.selectNodeContents(pre);const s=getSelection();s.removeAllRanges();s.addRange(r);document.execCommand('copy')}
+  const t=b.textContent;b.textContent='คัดลอกแล้ว';b.classList.add('ok');setTimeout(()=>{b.textContent=t;b.classList.remove('ok')},1400);
+}));
+</script></body></html>

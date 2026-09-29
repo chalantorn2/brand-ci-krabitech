@@ -1,0 +1,10 @@
+Use case: logo-brand.
+Create a simple professional premium brand identity board (CI board) for the tech company "Krabi Digital Solutions" from Krabi, Thailand. Landscape 16:9. Clean grid layout, flat vector appearance, minimal and modern, crisp geometry, plenty of white space.
+Symbol: a bold geometric letter K. Its vertical stem is shaped like a tall limestone karst cliff, its lower diagonal leg becomes a smooth ocean wave, and its upper diagonal arm ends in a small round circuit node. Built from simple geometric shapes with uniform visual weight. Make the K immediately legible and unify cliff, wave, and circuit into one coherent mark. Repeat exactly the same symbol in every placement.
+Layout:
+1. Left large panel occupying approximately 50% of the board width, full height, solid navy #041A53. Primary logo in pure white. Stacked centered lockup: symbol above, then exact text "Krabi Digital" in bold geometric sans serif like Montserrat Bold; below it exact text "SOLUTIONS", smaller and widely letter spaced.
+2. Top right on white: the same stacked logo, navy #041A53, symbol above exact text "Krabi Digital" and smaller widely spaced "SOLUTIONS".
+3. Middle right: symbol only in white on an electric blue #0059FF rounded square app icon.
+4. Bottom right: four color swatches in one aligned row: navy #041A53, electric blue #0059FF, cyan #09FFFF, white #FFFFFF. Labels beneath, respectively, exactly "#041A53", "#0059FF", "#09FFFF", "#FFFFFF". Thin navy outline may define the white swatch.
+5. Small typography sample in right panel: exact text "Aa  Montserrat Bold".
+All logos are single color only. Flat vector presentation. No gradients, shadows, 3D, photos, mockups, textures, extra text, titles, numbering, or taglines. Restrained spacing and precise alignment.

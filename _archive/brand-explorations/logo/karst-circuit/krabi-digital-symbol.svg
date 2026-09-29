@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="384" height="320" viewBox="0 0 384 320" role="img" aria-labelledby="title"><title id="title">Krabi Digital Solutions symbol</title><rect width="384" height="320" fill="#FFFFFF"/><g transform="translate(20 32)"><g fill="none" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="#041A53" d="M20 190 L32 148 V125 L50 107 H68 L80 119 V151 L96 174 L112 117 V89 L130 71 H152 L164 83 V128 L181 151 L196 88 V52 L218 30 H242 L260 48 V80"/>
+  <path stroke="#0059FF" d="M260 80 V140 L282 162 H314 M260 104 H281 L303 82 H325 M260 80 V58 L280 38 H309"/>
+  <path stroke="#0059FF" d="M20 215 C70 181 109 243 160 214 S247 194 314 210"/>
+</g>
+<circle cx="309" cy="38" r="9" fill="#09FFFF"/>
+<circle cx="325" cy="82" r="9" fill="#0059FF"/>
+<circle cx="314" cy="162" r="9" fill="#09FFFF"/></g></svg>

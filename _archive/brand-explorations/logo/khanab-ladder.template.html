@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Khanab Nam Ladder</title>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#041A53;--blue:#0059FF}
+*{box-sizing:border-box}
+body{margin:0;background:#EEF1F7;color:var(--navy);font-family:"Plus Jakarta Sans",sans-serif}
+.wrap{max-width:1200px;margin:auto;padding:24px 16px}
+h1{font:800 28px "Red Hat Display";margin:0 0 6px}
+h2{font:800 20px "Red Hat Display";margin:34px 0 4px}
+p.sub{margin:0 0 14px;color:#5B6785;font-size:14px}
+.ladder{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.lv{background:#fff;border:1px solid #E1E6F0;border-radius:16px;padding:14px}
+.lv .t{display:flex;gap:8px;align-items:baseline}
+.lv .n{font:800 13px "Red Hat Display";color:var(--blue)}
+.lv .h{font:800 16px "Red Hat Display"}
+.lv .d{font-size:12px;color:#5B6785;margin:3px 0 10px;min-height:32px}
+.lv .pair{display:flex;gap:8px;align-items:center}
+.lv .big{flex:1;background:#fff;--bg:#fff;--m1:#0059FF;--m3:#041A53;border-radius:10px;display:grid;place-items:center;padding:10px 4px}
+.lv .big svg{width:100%;height:auto}
+.lv .sm{display:flex;flex-direction:column;gap:6px;align-items:center;--m1:#041A53;--m3:#041A53}
+.concept{background:#fff;border-radius:18px;padding:16px;border:1px solid #E1E6F0;margin-bottom:16px}
+.head{display:flex;gap:10px;align-items:baseline;margin-bottom:12px;flex-wrap:wrap}
+.num{font:800 14px "Red Hat Display";color:var(--blue)}
+.name{font:800 19px "Red Hat Display"}
+.story{font-size:13px;color:#5B6785;flex-basis:100%}
+.tiles{display:grid;grid-template-columns:2fr 2fr 1fr 1fr;gap:10px}
+@media(max-width:900px){.tiles{grid-template-columns:1fr 1fr}}
+.tile{border-radius:14px;min-height:150px;display:grid;place-items:center;padding:14px;background:var(--bg)}
+.t-dark{--bg:#041A53;--m1:#0059FF;--m3:#FFFFFF;--on:#FFFFFF;color:#fff}
+.t-light{--bg:#FFFFFF;--m1:#0059FF;--m3:#041A53;--on:#FFFFFF;color:var(--navy);border:1px solid #E1E6F0}
+.t-mono{--bg:#FFFFFF;--m1:#041A53;--m3:#041A53;--on:#FFFFFF;border:1px solid #E1E6F0}
+.lock{display:flex;align-items:center;gap:14px}
+.lock svg{height:56px;width:auto;flex:none}
+.wm .a{font:700 25px/1 "Red Hat Display";letter-spacing:-.015em}
+.wm .b{font:600 10.5px/1 "Red Hat Display";letter-spacing:.42em;margin-top:7px;opacity:.75}
+.app{width:96px;height:96px;border-radius:26px;background:linear-gradient(145deg,#1A6BFF,#0040C8);display:grid;place-items:center;box-shadow:0 10px 24px rgba(0,89,255,.3);--bg:#0B5BF0;--m1:#FFFFFF;--m3:#FFFFFF;--on:#0059FF}
+.app svg{width:68px;height:auto}
+.sizes{display:flex;flex-direction:column;align-items:center;gap:10px}
+.cap{font-size:10px;color:#8A94AE;text-align:center}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<g id="KL">/*LEFT*/</g>
+<g id="KR">/*RIGHT*/</g>
+</defs></svg>
+<div class="wrap">
+<h1>เขาขนาบน้ำ: ความเรียบ 6 ระดับ</h1>
+<p class="sub">ทุกระดับอิงเส้นขอบจริงจากไฟล์ เขาขนาบน้ำ.svg (สุ่มวัดความสูงทุก 15px) · ลูกซ้ายยอดโดม ลูกขวามีทางลาดยาวแล้วตกเป็นหน้าผา · ช่องตรงกลางคือแม่น้ำ<br><b>เลือกระดับที่ "ยังเป็นเขาขนาบน้ำ" และเรียบพอจะเป็นโลโก้</b> ช่องเล็กด้านขวาคือขนาด 32px และ 16px</p>
+<div class="ladder" id="ladder"></div>
+
+<h2>ตัวอย่างใช้จริง (จากระดับ 3–5)</h2>
+<p class="sub">เขาเป็นพระเอก ไม่มีตัว K มาแย่งซีน · สีน้ำเงินไฟฟ้า + navy แบบ reference</p>
+<div id="props"></div>
+
+<h2>ผสมกับ K / kds (ใช้เขาแบบเรียบระดับ 3–5)</h2>
+<p class="sub">เขาแบบเรียบเข้ากับตัวอักษรทึบได้ ไม่เหมือนภาพวาดต้นฉบับ · ★ = ไอเดียที่ใหม่ที่สุดในรอบนี้</p>
+<div id="combos"></div>
+</div>
+<script>
+const M1='var(--m1)',M3='var(--m3)',ON='var(--on)',BG='var(--bg)';
+// Silhouette coordinates = source SVG / 10 → 120 wide, base at y=44.6
+const B=44.6;
+const LP=[[0,34.4],[3,32.5],[9,33],[10.5,28.9],[12,27.4],[15,25.7],[16.5,21.5],[19.5,18.5],[21,14.9],[24,12.2],[27,10.4],[30,8.4],[31.5,7.9],[33,7.9],[34.5,8.5],[36,9.6],[39,12.6],[42,17.3],[45,21.4],[46.5,27.1],[48,31.9],[49.5,37.7],[51,39.8],[54,40.6],[57,42],[59,43.5]];
+const RP=[[62,43.5],[63,43.1],[66,40.6],[69,39.2],[72,37.6],[73.5,34.8],[76.5,31.1],[79.5,26.9],[82.5,22.8],[85.5,18],[88.5,13.8],[90,12.1],[91.5,11.2],[93,8.2],[94.5,6.6],[96,5.7],[99,2.6],[102,1.3],[105,0],[106.5,.3],[108,1.6],[109.5,3.2],[111,7.3],[112.5,31.4],[114,34.3],[117,34.8],[120,34.9]];
+const poly=pts=>`M${pts[0][0]} ${B} `+pts.map(p=>`L${p[0]} ${p[1]}`).join(' ')+` L${pts[pts.length-1][0]} ${B}Z`;
+
+// Level shapes: [left, right]
+const S={
+  exact:[poly(LP),poly(RP)],
+  smooth:["M0 44.6 V34 C6 33 10 30 14 25 C20 14 26 8 32 8 C38 8 42 16 46 26 C48 34 51 40 59 43 V44.6Z",
+          "M62 44.6 V43 C66 41 71 38 74 34 C82 22 92 10 100 2 Q104 -1 108 1.5 L111 7 L113 32 Q114 34.5 120 35 V44.6Z"],
+  geo:["M0 44.6 V36 L10 32 L28 8 H36 L50 32 L59 41 V44.6Z",
+       "M62 44.6 V42 L100 2 L106 0 L111 6 L113 34 L120 35 V44.6Z"],
+  round:["M4 44.6 C4 22 18 8 32 8 C46 8 58 24 58 44.6Z",
+         "M62 44.6 C72 30 90 6 104 0.5 C109 -1.5 112 3 112 9 V44.6Z"],
+  mono:"M0 34 C6 33 10 30 14 25 C20 14 26 8 32 8 C38 8 42 16 46 26 C48 34 51 40 58 42.5 Q60.5 44 63 42.5 C67 40.5 71 38 74 34 C82 22 92 10 100 2 Q104 -1 108 1.5 L111 7 L113 32 Q114 34.5 120 35"
+};
+const two=(s,fl=M3,fr=M1,x='')=>`<path d="${s[0]}" fill="${fl}" ${x}/><path d="${s[1]}" fill="${fr}" ${x}/>`;
+const orig=`<svg x="0" y="0" width="120" height="44.6" viewBox="0 0 1200 446.17"><g fill="${M3}"><use href="#KL"/></g><g fill="${M1}"><use href="#KR"/></g></svg>`;
+
+const L=[
+ {h:'ต้นฉบับ',d:'ภาพวาดเต็ม มีแนวป่าและหินย้อย · สวยแต่ย่อเล็กแล้วเละ',g:orig},
+ {h:'Silhouette',d:'เงาทึบตามเส้นขอบจริง 100% ตัดรายละเอียดข้างในออกหมด',g:two(S.exact)},
+ {h:'Smooth',d:'เส้นโค้งเรียบ คงทรงโดม + หน้าผาไว้ครบ · ยังจำได้ว่าเป็นเขาลูกนี้',g:two(S.smooth)},
+ {h:'Geometric',d:'เส้นตรง เหลี่ยมคม แบบ ApexLab · ดู tech และแข็งแรง',g:two(S.geo)},
+ {h:'Rounded',d:'ทรงมน เป็นมิตร แบบ addiba/chipchat · เหลือแค่โดม + ยอดหน้าผา',g:two(S.round)},
+ {h:'Monoline',d:'เส้นเดียวลากต่อกันตลอด ผ่านแม่น้ำตรงกลาง · เบาและพรีเมียม',g:`<path d="${S.mono}" fill="none" stroke="${M3}" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>`}
+];
+const vb='-2 -2 124 48.6';
+document.getElementById('ladder').innerHTML=L.map((l,i)=>`<div class="lv"><div class="t"><span class="n">ระดับ ${i+1}</span><span class="h">${l.h}</span></div><div class="d">${l.d}</div>
+<div class="pair"><div class="big"><svg viewBox="${vb}">${l.g}</svg></div><div class="sm"><svg viewBox="${vb}" width="32">${l.g}</svg><svg viewBox="${vb}" width="16">${l.g}</svg></div></div></div>`).join('');
+
+// Proposals: [name, story, viewBox, svg]
+const P=[
+ {n:'Khanab Geo',st:'ระดับ 4 · ลูกซ้าย navy ลูกขวาน้ำเงิน มีเส้นแม่น้ำลอดใต้ช่องกลาง · โลโก้หลักแนว ApexLab',
+  vb:'-2 -2 124 56',g:()=>two(S.geo)+`<path d="M44 51 Q52 47 60.5 51 T77 51" fill="none" stroke="${M1}" stroke-width="3" stroke-linecap="round"/>`},
+ {n:'Khanab Smooth',st:'ระดับ 3 · ทรงจริงที่สุดแต่เรียบพอเป็นโลโก้ · มีเส้นน้ำบางอยู่ใต้ฐาน',
+  vb:'-2 -2 124 54',g:()=>two(S.smooth)+`<path d="M0 50 H120" stroke="${M1}" stroke-width="2.4" stroke-linecap="round"/>`},
+ {n:'Khanab Tile',st:'ระดับ 3 ในกรอบ squircle · เขาสีขาวลอยขึ้นจากขอบล่าง ช่องแม่น้ำเห็นเป็นสีพื้น',
+  vb:'0 0 100 100',g:u=>`<defs><clipPath id="c${u}"><rect x="4" y="4" width="92" height="92" rx="24"/></clipPath></defs><rect x="4" y="4" width="92" height="92" rx="24" fill="${M1}"/><g clip-path="url(#c${u})"><g transform="translate(-4 38) scale(.9)">${two(S.smooth,ON,ON)}</g></g>`},
+ {n:'Khanab Round',st:'ระดับ 5 · ทรงมนสองก้อน เรียบที่สุดแต่ยังเห็นโดม + หน้าผา · ใช้ย่อเล็กได้ดี',
+  vb:'-2 -2 124 48.6',g:()=>two(S.round)},
+ {n:'Khanab Line',st:'ระดับ 6 · monoline เส้นเดียว + จุดสีน้ำเงินเหนือแม่น้ำเป็นดวงอาทิตย์/node',
+  vb:'-2 -8 124 54',g:()=>`<path d="${S.mono}" fill="none" stroke="${M3}" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="60.5" cy="24" r="4.5" fill="${M1}"/>`},
+ {n:'Khanab Split',st:'ระดับ 4 แบบ negative space · เขาสองลูกเป็นก้อนเดียว มีแม่น้ำผ่ากลางเป็นเส้นขาวคดเคี้ยว',
+  vb:'-2 -2 124 48.6',g:()=>two(S.geo,M1,M1)+`<path d="M60.5 46 Q56 38 60.5 30" fill="none" stroke="${BG}" stroke-width="3.5" stroke-linecap="round"/>`}
+];
+let U=0;
+const sv=(p,h,x='')=>`<svg viewBox="${p.vb}" style="height:${h}px;width:auto;${x}">${p.g(++U)}</svg>`;
+const wm=`<div class="wm"><div class="a">Krabi Digital</div><div class="b">SOLUTIONS</div></div>`;
+document.getElementById('props').innerHTML=P.map((p,i)=>`<section class="concept">
+<div class="head"><span class="num">KH${i+1}</span><span class="name">${p.n}</span><span class="story">${p.st}</span></div>
+<div class="tiles">
+ <div class="tile t-dark"><div class="lock">${sv(p,48)}${wm}</div></div>
+ <div class="tile t-light"><div class="lock">${sv(p,48)}${wm}</div></div>
+ <div class="tile t-light" style="--bg:#F4F7FD"><div class="app">${sv(p,40,'max-width:70px')}</div></div>
+ <div class="tile t-mono"><div class="sizes">${sv(p,24)}${sv(p,12)}<div class="cap">mono · เล็ก</div></div></div>
+</div></section>`).join('');
+
+// ---- Combos with K / kds ----
+const K="M12 12 H34 V42 L62 12 H90 L56 48 L92 88 H64 L34 58 V88 H12Z";
+const Kt=(tx,ty,s,f)=>`<path d="${K}" fill="${f}" transform="translate(${tx} ${ty}) scale(${s})"/>`;
+const mt=(k,tx,ty,s,fl=M3,fr=M1)=>`<g transform="translate(${tx} ${ty}) scale(${s})">${two(S[k],fl,fr)}</g>`;
+const T=(t,x,y,f,x2='',sz=80)=>`<text x="${x}" y="${y}" font-family="Red Hat Display" font-weight="800" font-size="${sz}" fill="${f}" ${x2}>${t}</text>`;
+const CO=[
+ {n:'Cliff K ★',st:'หน้าผาของเขาลูกขวาคือก้านตัว K · แขน K ยื่นออกจากหน้าผา · โดมลูกซ้ายอยู่ด้านหน้า = เขาขนาบน้ำทั้งสองลูกกลายเป็นตัว K',vb:'-4 4 108 88',
+  g:()=>`<path d="M4 88 L36 16 Q40 10 46 10 H50 Q54 10 54 16 V88Z" fill="${M3}"/><path d="M84 12 H102 L74 50 L102 88 H84 L60 50Z" fill="${M1}"/><path d="M-2 88 C-2 68 8 58 20 58 C32 58 40 70 40 88Z" fill="${M1}" stroke="${BG}" stroke-width="3.5" style="paint-order:stroke"/>`},
+ {n:'kds Twin Peaks ★',st:'ใน "kds" ตัว k กับ d มีหางสูงคู่กัน · เปลี่ยนหางเป็นโดม (k) กับหน้าผา (d) แบบเรียบ ต่อเนื้อเดียวกับตัวอักษร',vb:'-8 12 146 72',
+  g:u=>`<defs><clipPath id="q${u}"><rect x="-20" y="36" width="200" height="60"/></clipPath></defs><g clip-path="url(#q${u})">${T('kds',0,80,M3)}</g><path d="${S.round[0]}" fill="${M3}" transform="translate(-4.5 21.4) scale(.5)"/><path d="${S.round[1]}" fill="${M3}" transform="translate(32 21.4) scale(.5)"/>`},
+ {n:'Peaks + K Cut',st:'เขาแบบ geometric เต็มกรอบ · K สีขาวเจาะอยู่ในตัวเขาลูกใหญ่',vb:'0 38 100 42',
+  g:()=>mt('geo',0,40,.833)+Kt(74,60,.18,ON)},
+ {n:'K over River',st:'เขาแบบเรียบ 2 ลูก K ลอยอยู่เหนือร่องแม่น้ำตรงกลางพอดี',vb:'0 18 100 76',
+  g:()=>mt('smooth',0,48,.833)+Kt(34.8,20,.3,M1)+`<path d="M4 90 H96" stroke="${M1}" stroke-width="3" stroke-linecap="round"/>`},
+ {n:'K Window',st:'ตัว K ทึบเป็นหน้าต่าง ข้างในเป็นเขาแบบ geometric สี navy · เขากับ K เป็นภาษาเดียวกันแล้ว',vb:'8 8 88 84',
+  g:u=>`<defs><clipPath id="w${u}"><path d="${K}"/></clipPath></defs><g clip-path="url(#w${u})"><rect width="100" height="100" fill="${M1}"/>${mt('geo',-6,46,.95,M3,M3)}</g>`},
+ {n:'App Tile K',st:'squircle สีน้ำเงิน เขาเรียบสีขาวลอยขึ้นจากขอบล่าง K สีขาวอยู่บนฟ้า',vb:'0 0 100 100',
+  g:u=>`<defs><clipPath id="t${u}"><rect x="4" y="4" width="92" height="92" rx="24"/></clipPath></defs><rect x="4" y="4" width="92" height="92" rx="24" fill="${M1}"/><g clip-path="url(#t${u})">${mt('smooth',-6,56,.93,ON,ON)}</g>`+Kt(31.3,14,.36,ON)},
+ {n:'K Silhouette Cut',st:'K ทึบ ส่วนล่างถูกเขาแบบเรียบเจาะเป็นช่องว่าง (negative space)',vb:'8 8 88 84',
+  g:u=>`<defs><clipPath id="s${u}"><path d="${K}"/></clipPath></defs><path d="${K}" fill="${M1}"/><g clip-path="url(#s${u})">${mt('smooth',-4,54,.9,BG,BG)}</g>`},
+ {n:'kds. Peaks',st:'logotype "kds" ตัวพิมพ์เล็ก จุดท้ายคำเป็นเขาขนาบน้ำแบบ geometric',vb:'-2 16 182 68',
+  g:()=>T('kds',0,80,M3)+mt('geo',136,65.7,.32)},
+ {n:'Peaks on KDS',st:'เขาแบบ geometric ตั้งอยู่บนตัวอักษร KDS · ตัวอักษรเป็นแผ่นดิน',vb:'-4 -22 172 104',
+  g:()=>mt('geo',14,-20.5,1.13)+T('KDS',0,80,M1)},
+ {n:'kds Badge',st:'วงกลมสีน้ำเงิน เขาทรงมนสีขาวอยู่ครึ่งล่าง ตัว kds อยู่บนฟ้า',vb:'0 0 100 100',
+  g:u=>`<defs><clipPath id="b${u}"><circle cx="50" cy="50" r="46"/></clipPath></defs><circle cx="50" cy="50" r="46" fill="${M1}"/><g clip-path="url(#b${u})">${mt('round',-6,58,.93,ON,ON)}</g>`+T('kds',50,48,ON,'text-anchor="middle"',30)}
+];
+document.getElementById('combos').innerHTML=CO.map((p,i)=>`<section class="concept">
+<div class="head"><span class="num">KX${i+1}</span><span class="name">${p.n}</span><span class="story">${p.st}</span></div>
+<div class="tiles">
+ <div class="tile t-dark"><div class="lock">${sv(p,56,'max-width:150px')}${wm}</div></div>
+ <div class="tile t-light"><div class="lock">${sv(p,56,'max-width:150px')}${wm}</div></div>
+ <div class="tile t-light" style="--bg:#F4F7FD"><div class="app">${sv(p,44,'max-width:72px')}</div></div>
+ <div class="tile t-mono"><div class="sizes">${sv(p,28)}${sv(p,14)}<div class="cap">mono · เล็ก</div></div></div>
+</div></section>`).join('');
+</script>
+</body>
+</html>

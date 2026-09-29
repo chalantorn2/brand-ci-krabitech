@@ -1,0 +1,13 @@
+Mode: Built-in image_gen. Raster PNG outputs with a flat vector aesthetic.
+
+Variant 1
+Use case: logo-brand
+Semi-abstract logo symbol: two karst limestone peaks built from flat geometric facets (low-poly), shades of navy #0B2A4A and deep blue #1E4E8C, right peak taller with an overhanging top. Directly below, their mirrored reflection dissolves into a grid of small square pixels fading downward in sky blue #3FA9F5, representing nature turning digital. Flat vector aesthetic, crisp edges, white background, no text, compact square composition, modern tech brand icon.
+
+Variant 2
+Use case: logo-brand
+Stacked combination logo: on top, a faceted low-poly icon of two karst limestone peaks in navy #0B2A4A and deep blue #1E4E8C, the right peak taller with an overhanging top, with a mirrored pixelated reflection fading downward in sky blue #3FA9F5. Below, exact text "KRABI DIGITAL" in bold geometric sans-serif, navy #0B2A4A, and exact text "SOLUTIONS" underneath in light weight with wide letter-spacing. Centered layout, flat vector aesthetic, crisp edges, white background, professional software agency branding. No additional text.
+
+Variant 3
+Use case: logo-brand
+Wordmark logo with exact text "KRABI DIGITAL SOLUTIONS" in bold modern sans-serif, navy blue #0B2A4A. The ending of the final letter S breaks into three small square pixels in sky blue #3FA9F5, subtly echoing a pixelated water reflection while maintaining legibility. Clean kerning, flat vector aesthetic, white background, no symbol. Wide horizontal centered composition, no additional text.

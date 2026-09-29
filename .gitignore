@@ -1,0 +1,12 @@
+# VPN configs (contain WireGuard private keys)
+lay/
+*.conf
+
+# Dependencies / build output
+node_modules/
+brand/deploy/*.tar
+
+# OS
+Thumbs.db
+.DS_Store
+desktop.ini

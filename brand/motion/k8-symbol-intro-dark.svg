@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="12 12 80 80" width="512" height="512">
+<style>
+g>*{transform-box:fill-box;animation-fill-mode:both}
+.st{transform-origin:50% 100%;animation:kd-grow .35s cubic-bezier(.2,.8,.2,1)}
+.ar{transform-origin:0 88%;animation:kd-arm .4s .2s cubic-bezier(.2,.8,.2,1) both}
+.p1,.p2,.p3,.p4{animation:kd-px .3s steps(3,jump-end) both}
+.p1{animation-delay:.5s}.p2{animation-delay:.6s}.p3{animation-delay:.7s}.p4{animation-delay:.8s}
+@keyframes kd-grow{from{transform:scaleY(0)}}
+@keyframes kd-arm{from{transform:scale(0)}}
+@keyframes kd-px{from{opacity:0;transform:translate(-9px,-9px)}}
+@media (prefers-reduced-motion:reduce){g>*{animation:none!important}}
+</style>
+<g><rect class="st" x="12" y="12" width="22" height="76" rx="2" fill="#FFFFFF"/><path class="ar" d="M34 50 L62 12 H88 L52 62 H34Z" fill="#0059FF"/><rect class="p1" x="52" y="58" width="14" height="14" rx="2" fill="#0059FF"/><rect class="p2" x="69" y="71" width="12" height="12" rx="2" fill="#0059FF"/><rect class="p3" x="84" y="84" width="8" height="8" rx="1.5" fill="#09FFFF"/><rect class="p4" x="72" y="56" width="7" height="7" rx="1.5" fill="#09FFFF"/></g>
+</svg>

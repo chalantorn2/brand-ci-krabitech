@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Khanab Nam Emblem</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+<style>
+  :root { --navy:#0B2A4A; --deep:#1E4E8C; --sky:#3FA9F5; --sun:#F4A259; --bg:#F6F8FB; --card:#fff; --ink:#0B2A4A; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-family:Poppins, system-ui, sans-serif; padding:32px 16px; }
+  h1 { font-size:20px; margin:0 0 24px; font-weight:600; }
+  .grid { display:grid; gap:20px; grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr)); max-width:1100px; }
+  .card { background:var(--card); border-radius:14px; padding:28px; display:flex; flex-direction:column; align-items:center; gap:16px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+  .card.dark { background:var(--navy); color:#fff; }
+  .label { font-size:12px; letter-spacing:.12em; text-transform:uppercase; opacity:.6; align-self:flex-start; }
+  .combo { display:flex; align-items:center; gap:14px; }
+  .wm { line-height:1.05; }
+  .wm b { display:block; font-size:30px; font-weight:600; letter-spacing:-.01em; }
+  .wm span { display:block; font-size:11.5px; font-weight:300; letter-spacing:.42em; color:var(--deep); margin-top:4px; }
+  .dark .wm span { color:var(--sky); }
+  .sizes { display:flex; align-items:end; gap:18px; }
+</style>
+</head>
+<body>
+<h1>Concept 3 — Khanab Nam Emblem (traced silhouette)</h1>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <clipPath id="c"><circle cx="100" cy="100" r="90"/></clipPath>
+    <symbol id="emblem" viewBox="0 0 200 200">
+      <circle cx="100" cy="100" r="90" fill="var(--em,#0B2A4A)"/>
+      <circle cx="97" cy="92" r="8" fill="#F4A259"/>
+      <g clip-path="url(#c)"><g transform="translate(100 135) scale(1.15) translate(-100 -135)" fill="#fff" stroke="#fff" stroke-width="2.5" stroke-linejoin="round">
+        <!-- left peak: broad bell / haystack -->
+        <path d="M33.6 135 L38.4 111.2 L44.4 95.8 Q49 88 54 84.6 Q57.6 82.6 61.2 84.6 Q66 88 70.8 98.6 L75.6 109.8 L80.4 135 Z"/>
+        <!-- right peak: taller, gentle left slope, head bulging right over a vertical cliff -->
+        <path d="M114 135 L120 114 L132 93 L138 84.6 L142.8 76.2 Q147 70.5 152.4 68.5 Q157.2 67 162 71.3 Q165.5 75.5 164.6 80.4 L162.6 85.9 L163.4 93 L161.4 101.4 L159.4 111.2 L159.6 135 Z"/>
+        <!-- mangrove line, gap = river heading into the distance -->
+        <path d="M-20 129 Q20 126 40 128 L91 130 L86 136 L-20 136 Z"/>
+        <path d="M103 130 L150 127 Q175 124 220 127 L220 136 L109 136 Z"/>
+      </g></g>
+      <!-- water / reflection -->
+      <g stroke="#fff" stroke-width="4" stroke-linecap="round" clip-path="url(#c)">
+        <line x1="26" y1="147" x2="174" y2="147"/>
+        <line x1="42" y1="159" x2="158" y2="159"/>
+        <line x1="60" y1="171" x2="140" y2="171"/>
+        <line x1="80" y1="182" x2="120" y2="182"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="grid">
+  <div class="card">
+    <div class="label">Symbol</div>
+    <svg width="180" height="180"><use href="#emblem"/></svg>
+    <div class="sizes">
+      <svg width="64" height="64"><use href="#emblem"/></svg>
+      <svg width="32" height="32"><use href="#emblem"/></svg>
+      <svg width="16" height="16"><use href="#emblem"/></svg>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="label">Word + Symbol</div>
+    <div class="combo">
+      <svg width="72" height="72"><use href="#emblem"/></svg>
+      <div class="wm"><b>Krabi Digital</b><span>SOLUTIONS</span></div>
+    </div>
+  </div>
+
+  <div class="card dark" style="--em:#1E4E8C">
+    <div class="label">Word + Symbol (dark)</div>
+    <div class="combo">
+      <svg width="72" height="72"><use href="#emblem"/></svg>
+      <div class="wm"><b>Krabi Digital</b><span>SOLUTIONS</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

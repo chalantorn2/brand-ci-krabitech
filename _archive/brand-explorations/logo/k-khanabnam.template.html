@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>K x Khao Khanab Nam</title>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#041A53;--blue:#0059FF}
+*{box-sizing:border-box}
+body{margin:0;background:#EEF1F7;color:var(--navy);font-family:"Plus Jakarta Sans",sans-serif}
+header{max-width:1200px;margin:auto;padding:28px 16px 4px}
+h1{font:800 28px "Red Hat Display";margin:0 0 6px}
+header p{margin:0;color:#5B6785;font-size:14px}
+main{max-width:1200px;margin:auto;padding:16px;display:flex;flex-direction:column;gap:22px}
+.concept{background:#fff;border-radius:18px;padding:16px;border:1px solid #E1E6F0}
+.head{display:flex;gap:10px;align-items:baseline;margin-bottom:12px;flex-wrap:wrap}
+.num{font:800 14px "Red Hat Display";color:var(--blue)}
+.name{font:800 19px "Red Hat Display"}
+.story{font-size:13px;color:#5B6785;flex-basis:100%}
+.tiles{display:grid;grid-template-columns:1.3fr 2fr 2fr 1fr 1fr;gap:10px}
+@media(max-width:900px){.tiles{grid-template-columns:1fr 1fr}}
+.tile{border-radius:14px;min-height:150px;display:grid;place-items:center;padding:14px;background:var(--bg)}
+.t-dark{--bg:#041A53;--m1:#0059FF;--m2:#6FA3FF;--m3:#FFFFFF;--on:#FFFFFF;color:#fff}
+.t-light{--bg:#FFFFFF;--m1:#0059FF;--m2:#7FAEFF;--m3:#041A53;--on:#FFFFFF;color:var(--navy);border:1px solid #E1E6F0}
+.t-mono{--bg:#FFFFFF;--m1:#041A53;--m2:#041A53;--m3:#041A53;--on:#FFFFFF;border:1px solid #E1E6F0}
+.hero svg{width:150px;height:150px}
+.lock{display:flex;align-items:center;gap:14px}
+.lock svg{width:64px;height:64px;flex:none}
+.wm .a{font:700 26px/1 "Red Hat Display";letter-spacing:-.015em}
+.wm .b{font:600 11px/1 "Red Hat Display";letter-spacing:.42em;margin-top:7px;opacity:.75}
+.app{width:96px;height:96px;border-radius:26px;overflow:hidden;background:linear-gradient(145deg,#1A6BFF,#0040C8);display:grid;place-items:center;box-shadow:0 10px 24px rgba(0,89,255,.3);--bg:#0B5BF0;--m1:#FFFFFF;--m2:#BFD4FF;--m3:#041A53;--on:#0059FF}
+.app svg{width:72px;height:72px}
+.sizes{display:flex;flex-direction:column;align-items:center;gap:12px}
+.sizes .r{display:flex;gap:14px;align-items:center}
+.sizes svg{display:block}
+.cap{font-size:10px;color:#8A94AE;text-align:center}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<g id="KL">/*LEFT*/</g>
+<g id="KR">/*RIGHT*/</g>
+</defs></svg>
+<header>
+  <h1>K × เขาขนาบน้ำ</h1>
+  <p>ใช้ path จากไฟล์ เขาขนาบน้ำ.svg ตรงๆ (ไม่ได้วาดใหม่) ผสมกับตัว K ทึบแบบ geometric · ดูแบบ hero / dark / light / app icon / mono ขนาดเล็ก</p>
+</header>
+<main id="m"></main>
+<script>
+const M1='var(--m1)',M3='var(--m3)',ON='var(--on)',BG='var(--bg)';
+const VB='0 0 1200 446.17';
+// place the illustration (or one half) into a 100x100 mark
+const mt=(x,y,w,h,f=M3,which='both',x2='')=>`<svg x="${x}" y="${y}" width="${w}" height="${h}" viewBox="${VB}" preserveAspectRatio="xMidYMax meet" overflow="visible"><g fill="${f}" ${x2}>${which!='R'?'<use href="#KL"/>':''}${which!='L'?'<use href="#KR"/>':''}</g></svg>`;
+// halo so mountains separate cleanly from what's behind them
+// crop a single mountain with its own viewBox
+const LV='0 70 600 376.17', RV='610 0 590 446.17';
+const mv=(vb,x,y,w,h,f=M3,which='both')=>mt(x,y,w,h,f,which).replace(`viewBox="${VB}"`,`viewBox="${vb}"`);
+const HALO='stroke="var(--bg)" stroke-width="34" stroke-linejoin="round" style="paint-order:stroke"';
+const K="M12 12 H34 V42 L62 12 H90 L56 48 L92 88 H64 L34 58 V88 H12Z";
+const Kc=(x,y,sc)=>`<path d="${K}" transform="translate(${x} ${y}) scale(${sc})"`;
+
+const C=[
+{n:'Rising K',st:'K ทึบสีน้ำเงินตั้งอยู่ข้างหลัง เขาขนาบน้ำอยู่ข้างหน้าที่ฐาน · K เหมือนยอดเขาที่โผล่ขึ้นจากป่า',
+ g:u=>`<path d="${K}" fill="${M1}"/>`+mt(-4,58,108,40,M3,'both',HALO)},
+{n:'K Window',st:'ตัว K เป็นหน้าต่าง มองเข้าไปเห็นเขาขนาบน้ำอยู่ข้างใน (clip) · อ่านเป็น K ชัดทุกขนาด',
+ g:u=>`<defs><clipPath id="c${u}"><path d="${K}"/></clipPath></defs><g clip-path="url(#c${u})"><rect width="100" height="100" fill="${M1}"/>${mv(LV,-14,46,74,46,M3,'L')}${mv(RV,32,26,82,62,M3,'R')}</g>`},
+{n:'River K',st:'K ยืนอยู่ในร่องแม่น้ำระหว่างเขา 2 ลูกพอดี · "ขนาบน้ำ" = K อยู่ตรงกลาง',
+ g:u=>mt(-2,50,104,46,M3,'L')+mt(-2,50,104,46,M3,'R')+`<path d="${K}" fill="${M1}" transform="translate(31 10) scale(.42)"/>`+`<path d="M4 96 H96" stroke="${M1}" stroke-width="3" stroke-linecap="round"/>`},
+{n:'Badge',st:'วงกลมสีน้ำเงิน เขาขนาบน้ำถูก crop อยู่ครึ่งล่าง · K สีขาวอยู่บนฟ้า',
+ g:u=>`<defs><clipPath id="c${u}"><circle cx="50" cy="50" r="46"/></clipPath></defs><circle cx="50" cy="50" r="46" fill="${M1}"/><g clip-path="url(#c${u})">${mt(-4,52,108,40,ON)}</g><path d="${K}" fill="${ON}" transform="translate(33 14) scale(.36)"/>`},
+{n:'K on Peak',st:'ใช้เขาลูกใหญ่ (ลูกขวา) ลูกเดียว · K สีน้ำเงินมีขอบขาววางทับตัวเขา · มีเส้นน้ำด้านล่าง',
+ g:u=>`${mv(RV,2,4,96,90,M3,'R')}<path d="${K}" fill="${M1}" stroke="var(--bg)" stroke-width="9" stroke-linejoin="round" style="paint-order:stroke" transform="translate(30 40) scale(.46)"/><path d="M6 94 H94" stroke="${M1}" stroke-width="3.5" stroke-linecap="round"/>`},
+{n:'K + Khanab Stack',st:'K ด้านบน เขาขนาบน้ำเป็นฐานกว้างกว่า · รูปทรงเหมือนตราประทับ ใช้บนเสื้อ/สติ๊กเกอร์ได้ดี',
+ g:u=>`<path d="${K}" fill="${M1}" transform="translate(27 4) scale(.5)"/>`+mt(2,52,96,36,M3)+`<path d="M8 94 H92" stroke="${M1}" stroke-width="3.5" stroke-linecap="round"/>`},
+{n:'Split Peaks K',st:'ก้าน K = เขาลูกซ้าย · แขน K = เขาลูกขวา ถูกตัดเป็นทรง < · ธรรมชาติกลายเป็นตัวอักษร',
+ g:u=>`<defs><clipPath id="a${u}"><rect x="12" y="8" width="24" height="84" rx="3"/></clipPath><clipPath id="b${u}"><path d="M66 8 H92 L62 50 L92 92 H66 L40 50Z"/></clipPath></defs>
+ <g clip-path="url(#a${u})"><rect width="100" height="100" fill="${M1}"/>${mv(LV,-40,8,134,84,M3,'L')}</g>
+ <g clip-path="url(#b${u})"><rect width="100" height="100" fill="${M1}"/>${mv(RV,-5,8,111,84,M3,'R')}</g>`},
+{n:'App Tile',nw:1,st:'squircle สีน้ำเงิน เขาสี navy ล้นขอบล่าง K สีขาวอยู่บนฟ้า · พร้อมใช้เป็น app icon',
+ g:u=>`<defs><clipPath id="c${u}"><rect x="6" y="6" width="88" height="88" rx="22"/></clipPath></defs><rect x="6" y="6" width="88" height="88" rx="22" fill="${M1}"/><g clip-path="url(#c${u})">${mt(-12,54,124,46,'#041A53')}</g><path d="${K}" fill="#fff" transform="translate(30.2 12) scale(.38)"/>`},
+{n:'Mirror',nw:1,st:'เขาขนาบน้ำ + เงาสะท้อนในน้ำสีฟ้าจาง · K ลอยอยู่เหนือร่องแม่น้ำ',
+ g:u=>mt(4,20,92,34,M3)+`<g transform="translate(0 110) scale(1 -1)" opacity=".4">${mt(4,20,92,34,M1)}</g><path d="M6 56 H94" stroke="${M1}" stroke-width="2.5" stroke-linecap="round"/><path d="${K}" fill="${M1}" transform="translate(36.5 8) scale(.26)"/>`},
+{n:'Sun K',nw:1,st:'พระอาทิตย์สีน้ำเงินขึ้นหลังเขาขนาบน้ำ · K สีขาวอยู่ในดวงอาทิตย์',
+ g:u=>`<circle cx="50" cy="42" r="30" fill="${M1}"/><path d="${K}" fill="${ON}" transform="translate(34.4 22) scale(.3)"/>`+mt(2,56,96,36,M3,'both',HALO)},
+{n:'Shield',nw:1,st:'โล่ (มั่นคง ปลอดภัย · Your Data, Your Server) มีเขาอยู่ฐาน K อยู่ด้านบน',
+ g:u=>`<defs><clipPath id="c${u}"><path d="M50 6 L88 18 V50 Q88 78 50 94 Q12 78 12 50 V18Z"/></clipPath></defs><path d="M50 6 L88 18 V50 Q88 78 50 94 Q12 78 12 50 V18Z" fill="${M1}"/><g clip-path="url(#c${u})">${mt(4,54,92,40,ON)}</g><path d="${K}" fill="${ON}" transform="translate(31.3 18) scale(.36)"/>`},
+{n:'Code Window K',nw:1,st:'K แบบ "|" + "<" (code) · เขาลูกใหญ่อยู่ในวงเล็บ < · tech + กระบี่',
+ g:u=>`<defs><clipPath id="c${u}"><path d="M64 12 H90 L60 50 L90 88 H64 L38 50Z"/></clipPath></defs><rect x="12" y="12" width="20" height="76" rx="3" fill="${M3}"/><g clip-path="url(#c${u})"><rect width="100" height="100" fill="${M1}"/>${mv(RV,26,22,78,66,M3,'R')}</g>`},
+{n:'Outline K',nw:1,st:'K เส้นขอบบาง (line art) มีเขาขนาบน้ำเติมอยู่ครึ่งล่างข้างใน · ดูเบาและพรีเมียม',
+ g:u=>`<defs><clipPath id="c${u}"><path d="${K}"/></clipPath></defs><g clip-path="url(#c${u})">${mt(-6,50,112,42,M3)}</g><path d="${K}" fill="none" stroke="${M1}" stroke-width="3.5" stroke-linejoin="round"/>`},
+{n:'K in Water',nw:1,st:'เขาตั้งอยู่บนผืนน้ำสีน้ำเงิน · K เจาะเป็นสีขาวอยู่ในน้ำ (ใต้เขา = ทะเลอันดามัน)',
+ g:u=>mt(4,8,92,38,M3)+`<rect x="4" y="47" width="92" height="46" rx="8" fill="${M1}"/><path d="${K}" fill="${ON}" transform="translate(29.2 49) scale(.4)"/>`},
+{n:'Digital Reflection',nw:1,st:'เขาจริงด้านบน เงาในน้ำเป็นเส้นแถบแบบดิจิทัล (แนว elevra) · K อยู่เหนือร่องแม่น้ำ',
+ g:u=>`<defs><mask id="c${u}">${[54,62,70,78,86].map(y=>`<rect x="0" y="${y}" width="100" height="4.5" fill="#fff"/>`).join('')}</mask></defs>`+mt(4,14,92,38,M3)+`<g mask="url(#c${u})"><g transform="translate(0 106) scale(1 -1)">${mt(4,14,92,38,M1)}</g></g><path d="${K}" fill="${M1}" transform="translate(37 4) scale(.25)"/>`},
+{n:'Ring Break',nw:1,st:'วงแหวนสีน้ำเงิน มี K อยู่ข้างใน · เขาขนาบน้ำทะลุวงออกมาด้านล่าง',
+ g:u=>`<circle cx="50" cy="46" r="38" fill="none" stroke="${M1}" stroke-width="5"/><path d="${K}" fill="${M1}" transform="translate(31.3 20) scale(.36)"/>`+mt(0,58,100,38,M3,'both',HALO)},
+{n:'KD Window',nw:1,st:'KD ต่อกัน · ในช่อง D มีเขาลูกใหญ่ · Krabi (เขา) อยู่ใน Digital (D)',
+ g:u=>`<defs><clipPath id="c${u}"><path d="M62 12 H74 A38 38 0 0 1 74 88 H62Z"/></clipPath></defs><g transform="translate(0 5) scale(.89)"><rect x="6" y="12" width="18" height="76" rx="2" fill="${M3}"/><path d="M24 46 L48 12 H62 L32 58 H24Z" fill="${M3}"/><path d="M30 54 L38 48 L62 88 H48Z" fill="${M3}"/><g clip-path="url(#c${u})"><rect x="60" y="0" width="60" height="100" fill="${M1}"/>${mv(RV,52,24,66,64,M3,'R')}</g></g>`},
+// ---- round 3 ----
+{n:'Hex',nw:2,st:'hexagon สีน้ำเงิน (tech / โครงสร้าง) มีเขาสีขาวอยู่ที่ฐาน K อยู่ด้านบน',
+ g:u=>{const H="M50 4 L90 27 V73 L50 96 L10 73 V27Z";return `<defs><clipPath id="c${u}"><path d="${H}"/></clipPath></defs><path d="${H}" fill="${M1}"/><g clip-path="url(#c${u})">${mt(4,56,92,36,ON)}</g><path d="${K}" fill="${ON}" transform="translate(31.3 18) scale(.36)"/>`}},
+{n:'Diamond',nw:2,st:'สี่เหลี่ยมข้าวหลามตัด ดูเป็นอัญมณีหรือป้ายนำทาง · มีเขาอยู่ที่ฐาน K อยู่บนยอด',
+ g:u=>{const D="M50 3 L97 50 L50 97 L3 50Z";return `<defs><clipPath id="c${u}"><path d="${D}"/></clipPath></defs><path d="${D}" fill="${M1}"/><g clip-path="url(#c${u})">${mt(8,52,84,34,ON)}</g><path d="${K}" fill="${ON}" transform="translate(34.4 19) scale(.3)"/>`}},
+{n:'Gateway Arch',nw:2,st:'กรอบทรงซุ้มประตู "ประตูสู่กระบี่" · ใช้เส้นบาง มีเขากับ K อยู่ข้างใน',
+ g:u=>{const A="M16 94 V46 A34 34 0 0 1 84 46 V94Z";return `<defs><clipPath id="c${u}"><path d="${A}"/></clipPath></defs><g clip-path="url(#c${u})">${mt(10,56,80,38,M3)}</g><path d="${A}" fill="none" stroke="${M1}" stroke-width="4.5" stroke-linejoin="round"/><path d="${K}" fill="${M1}" transform="translate(33.4 22) scale(.32)"/>`}},
+{n:'Line Art',nw:2,st:'เขาขนาบน้ำแบบเส้นขอบ (line art) ดูเบาและทันสมัย · K ทึบสีน้ำเงินอยู่ด้านบน',
+ g:u=>`<path d="${K}" fill="${M1}" transform="translate(29.2 4) scale(.4)"/>`+mt(4,50,92,38,'none','both','stroke="var(--m3)" stroke-width="12" stroke-linejoin="round"')+`<path d="M8 94 H92" stroke="${M1}" stroke-width="3" stroke-linecap="round"/>`},
+{n:'K Silhouette Cut',nw:2,st:'K ทึบ ส่วนล่างถูกเขาขนาบน้ำเจาะเป็นช่องว่าง (negative space) · K ที่มีวิวซ่อนอยู่',
+ g:u=>`<defs><clipPath id="c${u}"><path d="${K}"/></clipPath></defs><path d="${K}" fill="${M1}"/><g clip-path="url(#c${u})">${mt(-6,50,112,44,BG)}</g><path d="M10 95 H90" stroke="${M1}" stroke-width="3" stroke-linecap="round"/>`},
+{n:'Stamp',nw:2,st:'ตราประทับวงกลม มีตัวหนังสือวิ่งรอบวง · ใช้บนเสื้อ แก้ว สติ๊กเกอร์ (ย่อเล็กแล้วตัวหนังสืออ่านไม่ออก)',
+ g:u=>`<defs><path id="t${u}" d="M50 50 m-36 0 a36 36 0 1 1 72 0 a36 36 0 1 1 -72 0"/></defs><circle cx="50" cy="50" r="46" fill="none" stroke="${M1}" stroke-width="3"/><circle cx="50" cy="50" r="29" fill="none" stroke="${M1}" stroke-width="1.5"/><text font-family="Red Hat Display" font-weight="800" font-size="7" fill="${M3}"><textPath href="#t${u}" startOffset="0" textLength="220" lengthAdjust="spacing">KRABI DIGITAL SOLUTIONS • THAILAND •</textPath></text>${mt(24,44,52,24,M3)}<path d="${K}" fill="${M1}" transform="translate(39.6 26) scale(.2)"/>`},
+{n:'K + Peak',nw:2,st:'K ตัวใหญ่ยืนคู่กับเขาลูกใหญ่ ฐานเดียวกันบนเส้นน้ำ · อ่านเป็น "K กับกระบี่"',
+ g:u=>`<path d="${K}" fill="${M1}" transform="translate(-2.6 22) scale(.55)"/>`+mv(RV,48,15,50,56,M3,'R')+`<path d="M4 80 H96" stroke="${M1}" stroke-width="3.5" stroke-linecap="round"/><path d="M20 88 H80" stroke="${M1}" stroke-width="3.5" stroke-linecap="round" opacity=".5"/>`},
+{n:'Layers',nw:2,st:'เขาซ้อนกัน 3 ชั้น ใกล้-กลาง-ไกล มีมิติแบบภาพวิว · K เล็กอยู่บนฟ้า',
+ g:u=>`<g opacity=".3">${mt(-12,24,124,46,M1)}</g><g opacity=".6" transform="translate(100 0) scale(-1 1)">${mt(-4,38,108,40,M1)}</g>`+mt(2,54,96,38,M3)+`<path d="${K}" fill="${M1}" transform="translate(35.4 2) scale(.28)"/>`},
+{n:'Nature K',nw:2,st:'ก้าน K คือเขาลูกซ้าย แขนบนเป็นเส้นทึบ แขนล่างม้วนเป็นคลื่นอันดามัน · เขา + ทะเล + ตัวอักษร',
+ g:u=>`<defs><clipPath id="c${u}"><rect x="12" y="8" width="24" height="84" rx="3"/></clipPath></defs><g clip-path="url(#c${u})"><rect width="100" height="100" fill="${M1}"/>${mv(LV,-40,8,134,84,M3,'L')}</g><path d="M36 50 L64 10 H90 L58 56 H36Z" fill="${M1}"/><path d="M48 60 C62 68 68 86 82 86 C92 86 94 74 86 70" fill="none" stroke="${M1}" stroke-width="14" stroke-linecap="round"/>`},
+{n:'Pin',nw:2,st:'หมุด location = "กระบี่" · มีเขาขนาบน้ำกับ K อยู่ในหัวหมุด · เหมาะกับการทำตลาด local',
+ g:u=>{const P="M50 97 C50 97 14 64 14 40 A36 36 0 0 1 86 40 C86 64 50 97 50 97Z";return `<defs><clipPath id="c${u}"><path d="${P}"/></clipPath></defs><path d="${P}" fill="${M1}"/><g clip-path="url(#c${u})">${mt(12,44,76,30,ON)}</g><path d="${K}" fill="${ON}" transform="translate(35.4 14) scale(.28)"/>`}}
+];
+let U=0;
+const svg=c=>`<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">${c.g(++U)}</svg>`;
+const wm=`<div class="wm"><div class="a">Krabi Digital</div><div class="b">SOLUTIONS</div></div>`;
+document.getElementById('m').innerHTML=C.map((c,i)=>`
+<section class="concept">
+  <div class="head"><span class="num">KN${i+1}</span><span class="name">${c.n}</span>${c.nw?`<span class="num" style="background:${c.nw==2?'#041A53':'#0059FF'};color:#fff;padding:2px 8px;border-radius:99px;font-size:11px">${c.nw==2?'NEW · รอบ 3':'รอบ 2'}</span>`:''}<span class="story">${c.st}</span></div>
+  <div class="tiles">
+    <div class="tile t-light hero">${svg(c)}</div>
+    <div class="tile t-dark"><div class="lock">${svg(c)}${wm}</div></div>
+    <div class="tile t-light"><div class="lock">${svg(c)}${wm}</div></div>
+    <div class="tile t-light" style="--bg:#F4F7FD"><div class="app">${svg(c)}</div></div>
+    <div class="tile t-mono"><div class="sizes"><div class="r">${svg(c).replace('<svg','<svg width="48" height="48"')}${svg(c).replace('<svg','<svg width="32" height="32"')}${svg(c).replace('<svg','<svg width="16" height="16"')}</div><div class="cap">mono · 48 / 32 / 16</div></div></div>
+  </div>
+</section>`).join('');
+</script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Krabi Digital Motion Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:"LINE Seed Sans TH";font-weight:700;src:url(../fonts/LINESeedSansTH_Bd.woff2) format("woff2")}
+@font-face{font-family:"LINE Seed Sans TH";font-weight:800;src:url(../fonts/LINESeedSansTH_XBd.woff2) format("woff2")}
+:root{
+  --navy:#041A53;--blue:#0059FF;--cyan:#09FFFF;--sky:#7FAEFF;--mist:#EEF3FC;--line:#DCE3F0;--slate:#56627F;--deep:#020E30;
+  --f-head:"Red Hat Display","LINE Seed Sans TH",sans-serif;
+  --f-body:"Plus Jakarta Sans","IBM Plex Sans Thai",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,monospace;
+  --out:cubic-bezier(.2,.8,.2,1);--in:cubic-bezier(.5,0,.75,0);--px:steps(3,jump-end);
+}
+*{box-sizing:border-box;margin:0}
+body{background:#E7ECF6;color:var(--navy);font:400 15px/1.6 var(--f-body)}
+
+/* ---------- preview shell ---------- */
+.shell{max-width:1240px;margin:0 auto;padding:40px 16px 80px}
+.shell h1{font:800 34px/1.1 var(--f-head);letter-spacing:-.02em}
+.shell>p{color:var(--slate);margin-top:10px;max-width:70ch}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:28px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px}
+.card.wide{grid-column:1/-1}
+.card header{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.card b{font:700 16px var(--f-head)}
+.card .meta{font:500 11px var(--f-mono);color:var(--slate);letter-spacing:.06em}
+.fit{position:relative;overflow:hidden;border-radius:10px;background:#0B1633}
+.fit>.stage{position:absolute;left:0;top:0;transform-origin:0 0}
+.card button{align-self:flex-start;font:600 13px var(--f-body);background:var(--navy);color:#fff;border:0;border-radius:8px;padding:8px 14px;cursor:pointer}
+.card button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.card .note{font-size:13px;color:var(--slate)}
+
+/* export mode: one stage at native size */
+body.only{background:transparent}
+body.only .shell{display:none}
+body.only .stage{position:static!important;transform:none!important}
+
+/* ---------- shared stage parts ---------- */
+.stage{overflow:hidden;position:relative}
+.stage *{animation-fill-mode:both}
+.mk{display:block;overflow:visible}
+.mk .st{transform-box:fill-box;transform-origin:50% 100%;animation:grow .35s var(--out)}
+.mk .ar{transform-box:fill-box;transform-origin:0 88%;animation:arm .4s .2s var(--out) both}
+.mk .p1,.mk .p2,.mk .p3,.mk .p4{animation:px .3s var(--px) both}
+.mk .p1{animation-delay:.5s}.mk .p2{animation-delay:.6s}.mk .p3{animation-delay:.7s}.mk .p4{animation-delay:.8s}
+@keyframes grow{from{transform:scaleY(0)}}
+@keyframes arm{from{transform:scale(0)}}
+@keyframes px{from{opacity:0;transform:translate(-9px,-9px)}}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}}
+@keyframes fade{from{opacity:0}}
+@keyframes slideR{from{opacity:0;transform:translateX(-16px)}}
+@keyframes pop{from{opacity:0;transform:translate(-14px,-14px) scale(.4)}}
+@keyframes wipe{from{transform:scaleX(0)}}
+@keyframes wipeOut{to{transform:scaleX(0)}}
+@keyframes fadeOut{to{opacity:0}}
+@keyframes field{0%{opacity:0}35%{opacity:var(--o,.16)}100%{opacity:var(--o2,.05)}}
+.wm{display:flex;flex-direction:column;line-height:1}
+.wm .a{font:700 1em/1 var(--f-head);letter-spacing:-.015em;white-space:nowrap}
+.wm .b{font:600 .38em/1 var(--f-head);letter-spacing:.44em;margin-top:.3em;opacity:.72;white-space:nowrap}
+.pxfield{position:absolute;inset:0;display:grid}
+.pxfield i{border-radius:4px;background:var(--blue);opacity:0;animation:field 1.6s var(--px) both}
+
+/* ---------- 1 · logo sting 1920×1080 ---------- */
+#sting{width:1920px;height:1080px;background:var(--navy);color:#fff}
+#sting .pxfield{grid-template-columns:repeat(32,1fr);grid-template-rows:repeat(18,1fr);gap:12px;padding:12px}
+#sting .c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:56px}
+#sting .lock{display:flex;align-items:center;gap:44px}
+#sting .mk{width:250px;height:250px}
+#sting .wm{font-size:112px;animation:slideR .6s .75s var(--out) both}
+#sting .tag{font:500 34px var(--f-body);color:#AFC2EA;animation:rise .6s 1.3s var(--out) both}
+#sting .dom{position:absolute;bottom:64px;left:0;right:0;text-align:center;font:600 22px var(--f-mono);letter-spacing:.2em;color:var(--cyan);animation:fade .5s 1.7s var(--out) both}
+
+/* ---------- 2 · post 1080×1350 ---------- */
+#post{width:1080px;height:1350px;background:var(--navy);color:#fff;padding:96px 88px}
+#post .eb{font:600 28px var(--f-mono);letter-spacing:.2em;color:var(--cyan);animation:fade .4s .15s var(--out) both}
+#post h2{font:800 150px/.98 var(--f-head);letter-spacing:-.035em;margin-top:56px}
+#post h2 span{display:block;animation:rise .55s var(--out) both}
+#post h2 span:nth-child(1){animation-delay:.3s}
+#post h2 span:nth-child(2){animation-delay:.42s}
+#post h2 span:nth-child(3){animation-delay:.54s;color:var(--cyan)}
+#post p{font:400 40px/1.5 var(--f-body);color:#AFC2EA;margin-top:48px;max-width:20em;animation:rise .55s .9s var(--out) both}
+#post .cl{position:absolute;right:88px;bottom:250px;width:300px;height:300px}
+#post .cl rect{animation:pop .36s var(--px) both}
+#post .ft{position:absolute;left:88px;right:88px;bottom:88px;display:flex;justify-content:space-between;align-items:center;border-top:2px solid rgba(255,255,255,.14);padding-top:40px;animation:fade .5s 1.5s var(--out) both}
+#post .ft .lk{display:flex;align-items:center;gap:18px;font-size:40px}
+#post .ft .lk svg{width:84px;height:84px}
+#post .ft span{font:600 26px var(--f-mono);letter-spacing:.08em;color:#8FA6D8}
+
+/* ---------- 3 · story 1080×1920 ---------- */
+#story{width:1080px;height:1920px;background:#fff;color:var(--navy);padding:120px 96px}
+#story .top{display:flex;align-items:center;gap:20px;font-size:44px;animation:fade .4s var(--out) both}
+#story .top svg{width:96px;height:96px}
+#story .eb{font:600 32px var(--f-body);color:var(--blue);margin-top:170px;animation:fade .4s .3s var(--out) both}
+#story h2{font:800 104px/1.12 var(--f-head);letter-spacing:-.02em;margin-top:28px;animation:rise .6s .4s var(--out) both}
+#story ul{list-style:none;padding:0;margin-top:64px;display:flex;flex-direction:column;gap:0}
+#story li{display:flex;align-items:center;gap:32px;font:500 46px/1.3 var(--f-body);padding:28px 0;border-bottom:2px solid var(--line);animation:rise .5s var(--out) both}
+#story li i{flex:none;width:26px;height:26px;border-radius:5px;background:var(--blue);animation:pop .3s var(--px) both}
+#story .cta{position:absolute;left:0;right:0;bottom:0;background:var(--navy);color:#fff;padding:88px 96px 110px;animation:rise .6s 1.9s var(--out) both}
+#story .cta b{display:block;font:800 64px/1.2 var(--f-head)}
+#story .cta span{display:block;font:600 34px var(--f-mono);color:var(--cyan);margin-top:22px;letter-spacing:.04em}
+
+/* ---------- 4 · lower third 1920×1080 ---------- */
+#lower{width:1920px;height:1080px;background:transparent}
+.fit #lower,body.only.demo #lower{background:linear-gradient(135deg,#1c2b4a,#0b1633 60%,#23324f)}
+#lower .lt{position:absolute;left:120px;bottom:130px;display:flex;align-items:stretch;animation:fadeOut .35s 4.4s var(--in) forwards}
+#lower .sq{width:132px;background:var(--blue);border-radius:10px 0 0 10px;display:grid;place-items:center;animation:pop .36s var(--px) both}
+#lower .sq svg{width:78px;height:78px}
+#lower .pn{background:#fff;padding:26px 48px 26px 40px;border-radius:0 10px 10px 0;transform-origin:0 50%;animation:wipe .45s .25s var(--out) both}
+#lower .pn>*{animation:slideR .4s var(--out) both}
+#lower .n{font:800 58px/1.1 var(--f-head);color:var(--navy);letter-spacing:-.01em;animation-delay:.5s}
+#lower .r{font:500 30px/1.4 var(--f-body);color:var(--slate);margin-top:6px;animation-delay:.6s}
+#lower .dot{position:absolute;right:-26px;bottom:-26px;width:18px;height:18px;border-radius:4px;background:var(--cyan);animation:pop .3s .75s var(--px) both}
+
+@media (prefers-reduced-motion:reduce){body:not(.only) .stage *{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="meta" style="font:600 12px var(--f-mono);letter-spacing:.16em;color:var(--blue)">KRABI DIGITAL · MOTION KIT v1.0</div>
+  <h1 style="margin-top:10px">Social &amp; video motion templates</h1>
+  <p>ทุกชิ้นใช้กฎเดียวกับ brand book บทที่ 11: ข้อความเคลื่อนแบบ smooth (ease-out), pixel เคลื่อนแบบขั้นบันได (steps) และเข้ามาในแนวทแยงลงขวาตามหาง K เท่านั้น แก้ข้อความได้ใน HTML ไฟล์นี้ แล้วรัน <code>node build/export.js</code> เพื่อได้ MP4</p>
+  <div class="row" id="row"></div>
+</div>
+
+<!-- 1 · Logo sting -->
+<div class="stage" id="sting" data-name="Logo sting" data-dur="4000" data-use="intro/outro วิดีโอ · Reels · YouTube">
+  <div class="pxfield" id="stingField"></div>
+  <div class="c">
+    <div class="lock"><svg class="mk" viewBox="12 12 80 80" data-mk="dark"></svg><div class="wm"><div class="a">Krabi Digital</div><div class="b">SOLUTIONS</div></div></div>
+    <div class="tag">Technology that's right for your business</div>
+  </div>
+  <div class="dom">KRABITECH.COM</div>
+</div>
+
+<!-- 2 · Post -->
+<div class="stage" id="post" data-name="Animated post" data-dur="5000" data-use="IG / FB feed 4:5">
+  <div class="eb">LOCAL AI</div>
+  <h2><span>Your Data.</span><span>Your Server.</span><span>Your AI.</span></h2>
+  <p>AI ที่รันบนเซิร์ฟเวอร์ของคุณเอง<br>ข้อมูลลูกค้าไม่ออกไปนอกบริษัท</p>
+  <svg class="cl" viewBox="0 0 100 100" aria-hidden="true">
+    <rect x="0" y="0" width="40" height="40" rx="5" fill="#0059FF" style="animation-delay:1.1s"/>
+    <rect x="48" y="48" width="30" height="30" rx="4" fill="#0059FF" style="animation-delay:1.2s"/>
+    <rect x="84" y="84" width="16" height="16" rx="3" fill="#09FFFF" style="animation-delay:1.3s"/>
+    <rect x="56" y="10" width="14" height="14" rx="3" fill="#09FFFF" style="animation-delay:1.4s"/>
+  </svg>
+  <div class="ft"><div class="lk"><svg viewBox="12 12 80 80" data-mk="dark-static"></svg><div class="wm"><div class="a">Krabi Digital</div><div class="b">SOLUTIONS</div></div></div><span>krabitech.com</span></div>
+</div>
+
+<!-- 3 · Story -->
+<div class="stage" id="story" data-name="Story" data-dur="6000" data-use="IG / FB Story · Reels cover 9:16">
+  <div class="top"><svg viewBox="12 12 80 80" data-mk="light-static"></svg><div class="wm"><div class="a">Krabi Digital</div><div class="b">SOLUTIONS</div></div></div>
+  <div class="eb">บริการของเรา</div>
+  <h2>เทคโนโลยีที่พอดี<br>กับธุรกิจคุณ</h2>
+  <ul id="storyList">
+    <li><i></i>เว็บไซต์และแอป</li>
+    <li><i></i>ออกแบบและแบรนด์</li>
+    <li><i></i>การตลาดออนไลน์</li>
+    <li><i></i>ระบบธุรกิจและการเชื่อมต่อ</li>
+    <li><i></i>เซิร์ฟเวอร์และคลาวด์</li>
+    <li><i></i>ท่องเที่ยวและระบบจอง</li>
+  </ul>
+  <div class="cta"><b>ทักมาคุยโปรเจกต์ได้เลย</b><span>LINE @982ghtqj · krabitech.com</span></div>
+</div>
+
+<!-- 4 · Lower third -->
+<div class="stage" id="lower" data-name="Lower third" data-dur="5000" data-poster="2500" data-use="วิดีโอสัมภาษณ์ · live (OBS browser source, พื้นโปร่งใส)">
+  <div class="lt">
+    <div class="sq"><svg viewBox="12 12 80 80" data-mk="blue-static"></svg></div>
+    <div class="pn"><div class="n">Somchai Kraisorn</div><div class="r">Project Lead · Krabi Digital Solutions</div></div>
+    <i class="dot"></i>
+  </div>
+</div>
+
+<script>
+const COL={navy:'#041A53',blue:'#0059FF',cyan:'#09FFFF',sky:'#7FAEFF',white:'#FFFFFF'};
+const V={light:[COL.navy,COL.blue,COL.sky],dark:[COL.white,COL.blue,COL.cyan],blue:[COL.white,COL.white,COL.cyan]};
+function mark(v,anim){const [s,a,p]=V[v];const c=n=>anim?` class="${n}"`:'';
+  return `<rect${c('st')} x="12" y="12" width="22" height="76" rx="2" fill="${s}"/><path${c('ar')} d="M34 50 L62 12 H88 L52 62 H34Z" fill="${a}"/><rect${c('p1')} x="52" y="58" width="14" height="14" rx="2" fill="${a}"/><rect${c('p2')} x="69" y="71" width="12" height="12" rx="2" fill="${a}"/><rect${c('p3')} x="84" y="84" width="8" height="8" rx="1.5" fill="${p}"/><rect${c('p4')} x="72" y="56" width="7" height="7" rx="1.5" fill="${p}"/>`}
+document.querySelectorAll('[data-mk]').forEach(s=>{const [v,st]=s.dataset.mk.split('-');s.innerHTML=mark(v,!st);s.setAttribute('aria-hidden','true')});
+document.querySelectorAll('.wm').forEach(w=>w.style.color='inherit');
+
+// sting pixel field: diagonal wave, top-left to bottom-right
+(function(){const f=document.getElementById('stingField');let h='';
+  for(let r=0;r<18;r++)for(let c=0;c<32;c++){const d=(r+c)*28, o=((r*7+c*13)%9===0)?.34:.12;
+    h+=`<i style="animation-delay:${d}ms;--o:${o};--o2:${o>.2?.16:.04}"></i>`}
+  f.innerHTML=h})();
+// story list stagger
+document.querySelectorAll('#storyList li').forEach((li,i)=>{li.style.animationDelay=(900+i*120)+'ms';li.querySelector('i').style.animationDelay=(1000+i*120)+'ms'});
+
+const stages=[...document.querySelectorAll('.stage')];
+// seek every animation in a stage to t ms (used by export + scrubbing)
+window.seek=function(id,t){document.getElementById(id).getAnimations({subtree:true}).forEach(a=>{a.pause();a.currentTime=t})};
+function replay(el){el.getAnimations({subtree:true}).forEach(a=>{a.currentTime=0;a.play()})}
+
+const q=new URLSearchParams(location.search);
+if(q.get('only')){
+  document.body.classList.add('only');if(q.has('demo'))document.body.classList.add('demo');
+  stages.forEach(s=>{if(s.id!==q.get('only'))s.remove()});
+}else{
+  const row=document.getElementById('row');
+  stages.forEach(s=>{
+    const W=s.offsetWidth,H=s.offsetHeight;
+    const card=document.createElement('section');card.className='card'+(W>H?' wide':'');
+    card.innerHTML=`<header><b>${s.dataset.name}</b><span class="meta">${W} × ${H} · ${s.dataset.dur/1000}s</span></header><div class="fit"></div><p class="note">${s.dataset.use}</p><button type="button">Replay</button>`;
+    row.appendChild(card);const fit=card.querySelector('.fit');fit.appendChild(s);
+    const size=()=>{const k=fit.clientWidth/W;s.style.transform=`scale(${k})`;fit.style.height=H*k+'px'};
+    new ResizeObserver(size).observe(fit);size();
+    card.querySelector('button').onclick=()=>replay(s);
+  });
+}
+</script>
+</body>
+</html>

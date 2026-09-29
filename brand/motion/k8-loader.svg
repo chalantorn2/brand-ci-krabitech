@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="12 12 80 80" width="96" height="96" role="img" aria-label="Loading">
+<style>
+.p{animation:kd-load 1.2s steps(1,end) infinite}
+.p2{animation-delay:.2s}.p3{animation-delay:.4s}
+@keyframes kd-load{0%{opacity:.18}25%,60%{opacity:1}85%,100%{opacity:.18}}
+@media (prefers-reduced-motion:reduce){.p{animation-duration:2.4s}}
+</style>
+<rect x="12" y="12" width="22" height="76" rx="2" fill="#041A53"/><path d="M34 50 L62 12 H88 L52 62 H34Z" fill="#0059FF"/><rect class="p p1" x="52" y="58" width="14" height="14" rx="2" fill="#0059FF"/><rect class="p p2" x="69" y="71" width="12" height="12" rx="2" fill="#0059FF"/><rect class="p p3" x="84" y="84" width="8" height="8" rx="1.5" fill="#7FAEFF"/><rect x="72" y="56" width="7" height="7" rx="1.5" fill="#7FAEFF"/>
+</svg>

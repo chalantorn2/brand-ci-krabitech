@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Logo Explorations 30</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700;800;900&family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#041A53;--b:#0059FF;--c:#09FFFF;--paper:#fff;--bg:#F4F6FB;--line:#E1E6F0;--muted:#5B6785}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--navy);font-family:"Plus Jakarta Sans",sans-serif}
+header{padding:28px 16px 8px;max-width:1280px;margin:auto}
+h1{font:800 28px "Red Hat Display";margin:0 0 6px}
+header p{margin:0;color:var(--muted);font-size:14px}
+#preview{position:sticky;top:0;z-index:5;background:rgba(244,246,251,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+#preview .in{max-width:1280px;margin:auto;padding:12px 16px;display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+.lock-h{display:flex;align-items:center;gap:14px;color:var(--navy)}
+.lock-h svg{width:60px;height:60px}
+.wm .t1{font:800 26px/1 "Red Hat Display";letter-spacing:-.01em}
+.wm .t2{font:600 13px/1 "Red Hat Display";letter-spacing:.32em;color:var(--b);margin-top:6px;text-transform:uppercase}
+.lock-v{display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--navy);text-align:center}
+.lock-v svg{width:44px;height:44px}
+.lock-v .t1{font-size:15px}.lock-v .t2{font-size:8px;margin-top:3px}
+.lock-dark{background:var(--navy);color:#fff;border-radius:12px;padding:10px 16px;--b:#3D8BFF;--paper:var(--navy)}
+.lock-dark .lock-h{color:#fff}.lock-dark .t2{color:var(--c)}
+#shortlist{margin-left:auto;font-size:13px;color:var(--muted)}
+#shortlist b{color:var(--navy)}
+main{max-width:1280px;margin:auto;padding:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.card{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:12px;cursor:pointer;transition:border-color .15s,box-shadow .15s;position:relative;color:var(--navy)}
+.card:hover{box-shadow:0 6px 20px rgba(4,26,83,.08)}
+.card.sel{border-color:var(--b);box-shadow:0 0 0 3px rgba(0,89,255,.15)}
+.card .top{display:flex;justify-content:space-between;align-items:baseline}
+.card .num{font:800 13px "Red Hat Display";color:var(--b)}
+.card .name{font:700 14px "Red Hat Display"}
+.card .idea{font-size:12px;color:var(--muted);min-height:32px;margin:2px 0 6px}
+.big{display:flex;justify-content:center;padding:6px 0 10px}
+.big svg{width:120px;height:120px}
+.row{display:flex;align-items:center;gap:10px;border-top:1px solid var(--line);padding-top:10px}
+.dark{background:var(--navy);color:#fff;border-radius:10px;width:48px;height:48px;display:grid;place-items:center;--b:#3D8BFF;--paper:var(--navy)}
+.dark svg{width:34px;height:34px}
+.s32 svg{width:32px;height:32px;display:block}.s16 svg{width:16px;height:16px;display:block}
+.star{margin-left:auto;border:0;background:none;font-size:20px;cursor:pointer;color:#C3CBDD;padding:4px}
+.star.on{color:#FFB800}
+</style>
+</head>
+<body>
+<header>
+  <h1>Krabi Digital Solutions: 30 Semi-Abstract Marks</h1>
+  <p>คลิกการ์ดเพื่อดู lockup ด้านบน · กด ★ เพื่อ shortlist · แต่ละใบโชว์ขนาดใหญ่ / พื้น navy / 32px / 16px</p>
+</header>
+<div id="preview"><div class="in">
+  <div class="lock-h" id="pvH"></div>
+  <div class="lock-v" id="pvV"></div>
+  <div class="lock-dark"><div class="lock-h" id="pvD"></div></div>
+  <div id="shortlist">Shortlist: <b>-</b></div>
+</div></div>
+<main id="grid"></main>
+
+<script>
+const N='currentColor',B='var(--b)',C='var(--c)',P='var(--paper)';
+const p=(d,f=N,x='')=>`<path d="${d}" fill="${f}" ${x}/>`;
+const s=(d,c=N,w=6,x='')=>`<path d="${d}" fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" ${x}/>`;
+const ci=(x,y,r,f)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${f}"/>`;
+
+const marks=[
+{n:'Twin Towers',i:'เขาคู่ขนาบน้ำแบบเรขาคณิต + คลื่นอันดามัน',g:
+ p("M16 80 L30 38 Q33 32 36 38 L46 80Z")+p("M42 80 L54 22 Q56 16 62 18 L76 24 Q80 27 76 30 L70 32 L84 80Z",B)+s("M10 90 Q20 84 30 90 T50 90 T70 90 T90 90",C,5)},
+{n:'K-Karst',i:'ตัว K ที่ก้านตั้งเป็นเขาหินปูน',g:
+ p("M20 86 V28 Q20 14 30 14 Q40 14 40 28 V86Z")+p("M44 52 L68 16 H84 L60 52Z",B)+p("M44 56 H60 L84 86 H68Z",B)+ci(30,28,4,C)},
+{n:'Circuit Ridge',i:'เส้นขอบเขาเป็นลายวงจร มีจุด node',g:
+ s("M10 76 H24 L38 30 L50 56 L60 40 L76 76 H90",N,6)+ci(10,76,6,B)+ci(90,76,6,B)+ci(38,30,5,C)+ci(60,40,5,C)},
+{n:'Pixel Karst',i:'เขาคู่จาก pixel + น้ำเป็นบิต',g:(()=>{
+ const rows=["......##.",".....####",".....###.","..#..###.",".###.###.",".###.####","#########"];let o='';
+ rows.forEach((r,j)=>[...r].forEach((ch,i)=>{if(ch=='#')o+=`<rect x="${9.5+i*9}" y="${14+j*9}" width="8" height="8" rx="1.5" fill="${j<3?B:N}"/>`}));
+ for(let i=0;i<9;i++)o+=`<rect x="${11+i*9}" y="${i%2?84:80}" width="5" height="5" rx="1" fill="${C}"/>`;return o})()},
+{n:'Sunset Badge',i:'วงกลมตราประทับ เขา + คลื่น knockout',g:
+ ci(50,50,40,B)+p("M22 68 L38 36 L46 50 L56 26 L66 28 L62 34 L78 68Z",P)+s("M26 77 Q38 71 50 77 T74 77",P,4)+ci(72,30,4,C)},
+{n:'Faceted',i:'low-poly เขาคู่ มี facet สว่าง/มืด',g:
+ p("M12 82 L24 46 V82Z")+p("M24 46 L36 82 H24Z",B)+p("M34 82 L54 14 V82Z")+p("M54 14 L76 82 H54Z",B)+p("M54 14 L80 22 L66 38Z",C)},
+{n:'Monoline',i:'เส้นเดียวลากเขาคู่ + เส้นน้ำ',g:
+ s("M12 74 Q22 74 26 62 L32 44 Q35 36 38 44 L43 58 Q46 64 48 56 L54 26 Q57 16 66 18 L78 22 Q82 26 76 28 L70 30 L78 66 Q80 74 88 74",N,5)+s("M22 84 H78",B,5)+s("M36 93 H64",C,5)},
+{n:'Negative K',i:'K ในกรอบ squircle ก้าน K เป็นยอดเขา',g:
+ `<rect x="10" y="10" width="80" height="80" rx="20" fill="${N}"/>`+p("M28 72 V36 L35 26 L42 36 V72Z",P)+p("M46 52 L62 28 H75 L57 52Z",P)+p("M46 56 H57 L75 72 H62Z",C)},
+{n:'Hex Node',i:'hexagon (tech) ล้อมเขา มี node ที่ยอด',g:
+ s("M50 10 L85 30 V70 L50 90 L15 70 V30Z",N,5)+s("M26 66 L40 42 L50 56 L60 36 L74 66",B,5)+ci(40,42,4.5,C)+ci(60,36,4.5,C)},
+{n:'Scanline',i:'เขาคู่จากเส้นแนวนอน เหมือนจอ/สัญญาณ',g:(()=>{let o='';
+ for(let y=22;y<=78;y+=7){const g=[];const hb=(y-16)*.42;g.push([58-hb,58+hb]);if(y>=40){const hs=(y-38)*.45;g.push([28-hs,28+hs])}
+  g.forEach(([a,b])=>{a=Math.max(a,10);b=Math.min(b,90);o+=s(`M${a.toFixed(1)} ${y} H${Math.max(b,a+.5).toFixed(1)}`,y<44?B:N,4.5)})}
+ return o+s("M14 88 H86",C,4.5)})()},
+{n:'Dot Matrix',i:'จุด grid ก่อรูปเขา เหมือน LED/data',g:(()=>{let o='';
+ const top=x=>Math.min(16+Math.abs(x-60)*2.1,40+Math.abs(x-28)*2.4);
+ for(let x=14;x<=86;x+=8)for(let y=14;y<=78;y+=8)if(y>=top(x))o+=ci(x,y,3.2,y<40?B:N);
+ for(let x=14;x<=86;x+=8)o+=ci(x,88,2.4,C);return o})()},
+{n:'Sunset Arc',i:'พระอาทิตย์ตกหลังเขา (อ้างอิงรูป sunset)',g:
+ p("M22 64 A28 28 0 0 1 78 64Z",C)+p("M12 66 L30 32 L40 48 L54 20 L66 22 L62 30 L80 66Z")+s("M18 76 H82",B,5)+s("M30 86 H70",B,5)},
+{n:'Longtail Signal',i:'เรือหางยาว + คลื่นสัญญาณ wifi',g:
+ p("M12 62 H82 Q78 76 62 78 H30 Q16 76 12 62Z")+s("M82 62 L90 46",N,5)+s("M40 44 A14 14 0 0 1 60 44",B,5)+s("M32 34 A24 24 0 0 1 68 34",B,5)+ci(50,52,5,C)+s("M16 88 Q33 82 50 88 T84 88",B,4)},
+{n:'Caret Peaks',i:'^^ ของ code กลายเป็นเขาคู่ + cursor _',g:
+ s("M12 70 L30 36 L48 70",N,8)+s("M40 70 L60 22 L80 70",B,8)+s("M26 86 H74",C,7)},
+{n:'Wave K',i:'K ที่แขนเป็นคลื่นทะเล',g:
+ `<rect x="18" y="14" width="16" height="72" rx="8" fill="${N}"/>`+s("M42 50 Q56 46 60 32 T82 16",B,9)+s("M42 54 Q56 58 62 72 T84 86",C,9)},
+{n:'Chat Peak',i:'bubble แชท (Local AI) มีเขาอยู่ข้างใน',g:
+ p("M18 18 H82 Q90 18 90 26 V62 Q90 70 82 70 H44 L28 86 V70 H18 Q10 70 10 62 V26 Q10 18 18 18Z",B)+p("M22 60 L36 34 L44 46 L56 28 L66 30 L62 36 L78 60Z",P)+ci(72,30,4,C)},
+{n:'Cursor Karst',i:'เขาเหนือน้ำ เงาสะท้อนเป็น text cursor',g:
+ p("M18 70 L36 30 L46 48 L58 18 L68 20 L64 28 L82 70Z")+s("M12 78 H40",B,4)+s("M60 78 H88",B,4)+`<rect x="46" y="74" width="8" height="20" rx="2" fill="${C}"/>`},
+{n:'Island Pin',i:'หมุด location = กระบี่ มีเขา+คลื่นข้างใน',g:
+ p("M50 94 C50 94 16 62 16 40 A34 34 0 0 1 84 40 C84 62 50 94 50 94Z")+p("M28 52 L40 30 L47 42 L56 22 L64 24 L61 30 L72 52Z",P)+s("M32 61 Q41 56 50 61 T68 61",C,4)},
+{n:'Ripple',i:'เขาเดี่ยวทรงสูง + วงคลื่นกระเพื่อม',g:
+ p("M32 62 L44 22 Q46 16 52 16 L64 20 Q68 22 64 26 L60 28 L68 62Z")+s("M18 72 Q50 82 82 72",B,5)+s("M28 84 Q50 91 72 84",C,5)},
+{n:'Half Wire',i:'ครึ่งซ้ายธรรมชาติ ครึ่งขวา wireframe ดิจิทัล',g:
+ p("M14 80 L34 36 L50 56 V80Z")+s("M50 56 L62 20 L86 80 H50",B,4)+s("M50 80 L62 20 M50 56 L74 50 M62 20 L74 50 L86 80 M74 50 L50 80",B,2.5)+ci(62,20,4.5,C)+ci(74,50,4.5,C)+ci(86,80,4.5,C)},
+{n:'Pixel Reflection',i:'เขาจริงด้านบน เงาในน้ำเป็นเส้น digital',g:
+ p("M16 58 L34 22 L44 40 L56 12 L66 14 L62 22 L84 58Z")+s("M14 66 H86",B,4)+s("M22 75 H76",B,4,'stroke-dasharray="9 6"')+s("M32 84 H66",C,4,'stroke-dasharray="4 6"')+s("M42 93 H56",C,4,'stroke-dasharray="2 6"')},
+{n:'Orbit',i:'เขาหินปูน + วงโคจร (tech/global)',g:
+ p("M28 72 L42 32 L50 46 L58 24 L72 72Z")+`<ellipse cx="50" cy="56" rx="42" ry="13" fill="none" stroke="${B}" stroke-width="4" transform="rotate(-16 50 56)"/>`+ci(88,44,5.5,C)},
+{n:'Pebble Twins',i:'เขาคู่ทรงมน นุ่ม เป็นมิตร',g:
+ p("M14 80 C14 56 20 40 30 40 C40 40 44 56 44 80Z")+p("M40 80 C40 50 46 18 60 18 C70 18 82 22 82 30 C82 36 72 36 72 44 C72 58 80 70 84 80Z",B)+s("M12 90 Q31 84 50 90 T88 90",C,5)},
+{n:'Hook Tower',i:'หินงองุ้ม (overhang) + หยด data',g:
+ p("M28 86 V42 C28 22 40 12 58 12 C72 12 84 20 84 30 C84 38 76 40 68 38 C60 36 56 40 56 48 V86Z")+s("M72 42 V50",B,3)+ci(72,58,7,C)+s("M14 92 H86",B,5)},
+{n:'Data Bars',i:'กราฟแท่งหัวมนที่เรียงเป็นเขา',g:
+ `<rect x="15" y="50" width="18" height="36" rx="9" fill="${N}"/><rect x="41" y="18" width="18" height="68" rx="9" fill="${B}"/><rect x="67" y="36" width="18" height="50" rx="9" fill="${N}"/>`+s("M10 93 Q30 87 50 93 T90 93",C,4)},
+{n:'Mesh',i:'เขาจากโครงข่ายสามเหลี่ยม node',g:
+ s("M14 80 L34 40 L48 62 L60 18 L70 50 L86 80 Z M14 80 L48 62 L86 80 M34 40 L60 18 M48 62 L70 50",N,3)+ci(14,80,4.5,B)+ci(48,62,4.5,B)+ci(86,80,4.5,B)+ci(70,50,4.5,B)+ci(34,40,5.5,C)+ci(60,18,5.5,C)},
+{n:'App Squircle',i:'icon แบบ app สีน้ำเงิน เขาคู่ + คลื่น',g:
+ `<rect x="10" y="10" width="80" height="80" rx="24" fill="${B}"/>`+p("M20 68 L36 36 L44 50 L56 24 L67 26 L63 33 L80 68Z",N)+s("M22 78 Q36 72 50 78 T78 78",P,4)+ci(70,24,4,C)},
+{n:'Sun Node',i:'ดวงอาทิตย์เป็น node เชื่อมยอดเขา',g:
+ s("M34 40 L76 22 L60 30",B,2.5)+p("M12 80 L34 40 L46 60 L60 30 L88 80Z")+ci(76,22,8,C)+ci(34,40,3.5,C)+ci(60,30,3.5,C)},
+{n:'Overlap',i:'สามเหลี่ยมโปร่งซ้อนกัน modern',g:
+ p("M10 82 L38 30 L66 82Z")+p("M34 82 L62 16 L90 82Z",B,'opacity=".82"')+s("M10 90 H90",C,4)},
+{n:'Wave to Binary',i:'คลื่นซ้ายค่อยๆ กลายเป็น dash ดิจิทัล',g:
+ p("M22 68 L40 26 L50 44 L62 20 L72 22 L68 30 L80 68Z")+s("M10 80 Q18 74 26 80 T42 80",B,5)+s("M50 80 H58 M66 80 H70 M78 80 H80",B,5)+ci(88,80,3,C)}
+];
+
+const svg=g=>`<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">${g}</svg>`;
+let stars=[];try{stars=JSON.parse(localStorage.getItem('kd-stars')||'[]')}catch(e){}
+const grid=document.getElementById('grid');
+marks.forEach((m,k)=>{
+  const el=document.createElement('div');el.className='card';el.dataset.k=k;
+  el.innerHTML=`<div class="top"><span class="name">${m.n}</span><span class="num">#${String(k+1).padStart(2,'0')}</span></div>
+  <div class="idea">${m.i}</div><div class="big">${svg(m.g)}</div>
+  <div class="row"><div class="dark">${svg(m.g)}</div><div class="s32">${svg(m.g)}</div><div class="s16">${svg(m.g)}</div>
+  <button class="star${stars.includes(k+1)?' on':''}" title="shortlist">★</button></div>`;
+  el.onclick=e=>{
+    if(e.target.classList.contains('star')){
+      const n=k+1;stars=stars.includes(n)?stars.filter(x=>x!==n):[...stars,n].sort((a,b)=>a-b);
+      e.target.classList.toggle('on');saveStars();return;}
+    select(k)};
+  grid.appendChild(el);
+});
+const wm=`<div class="wm"><div class="t1">Krabi Digital</div><div class="t2">Solutions</div></div>`;
+function select(k){
+  document.querySelectorAll('.card').forEach(c=>c.classList.toggle('sel',+c.dataset.k===k));
+  const g=svg(marks[k].g);
+  pvH.innerHTML=g+wm;pvV.innerHTML=g+wm;pvD.innerHTML=g+wm;
+}
+function saveStars(){try{localStorage.setItem('kd-stars',JSON.stringify(stars))}catch(e){}
+  document.querySelector('#shortlist b').textContent=stars.length?stars.map(n=>'#'+n).join(', '):'-'}
+saveStars();select(0);
+</script>
+</body>
+</html>

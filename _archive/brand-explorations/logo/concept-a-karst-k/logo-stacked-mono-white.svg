@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 230">
+<style>@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@500;700&amp;display=swap');</style>
+<g transform="translate(120 0)"><path d="M70 84C80 86 86 93 92 104" fill="none" stroke="#FFFFFF" stroke-width="24" stroke-linecap="round"/>
+<path d="M16 96V36C16 22 23 12 31 12C39 12 46 22 46 36V96C46 103 40 108 31 108C22 108 16 103 16 96Z" fill="#FFFFFF"/>
+<line x1="61" y1="58" x2="86" y2="30" stroke="#FFFFFF" stroke-width="24" stroke-linecap="round"/>
+<rect x="100" y="4" width="14" height="14" rx="3" fill="#FFFFFF"/></g>
+<text x="180" y="178" text-anchor="middle" font-family="'Bai Jamjuree',sans-serif" font-weight="700" font-size="40" letter-spacing="0.5" fill="#FFFFFF">KRABI DIGITAL</text>
+<text x="180" y="214" text-anchor="middle" font-family="'Bai Jamjuree',sans-serif" font-weight="500" font-size="19" letter-spacing="5.6" fill="#FFFFFF">SOLUTIONS</text>
+</svg>

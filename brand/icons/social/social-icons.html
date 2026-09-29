@@ -1,0 +1,19 @@
+<!-- 1. once per page: paste social-sprite.svg inline right after <body>
+     (or point href at /icons/social/social-sprite.svg on the same origin) -->
+
+<!-- 2. framed icon (32 px; add kd-si--lg = 48 or kd-si--sm = 24) -->
+<a class="kd-si" href="https://www.facebook.com/..." aria-label="Facebook">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <use href="#kd-si-frame"/>
+    <use href="#kd-si-facebook" x="6" y="6" width="12" height="12"/>
+  </svg>
+</a>
+
+<!-- 3. on Navy: wrap the row -->
+<div class="kd-on-dark"> ...same markup... </div>
+
+<!-- 4. glyph only, next to text -->
+<a href="tel:0808930617">
+  <svg class="kd-sg" viewBox="0 0 24 24" aria-hidden="true"><use href="#kd-si-phone"/></svg>
+  080-893-0617
+</a>

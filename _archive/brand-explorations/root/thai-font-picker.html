@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Thai Font Picker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;600&family=Anuphan:wght@300;400;500;600;700&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&family=Prompt:wght@300;400;500;600;700;800&family=Kanit:wght@300;400;500;600;700;800&family=Bai+Jamjuree:wght@300;400;500;600;700&family=Chakra+Petch:wght@300;400;500;600;700&family=Mitr:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* LINE Seed Sans TH: LINE Corp, served from npm via jsDelivr */
+@font-face{font-family:"LINE Seed Sans TH";src:url(https://cdn.jsdelivr.net/npm/@fontpkg/line-seed-sans-th@1.0.1/LINESeedSansTH_Th.ttf) format("truetype");font-weight:100;font-display:swap}
+@font-face{font-family:"LINE Seed Sans TH";src:url(https://cdn.jsdelivr.net/npm/@fontpkg/line-seed-sans-th@1.0.1/LINESeedSansTH_Rg.ttf) format("truetype");font-weight:400;font-display:swap}
+@font-face{font-family:"LINE Seed Sans TH";src:url(https://cdn.jsdelivr.net/npm/@fontpkg/line-seed-sans-th@1.0.1/LINESeedSansTH_Bd.ttf) format("truetype");font-weight:700;font-display:swap}
+@font-face{font-family:"LINE Seed Sans TH";src:url(https://cdn.jsdelivr.net/npm/@fontpkg/line-seed-sans-th@1.0.1/LINESeedSansTH_XBd.ttf) format("truetype");font-weight:800;font-display:swap}
+@font-face{font-family:"LINE Seed Sans TH";src:url(https://cdn.jsdelivr.net/npm/@fontpkg/line-seed-sans-th@1.0.1/LINESeedSansTH_He.ttf) format("truetype");font-weight:900;font-display:swap}
+
+:root{
+  --navy:#041A53;--blue:#0059FF;--cyan:#09FFFF;--sky:#7FAEFF;--mist:#EEF3FC;--line:#DCE3F0;--ink:#0B1633;--muted:#56627F;--deep:#020E30;
+  --f-head:"Red Hat Display",system-ui,sans-serif;--f-body:"Plus Jakarta Sans",system-ui,sans-serif;--f-mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--mist);color:var(--ink);font:400 15px/1.6 var(--f-body),"Leelawadee UI",sans-serif}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px}
+button{font:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+
+header.top{background:var(--navy);color:#fff}
+header.top .wrap{padding:36px 20px 28px;display:flex;flex-direction:column;gap:10px}
+.eyebrow{font:600 11px var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--cyan)}
+h1{margin:0;font:800 clamp(28px,4vw,44px)/1.05 var(--f-head);letter-spacing:-.03em}
+header.top p{margin:0;color:#AFC2EA;max-width:70ch}
+
+.tools{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.tools .wrap{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;padding:12px 20px}
+.tools label{font:600 11px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:8px}
+.tools input[type=text]{font:400 14px var(--f-body),"Leelawadee UI",sans-serif;border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:min(420px,70vw)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden}
+.seg button{border:0;background:#fff;padding:7px 12px;font:600 12px var(--f-body);color:var(--muted)}
+.seg button[aria-pressed=true]{background:var(--navy);color:#fff}
+.count{margin-left:auto;font:600 12px var(--f-mono);color:var(--blue)}
+
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 4px}
+.legend span{font:600 11px var(--f-mono);padding:4px 9px;border-radius:99px;background:#fff;border:1px solid var(--line);color:var(--navy)}
+
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:16px 0 40px}
+@media (max-width:900px){.grid{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s,border-color .2s}
+.card.fav{border-color:var(--blue);box-shadow:0 0 0 2px var(--blue)}
+.card.hidden{display:none}
+.card .hd{display:flex;align-items:flex-start;gap:12px;padding:18px 20px 12px}
+.card .no{font:800 12px var(--f-mono);color:var(--blue);padding-top:5px}
+.card .nm{font:800 20px/1.2 var(--f-head);letter-spacing:-.01em;color:var(--navy)}
+.card .src{font:500 12px var(--f-body);color:var(--muted)}
+.card .src a{color:var(--blue)}
+.star{margin-left:auto;border:1px solid var(--line);background:#fff;border-radius:10px;padding:7px 12px;font:600 12px var(--f-body);color:var(--navy);white-space:nowrap}
+.star[aria-pressed=true]{background:var(--blue);border-color:var(--blue);color:#fff}
+.tags{display:flex;flex-wrap:wrap;gap:6px;padding:0 20px 12px}
+.tags i{font:600 10.5px var(--f-mono);font-style:normal;padding:3px 8px;border-radius:6px;background:var(--mist);color:var(--navy)}
+.tags i.good{background:#E6F6EE;color:#0A7F4F}
+.tags i.warn{background:#FFF4DA;color:#7A5200}
+
+.stage{padding:22px 20px;display:flex;flex-direction:column;gap:14px;border-top:1px solid var(--line)}
+.stage.dark{background:var(--navy);color:#fff}
+.stage .big{font-size:clamp(40px,5vw,56px);line-height:1.1;font-weight:700;letter-spacing:-.01em;word-break:break-word}
+.stage .head{font-size:26px;line-height:1.25;font-weight:700}
+.stage .head .en{font-family:var(--f-head);font-weight:800;letter-spacing:-.02em}
+.stage .head em{font-style:normal;color:var(--blue)}
+.stage.dark .head em{color:var(--cyan)}
+.stage .body{font-size:16px;line-height:1.75;font-weight:400;color:var(--muted)}
+.stage.dark .body{color:#AFC2EA}
+.stage .body .en{font-family:var(--f-body)}
+.ui{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ui b{font-weight:600;font-size:14px;padding:9px 15px;border-radius:10px;background:var(--blue);color:#fff}
+.ui b.o{background:transparent;color:inherit;box-shadow:inset 0 0 0 1.5px var(--line)}
+.ui small{font-size:12px;color:var(--muted)}
+.stage.dark .ui small{color:#8FA6D8}
+.weights{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:20px;line-height:1.3}
+.weights span{white-space:nowrap}
+.weights small{font:500 10px var(--f-mono);color:var(--muted);margin-left:3px}
+.stage.dark .weights small{color:#8FA6D8}
+.sizes{display:flex;flex-direction:column;gap:2px}
+.sizes div{display:flex;gap:10px;align-items:baseline}
+.sizes span:first-child{font:500 10px var(--f-mono);color:var(--muted);width:34px;flex:none}
+.foot{margin-top:auto;padding:12px 20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font:500 11.5px var(--f-mono);color:var(--muted)}
+
+/* compare table */
+.cmp{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;margin:16px 0 40px}
+.cmp .row{display:grid;grid-template-columns:190px 1fr;gap:16px;padding:14px 20px;border-bottom:1px solid var(--line);align-items:baseline}
+.cmp .row:last-child{border-bottom:0}
+.cmp .row.fav{background:#F1F6FF}
+.cmp .row .k{font:700 13px var(--f-head);color:var(--navy)}
+.cmp .row .k small{display:block;font:500 11px var(--f-mono);color:var(--muted)}
+.cmp .row .v{font-size:22px;line-height:1.45}
+.cmp .row .v .en{font-family:var(--f-body)}
+@media (max-width:640px){.cmp .row{grid-template-columns:1fr;gap:4px}}
+h2{font:800 24px var(--f-head);letter-spacing:-.02em;color:var(--navy);margin:34px 0 4px}
+.sub{color:var(--muted);font-size:14px;margin:0}
+.pickbox{background:var(--navy);color:#fff;border-radius:18px;padding:22px 24px;margin:0 0 40px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.pickbox b{font:800 18px var(--f-head)}
+.pickbox span{color:#AFC2EA;font-size:14px}
+.pickbox code{font:500 12.5px var(--f-mono);background:rgba(255,255,255,.08);padding:8px 10px;border-radius:8px;color:#CFE0FF;word-break:break-all}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <span class="eyebrow">Krabi Digital · Brand CI · Thai typeface</span>
+  <h1>เลือกฟอนต์ไทย 10 ตัว</h1>
+  <p>ทุกตัวใช้เชิงพาณิชย์ได้ฟรี เทียบในบริบทจริงของแบรนด์ คู่กับ Red Hat Display (หัวเรื่อง) และ Plus Jakarta Sans (เนื้อหา) กด ★ เก็บตัวที่ชอบ แล้วกด "เฉพาะที่ติดดาว" เพื่อเทียบรอบสุดท้าย</p>
+</div></header>
+
+<div class="tools"><div class="wrap">
+  <label>ข้อความทดสอบ <input type="text" id="txt" value="เขาขนาบน้ำ กระบี่"></label>
+  <div class="seg" role="group" aria-label="Background"><button type="button" data-bg="light" aria-pressed="true">พื้นขาว</button><button type="button" data-bg="dark" aria-pressed="false">พื้น Navy</button></div>
+  <div class="seg" role="group" aria-label="Filter"><button type="button" data-f="all" aria-pressed="true">ทั้งหมด</button><button type="button" data-f="fav" aria-pressed="false">เฉพาะที่ติดดาว</button></div>
+  <span class="count" id="count"></span>
+</div></div>
+
+<main class="wrap">
+  <div class="legend"><span>แหล่ง: LINE Corp · Cadson Demak · IBM · Google</span><span>หัว = มีหัว (looped)</span><span>ไม่มีหัว = loopless</span></div>
+  <div class="grid" id="grid"></div>
+
+  <h2>เทียบบรรทัดเดียวกัน</h2>
+  <p class="sub">ประโยคผสมไทย-อังกฤษ ดูว่าตัวไทยสูงพอดีกับ Plus Jakarta Sans และน้ำหนักเส้นเท่ากันไหม</p>
+  <div class="cmp" id="cmp"></div>
+
+  <div class="pickbox" id="pickbox"></div>
+</main>
+
+<script>
+(function(){
+const FONTS=[
+ {n:'LINE Seed Sans TH',src:'LINE Corporation',url:'https://seed.line.me/index_th.html',via:'jsDelivr (npm @fontpkg/line-seed-sans-th)',lic:'SIL OFL 1.1',w:[100,400,700,800,900],
+  tags:[['ไม่มีหัว'],['geometric กลมมน'],['มีตัวละตินในชุด','good'],['จำได้ว่าเป็นฟอนต์ LINE','warn']],
+  note:'สะอาด ทันสมัย ตัวกว้าง อ่านง่ายบนมือถือ ครอบครัวเดียวกับ LINE Seed ละติน'},
+ {n:'Anuphan',src:'Cadson Demak',url:'https://fonts.google.com/specimen/Anuphan',via:'Google Fonts',lic:'SIL OFL 1.1',w:[100,300,400,500,600,700],
+  tags:[['ไม่มีหัว'],['geometric'],['ตัวที่เสนอใน v1.1','warn']],
+  note:'หัวตัดตรง เรียบ ออกทางเทคนิค เข้ากับ Plus Jakarta Sans'},
+ {n:'IBM Plex Sans Thai',src:'IBM · Cadson Demak',url:'https://github.com/IBM/plex',via:'Google Fonts / npm @ibm/plex-sans-thai',lic:'SIL OFL 1.1',w:[100,200,300,400,500,600,700],
+  tags:[['ไม่มีหัว'],['humanist'],['มีรุ่น Looped','good'],['ดู corporate/tech','good']],
+  note:'ออกแบบมาเป็นระบบ UI อ่านเนื้อหายาวสบาย มีรุ่นมีหัวสำหรับเอกสารทางการ'},
+ {n:'Noto Sans Thai',src:'Google',url:'https://fonts.google.com/noto/specimen/Noto+Sans+Thai',via:'Google Fonts',lic:'SIL OFL 1.1',w:[100,200,300,400,500,600,700,800,900],
+  tags:[['ไม่มีหัว'],['เป็นกลาง'],['variable 100–900','good'],['มีรุ่น Looped','good']],
+  note:'ปลอดภัยที่สุด เป็นกลาง ใช้ได้ทุกอย่าง แต่บุคลิกน้อย'},
+ {n:'Prompt',src:'Cadson Demak',url:'https://fonts.google.com/specimen/Prompt',via:'Google Fonts',lic:'SIL OFL 1.1',w:[100,200,300,400,500,600,700,800,900],
+  tags:[['ไม่มีหัว'],['geometric กลม'],['หนาได้ถึง 900','good']],
+  note:'กลมแน่น หัวเรื่องหนักๆ ดูมั่นใจ ใช้แพร่หลายในเว็บไทย'},
+ {n:'Kanit',src:'Cadson Demak',url:'https://fonts.google.com/specimen/Kanit',via:'Google Fonts',lic:'SIL OFL 1.1',w:[100,200,300,400,500,600,700,800,900],
+  tags:[['ไม่มีหัว'],['เหลี่ยมมน'],['พบบ่อยมาก','warn']],
+  note:'ตัวสูง แน่น มีมุมเหลี่ยม เหมาะหัวเรื่องโปรโมต แต่เห็นบ่อยจนจำแบรนด์ยาก'},
+ {n:'Bai Jamjuree',src:'Cadson Demak',url:'https://fonts.google.com/specimen/Bai+Jamjuree',via:'Google Fonts',lic:'SIL OFL 1.1',w:[200,300,400,500,600,700],
+  tags:[['ไม่มีหัว'],['tech / เหลี่ยม'],['เข้ากับ pixel','good']],
+  note:'เส้นตรงมุมตัด ดู engineering เข้ากับ Pixel K แต่เนื้อหายาวอ่านเหนื่อยกว่า'},
+ {n:'Chakra Petch',src:'Cadson Demak',url:'https://fonts.google.com/specimen/Chakra+Petch',via:'Google Fonts',lic:'SIL OFL 1.1',w:[300,400,500,600,700],
+  tags:[['ไม่มีหัว'],['square tech'],['หัวเรื่องเท่านั้น','warn']],
+  note:'เหลี่ยมจัด บุคลิกแรง ใช้เป็น display ได้ ไม่เหมาะเป็นเนื้อหา'},
+ {n:'Mitr',src:'Cadson Demak',url:'https://fonts.google.com/specimen/Mitr',via:'Google Fonts',lic:'SIL OFL 1.1',w:[200,300,400,500,600,700],
+  tags:[['ไม่มีหัว'],['rounded เป็นมิตร'],['หัวเรื่องเท่านั้น','warn']],
+  note:'ปลายมน อบอุ่น เป็นกันเอง เหมาะงานโซเชียล แต่ลดความ tech ลง'},
+ {n:'Sarabun',src:'Cadson Demak (สาย TH Sarabun New)',url:'https://fonts.google.com/specimen/Sarabun',via:'Google Fonts',lic:'SIL OFL 1.1',w:[100,200,300,400,500,600,700,800],
+  tags:[['มีหัว'],['ทางการ'],['เอกสาร / สัญญา','good']],
+  note:'ตัวมีหัว คุ้นตาในเอกสารราชการ ใช้คู่เป็นฟอนต์เอกสาร ไม่ใช่ฟอนต์แบรนด์หลัก'}
+];
+const $=s=>document.querySelector(s);
+let favs=[];try{favs=JSON.parse(localStorage.getItem('kd-thai-favs')||'[]')}catch(_){}
+let filter='all',bg='light';
+const save=()=>{try{localStorage.setItem('kd-thai-favs',JSON.stringify(favs))}catch(_){}};
+const esc=t=>t.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const ff=f=>`font-family:'${f.n}','Leelawadee UI',sans-serif`;
+
+function render(){
+  const t=esc($('#txt').value||'เขาขนาบน้ำ กระบี่');
+  $('#grid').innerHTML=FONTS.map((f,i)=>{const on=favs.includes(f.n);
+    const wts=f.w.filter(w=>w>=300&&w<=800);
+    return `<article class="card${on?' fav':''}${filter==='fav'&&!on?' hidden':''}">
+    <div class="hd"><span class="no">${String(i+1).padStart(2,'0')}</span><div><div class="nm">${f.n}</div><div class="src">${f.src} · <a href="${f.url}" target="_blank" rel="noopener">specimen</a></div></div>
+      <button type="button" class="star" data-i="${i}" aria-pressed="${on}">${on?'★ เลือกแล้ว':'☆ เก็บไว้'}</button></div>
+    <div class="tags">${f.tags.map(([x,c])=>`<i class="${c||''}">${x}</i>`).join('')}</div>
+    <div class="stage ${bg}" style="${ff(f)}">
+      <div class="big">${t}</div>
+      <div class="head"><span class="en">Local AI</span> สำหรับธุรกิจ<em>กระบี่</em></div>
+      <div class="body">เราทำเว็บไซต์ <span class="en">booking system</span> แอป และ <span class="en">AI</span> ที่รันบนเซิร์ฟเวอร์ของคุณเอง ข้อมูลลูกค้าไม่ออกไปนอกบริษัท ตอบกลับภายใน 1 วันทำการ ราคา ฿25,000</div>
+      <div class="ui"><b>ขอใบเสนอราคา</b><b class="o">ดูผลงานของเรา</b><small>จันทร์–เสาร์ 09:00–18:00</small></div>
+      <div class="weights">${wts.map(w=>`<span style="font-weight:${w}">กระบี่<small>${w}</small></span>`).join('')}</div>
+      <div class="sizes"><div><span>14px</span><span style="font-size:14px">ระบบจองห้องพัก ปฏิทินว่าง ชำระเงินออนไลน์ ฎฏฐฑฒ ปัจจุบัน ๑๒๓</span></div><div><span>12px</span><span style="font-size:12px">ข้อความเล็กในฟอร์มและ footer ต้องยังอ่านออก ป่า ฝ้าย ฟ้า ญี่ปุ่น</span></div></div>
+    </div>
+    <div class="foot"><span>${f.lic} · ${f.w.length} weights (${f.w[0]}–${f.w[f.w.length-1]})</span><span>${f.via}</span></div>
+    <div class="foot" style="font:400 13px var(--f-body),'Leelawadee UI';color:var(--ink)">${f.note}</div>
+    </article>`}).join('');
+  $('#cmp').innerHTML=FONTS.filter(f=>filter==='all'||favs.includes(f.n)).map(f=>`<div class="row${favs.includes(f.n)?' fav':''}"><div class="k">${f.n}<small>${f.src}</small></div><div class="v" style="${ff(f)}">ทีม <span class="en">Web &amp; Local AI</span> จากกระบี่ ดูแลต่อหลังส่งงาน</div></div>`).join('')||'<div class="row"><div class="k">ยังไม่มี</div><div class="v" style="font-size:15px">กด ☆ ที่การ์ดก่อน</div></div>';
+  $('#count').textContent=`★ ${favs.length} / ${FONTS.length}`;
+  const pick=FONTS.filter(f=>favs.includes(f.n));
+  $('#pickbox').innerHTML=pick.length?`<div><b>ที่เลือกไว้: ${pick.map(f=>f.n).join(' · ')}</b><br><span>ส่งชื่อนี้กลับมาใน chat แล้วจะอัปเดต brand book + tokens ให้</span></div><code>--kd-font-th:"${pick[0].n}",sans-serif;</code>`:`<div><b>ยังไม่ได้เลือก</b><br><span>กด ☆ อย่างน้อย 1 ตัว ตัวแรกที่เลือกจะถูกใช้ใน token ตัวอย่าง</span></div>`;
+}
+document.addEventListener('click',e=>{
+  const s=e.target.closest('.star');if(s){const n=FONTS[+s.dataset.i].n;favs=favs.includes(n)?favs.filter(x=>x!==n):[...favs,n];save();render();return}
+  const b=e.target.closest('[data-bg]');if(b){bg=b.dataset.bg;document.querySelectorAll('[data-bg]').forEach(x=>x.setAttribute('aria-pressed',x===b));render();return}
+  const f=e.target.closest('[data-f]');if(f){filter=f.dataset.f;document.querySelectorAll('[data-f]').forEach(x=>x.setAttribute('aria-pressed',x===f));render()}
+});
+$('#txt').addEventListener('input',render);
+render();
+if(document.fonts)document.fonts.ready.then(render);
+})();
+</script>
+</body>
+</html>

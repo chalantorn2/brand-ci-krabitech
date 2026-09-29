@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gradient Comparison</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:"LINE Seed Sans TH";font-weight:700;src:url(../fonts/LINESeedSansTH_Bd.woff2) format("woff2")}
+@font-face{font-family:"LINE Seed Sans TH";font-weight:800;src:url(../fonts/LINESeedSansTH_XBd.woff2) format("woff2")}
+:root{
+  color-scheme:light;
+  --navy:#041A53;--blue:#0059FF;--cyan:#09FFFF;--sky:#7FAEFF;--mist:#EEF3FC;--line:#DCE3F0;--slate:#56627F;--ink:#0B1633;
+  --f-head:"Red Hat Display","LINE Seed Sans TH",sans-serif;
+  --f-body:"Plus Jakarta Sans","IBM Plex Sans Thai",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0}
+body{background:#fff;color:var(--ink);font:400 15px/1.6 var(--f-body)}
+.wrap{max-width:1180px;margin:0 auto;padding:48px 16px 80px}
+.eb{font:600 12px var(--f-mono);letter-spacing:.16em;color:var(--blue)}
+h1{font:800 clamp(30px,4.4vw,46px)/1.08 var(--f-head);color:var(--navy);letter-spacing:-.02em;margin-top:10px}
+h2{font:800 24px/1.2 var(--f-head);color:var(--navy);margin:56px 0 6px}
+.lead{color:var(--slate);max-width:68ch;margin-top:12px;font-size:16px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+@media (max-width:760px){.cols{grid-template-columns:1fr}}
+.opt{border:1px solid var(--line);border-radius:16px;padding:22px}
+.opt.rec{border:2px solid var(--blue)}
+.opt .tag{display:inline-block;font:600 11px var(--f-mono);letter-spacing:.12em;padding:4px 8px;border-radius:6px;background:var(--mist);color:var(--navy)}
+.opt.rec .tag{background:var(--blue);color:#fff}
+.opt h3{font:800 22px var(--f-head);color:var(--navy);margin-top:10px}
+.opt p{color:var(--slate);font-size:14px;margin-top:6px}
+.opt ul{margin:12px 0 0;padding-left:18px;font-size:14px}
+.opt li{margin-top:4px}
+.opt li.pro::marker{content:"+  ";color:#0FA968;font-weight:700}
+.opt li.con::marker{content:"–  ";color:#E5364B;font-weight:700}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:12px}
+@media (max-width:760px){.pair{grid-template-columns:1fr}}
+figure{margin:0}
+figcaption{display:flex;justify-content:space-between;gap:8px;font:600 12px var(--f-mono);letter-spacing:.06em;color:var(--slate);margin-top:8px}
+figcaption button{font:600 12px var(--f-body);border:1px solid var(--line);background:#fff;border-radius:7px;padding:3px 9px;cursor:pointer;color:var(--navy)}
+figcaption button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.art{position:relative;overflow:hidden;border-radius:12px;background:var(--navy);container-type:inline-size}
+.art canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.art .ov{position:absolute;inset:0;display:flex;flex-direction:column;padding:6cqw 6.5cqw;color:#fff}
+.art.light .ov{color:var(--navy)}
+.lock{display:flex;align-items:center;gap:1.4cqw;font-size:3.1cqw}
+.lock svg{width:5.4cqw;height:5.4cqw}
+.lock .a{font:700 1em/1 var(--f-head);letter-spacing:-.015em}
+.lock .b{font:600 .38em/1 var(--f-head);letter-spacing:.44em;opacity:.72;margin-top:.3em}
+.hero h4{font:800 6.2cqw/1.02 var(--f-head);letter-spacing:-.03em;margin-top:auto;max-width:11em}
+.hero h4 em{font-style:normal;color:var(--cyan)}
+.art.light .hero h4 em{color:var(--blue)}
+.hero p{font:500 1.9cqw/1.5 var(--f-body);opacity:.8;margin-top:1.6cqw}
+.post h4{font:800 11cqw/1 var(--f-head);letter-spacing:-.035em;margin-top:auto}
+.post h4 span{color:var(--cyan)}
+.post .ft{font:600 3cqw var(--f-mono);margin-top:6cqw;opacity:.8}
+.cover .kick{font:600 2.6cqw var(--f-mono);letter-spacing:.16em;margin-top:auto;opacity:.85}
+.cover h4{font:800 8.4cqw/1.08 var(--f-head);margin-top:2cqw}
+.cover p{font:500 3.2cqw/1.4 var(--f-body);margin-top:3cqw;opacity:.8}
+.cover .lock{font-size:4.6cqw}.cover .lock svg{width:8cqw;height:8cqw}
+.post .lock{font-size:4.2cqw}.post .lock svg{width:7.4cqw;height:7.4cqw}
+.verdict{margin-top:56px;background:var(--navy);color:#fff;border-radius:18px;padding:28px}
+.verdict h2{color:#fff;margin:0}
+.verdict p{color:#AFC2EA;margin-top:10px;max-width:72ch}
+.verdict b{color:#fff}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eb">KRABI DIGITAL · GRADIENT STUDY</div>
+  <h1>Soft Mesh กับ Pixel Mesh</h1>
+  <p class="lead">ใช้ field สีชุดเดียวกัน (Navy → Blue → Sky/Cyan) วางจุดเดียวกัน แล้ว render สองแบบให้เห็นความต่างแบบตรงๆ ใช้เป็นพื้นหลังเท่านั้น ไม่ใช้หลังโลโก้ขนาดเล็ก และไม่ใช้กับตัวอักษร</p>
+
+  <div class="cols">
+    <div class="opt"><span class="tag">A · SOFT MESH</span><h3>ฟุ้ง นุ่ม ต่อเนื่อง</h3><p>สีไหลกันแบบ blur เหมือน Stripe / Apple / AI startup</p>
+      <ul><li class="pro">ดูพรีเมียม ทันสมัย เป็นพื้นหลังรูปถ่ายและข้อความได้ดี</li><li class="pro">ทำง่ายทั้งใน Figma และ CSS</li><li class="con">ไม่มีอะไรที่เป็นของ Krabi Digital เอาโลโก้ออกแล้วเป็นของใครก็ได้</li><li class="con">ขัดกับ K8 ที่คม ทึบ เป็นทรงเรขาคณิต</li><li class="con">เป็นเทรนด์ที่เห็นทั่วไปแล้ว จะดูเก่าเร็ว</li></ul></div>
+    <div class="opt rec"><span class="tag">B · PIXEL MESH · แนะนำ</span><h3>Mesh ที่ถูกตัดเป็น pixel</h3><p>field สีเดียวกัน แต่ตัดเป็น grid แล้วไล่สีเป็นขั้น แบบเดียวกับหางของ K</p>
+      <ul><li class="pro">จำได้ทันทีว่าเป็นแบรนด์เรา เพราะเป็นภาษาเดียวกับ Pixel System (บท 07)</li><li class="pro">คุมความเข้มได้ วางข้อความทับได้ในโซน Navy</li><li class="pro">เคลื่อนไหวแบบ steps ได้ เข้ากับ motion ของแบรนด์</li><li class="con">ยุ่งกว่า A ถ้า pixel เล็กเกินไปจะรก ขนาด cell ต้องใหญ่กว่า 2% ของความกว้างงาน</li><li class="con">ต้อง generate (มีเครื่องมือในหน้านี้) ไม่ใช่ลากเองใน Figma</li></ul></div>
+  </div>
+
+  <h2>Web hero · 16:9 · dark</h2>
+  <div class="pair" data-app="hero"></div>
+  <h2>Web hero · 16:9 · light</h2>
+  <div class="pair" data-app="heroL"></div>
+  <h2>Social post · 4:5</h2>
+  <div class="pair" data-app="post" style="max-width:760px"></div>
+  <h2>ปก Proposal · A4</h2>
+  <div class="pair" data-app="cover" style="max-width:760px"></div>
+
+  <div class="verdict">
+    <h2>ข้อเสนอ: ใช้ B · Pixel Mesh</h2>
+    <p>A สวยแต่ไม่ได้บอกว่าเป็นใคร B เอาความลึกของ mesh มาใช้ แต่ยังพูดภาษา pixel เดียวกับโลโก้ <b>กฎ:</b> ใช้เป็นพื้นหลังเต็มพื้นที่ (hero, ปก, สไลด์เปิด, โพสต์) · ข้อความวางในโซน Navy เท่านั้น · ส่วนที่สว่างที่สุดวางมุมขวาล่างตามทิศของหาง K · ห้ามวางโลโก้ในโซน Blue/Cyan · ใช้ Cyan ไม่เกิน 3% ของพื้นที่</p>
+  </div>
+</div>
+
+<script>
+// ---------- shared color field ----------
+const P = {
+  dark: [[2,14,48],[4,26,83],[10,56,170],[0,89,255],[80,150,255],[9,255,255]],
+  light:[[255,255,255],[238,243,252],[200,219,252],[127,174,255],[60,130,255],[0,89,255]],
+};
+// blobs in 0..1 artboard space: bright zone bottom-right (direction of the K tail)
+const BLOBS = {
+  hero:[{x:.92,y:.95,r:.55,w:1},{x:.62,y:.78,r:.28,w:.45},{x:1.02,y:.35,r:.3,w:.5},{x:.35,y:1.1,r:.35,w:.35}],
+  post:[{x:.95,y:.98,r:.6,w:1},{x:.55,y:.8,r:.3,w:.4},{x:1.05,y:.45,r:.3,w:.45}],
+  cover:[{x:.98,y:.9,r:.62,w:1},{x:.6,y:1.05,r:.35,w:.45},{x:1.0,y:.4,r:.28,w:.4}],
+};
+// text zone (left 45%) is kept clean: the field fades out toward the left edge
+const ss=(a,b,x)=>{const t=Math.max(0,Math.min(1,(x-a)/(b-a)));return t*t*(3-2*t)};
+function field(b,x,y,ar){let v=0;for(const o of b){const dx=(x-o.x)*ar,dy=y-o.y;v+=o.w*Math.exp(-(dx*dx+dy*dy)/(o.r*o.r*.55))}return Math.min(1,v)*ss(.5,.85,x)}
+function lerpPal(pal,t){t=Math.max(0,Math.min(1,t))*(pal.length-1);const i=Math.min(pal.length-2,Math.floor(t)),f=t-i;return pal[i].map((c,k)=>Math.round(c+(pal[i+1][k]-c)*f))}
+
+function soft(cv,blobs,pal){
+  const W=cv.width,H=cv.height,ar=W/H,s=6,w=Math.ceil(W/s),h=Math.ceil(H/s);
+  const off=new OffscreenCanvas(w,h),o=off.getContext('2d'),img=o.createImageData(w,h);
+  for(let y=0;y<h;y++)for(let x=0;x<w;x++){const t=field(blobs,x/w,y/h,ar);const c=lerpPal(pal,t*.92);const n=(Math.random()-.5)*6;const i=(y*w+x)*4;img.data[i]=c[0]+n;img.data[i+1]=c[1]+n;img.data[i+2]=c[2]+n;img.data[i+3]=255}
+  o.putImageData(img,0,0);const ctx=cv.getContext('2d');ctx.imageSmoothingQuality='high';ctx.filter='blur(4px)';ctx.drawImage(off,-8,-8,W+16,H+16);ctx.filter='none';
+}
+function pixel(cv,blobs,pal,cols){
+  const W=cv.width,H=cv.height,ar=W/H,ctx=cv.getContext('2d');
+  const cell=W/cols,gap=cell*.12,r=cell*.16,rows=Math.ceil(H/cell),steps=pal.length;
+  ctx.fillStyle=`rgb(${pal[0]})`;ctx.fillRect(0,0,W,H);
+  for(let j=0;j<rows;j++)for(let i=0;i<cols;i++){
+    const t=field(blobs,(i+.5)/cols,(j+.5)*cell/H,ar);
+    if(t<.22)continue;                       // below threshold: plain background
+    let q=1+Math.min(steps-3,Math.floor((t-.22)/.78*(steps-2)));
+    if(t>.9&&(i*7+j*13)%11===0)q=steps-1;    // accent color (Cyan / Blue) on a few cells only
+    ctx.fillStyle=`rgb(${pal[q]})`;ctx.beginPath();ctx.roundRect(i*cell+gap/2,j*cell+gap/2,cell-gap,cell-gap,r);ctx.fill();
+  }
+}
+
+// ---------- artboards ----------
+const MARK=v=>{const [s,a,p]=v==='dark'?['#fff','#0059FF','#09FFFF']:['#041A53','#0059FF','#7FAEFF'];return `<svg viewBox="12 12 80 80" aria-hidden="true"><rect x="12" y="12" width="22" height="76" rx="2" fill="${s}"/><path d="M34 50 L62 12 H88 L52 62 H34Z" fill="${a}"/><rect x="52" y="58" width="14" height="14" rx="2" fill="${a}"/><rect x="69" y="71" width="12" height="12" rx="2" fill="${a}"/><rect x="84" y="84" width="8" height="8" rx="1.5" fill="${p}"/><rect x="72" y="56" width="7" height="7" rx="1.5" fill="${p}"/></svg>`};
+const LOCK=v=>`<div class="lock">${MARK(v)}<div><div class="a">Krabi Digital</div><div class="b">SOLUTIONS</div></div></div>`;
+const APPS={
+  hero:{w:1600,h:900,b:'hero',tone:'dark',cols:40,cls:'hero',html:v=>`${LOCK(v)}<h4>Technology that's <em>right</em> for your business</h4><p>เว็บไซต์ ระบบจอง แอป และ AI ที่รันบนเซิร์ฟเวอร์ของคุณเอง</p>`},
+  heroL:{w:1600,h:900,b:'hero',tone:'light',cols:40,cls:'hero',html:v=>`${LOCK(v)}<h4>Technology that's <em>right</em> for your business</h4><p>เว็บไซต์ ระบบจอง แอป และ AI ที่รันบนเซิร์ฟเวอร์ของคุณเอง</p>`},
+  post:{w:1080,h:1350,b:'post',tone:'dark',cols:18,cls:'post',html:v=>`${LOCK(v)}<h4>Your Data.<br>Your Server.<br><span>Your AI.</span></h4><div class="ft">krabitech.com</div>`},
+  cover:{w:1240,h:1754,b:'cover',tone:'dark',cols:20,cls:'cover',html:v=>`${LOCK(v)}<div class="kick">PROPOSAL · 2026</div><h4>ระบบจองห้องพัก<br>สำหรับ [ชื่อโรงแรม]</h4><p>ขอบเขตงาน แผนงาน และงบประมาณ</p>`},
+};
+document.querySelectorAll('.pair').forEach(el=>{
+  const a=APPS[el.dataset.app];
+  ['soft','pixel'].forEach(kind=>{
+    const fig=document.createElement('figure');
+    fig.innerHTML=`<div class="art ${a.tone}" style="aspect-ratio:${a.w}/${a.h}"><canvas width="${a.w}" height="${a.h}"></canvas><div class="ov ${a.cls}">${a.html(a.tone)}</div></div>
+      <figcaption><span>${kind==='soft'?'A · SOFT MESH':'B · PIXEL MESH'}</span><button type="button">PNG</button></figcaption>`;
+    el.appendChild(fig);
+    const cv=fig.querySelector('canvas');
+    (kind==='soft'?soft:pixel)(cv,BLOBS[a.b],P[a.tone],a.cols);
+    fig.querySelector('button').onclick=()=>{const l=document.createElement('a');l.download=`kd-${kind}-mesh-${el.dataset.app}-${a.w}x${a.h}.png`;l.href=cv.toDataURL('image/png');l.click()};
+  });
+});
+</script>
+</body>
+</html>

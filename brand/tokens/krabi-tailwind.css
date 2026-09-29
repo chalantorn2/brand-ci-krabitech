@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  --color-kd-navy: #041A53;
+  --color-kd-blue: #0059FF;
+  --color-kd-blue-hover: #0047CC;
+  --color-kd-cyan: #09FFFF;
+  --color-kd-sky: #7FAEFF;
+  --color-kd-mist: #EEF3FC;
+  --color-kd-line: #DCE3F0;
+  --color-kd-slate: #56627F;
+  --color-kd-ink: #0B1633;
+  --color-kd-deep: #020E30;
+
+  --font-head: "Red Hat Display", "LINE Seed Sans TH", system-ui, sans-serif;
+  --font-body: "Plus Jakarta Sans", "IBM Plex Sans Thai", system-ui, sans-serif;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  --shadow-card: 0 12px 28px -18px rgb(4 26 83 / .35);
+
+  --ease-kd-out: cubic-bezier(.2,.8,.2,1);
+  --ease-kd-in: cubic-bezier(.5,0,.75,0);
+  --ease-kd-in-out: cubic-bezier(.65,0,.35,1);
+
+  --animate-kd-rise: kd-rise 240ms cubic-bezier(.2,.8,.2,1) both;
+  --animate-kd-pixel: kd-pixel 400ms steps(4,jump-end) both;
+  --animate-kd-load: kd-load 1.2s steps(1,end) infinite;
+
+  @keyframes kd-rise { from { opacity: 0; transform: translateY(8px); } }
+  @keyframes kd-pixel { from { opacity: 0; transform: translate(-8px,-8px) scale(.5); } }
+  @keyframes kd-load { 0%,100% { opacity: .25; } 33% { opacity: 1; } }
+}
+
+/* usage: bg-kd-navy text-kd-blue font-head rounded-lg shadow-card
+   motion: animate-kd-rise ease-kd-out duration-(--kd-dur-base) motion-reduce:animate-none */

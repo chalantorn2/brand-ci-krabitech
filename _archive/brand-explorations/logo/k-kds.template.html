@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KDS x Khao Khanab Nam</title>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#041A53;--blue:#0059FF}
+*{box-sizing:border-box}
+body{margin:0;background:#EEF1F7;color:var(--navy);font-family:"Plus Jakarta Sans",sans-serif}
+header{max-width:1200px;margin:auto;padding:28px 16px 4px}
+h1{font:800 28px "Red Hat Display";margin:0 0 6px}
+header p{margin:0;color:#5B6785;font-size:14px}
+main{max-width:1200px;margin:auto;padding:16px;display:flex;flex-direction:column;gap:22px}
+.concept{background:#fff;border-radius:18px;padding:16px;border:1px solid #E1E6F0}
+.head{display:flex;gap:10px;align-items:baseline;margin-bottom:12px;flex-wrap:wrap}
+.num{font:800 14px "Red Hat Display";color:var(--blue)}
+.name{font:800 19px "Red Hat Display"}
+.story{font-size:13px;color:#5B6785;flex-basis:100%}
+.tiles{display:grid;grid-template-columns:1.4fr 2fr 2fr 1fr;gap:10px}
+@media(max-width:900px){.tiles{grid-template-columns:1fr 1fr}}
+.tile{border-radius:14px;min-height:150px;display:grid;place-items:center;padding:14px;background:var(--bg)}
+.t-dark{--bg:#041A53;--m1:#0059FF;--m3:#FFFFFF;--on:#FFFFFF;color:#fff}
+.t-light{--bg:#FFFFFF;--m1:#0059FF;--m3:#041A53;--on:#FFFFFF;color:var(--navy);border:1px solid #E1E6F0}
+.t-mono{--bg:#FFFFFF;--m1:#041A53;--m3:#041A53;--on:#FFFFFF;border:1px solid #E1E6F0}
+.hero svg{max-width:100%;height:130px;width:auto}
+.lock{display:flex;align-items:center;gap:14px}
+.lock svg{height:58px;width:auto;max-width:170px;flex:none}
+.wm .a{font:700 17px/1.1 "Red Hat Display";letter-spacing:-.01em}
+.wm .b{font:600 9px/1 "Red Hat Display";letter-spacing:.38em;margin-top:5px;opacity:.75}
+.sizes{display:flex;flex-direction:column;align-items:center;gap:12px}
+.sizes .r{display:flex;gap:14px;align-items:center}
+.sizes svg{display:block;width:auto}
+.cap{font-size:10px;color:#8A94AE;text-align:center}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<g id="KL">/*LEFT*/</g>
+<g id="KR">/*RIGHT*/</g>
+</defs></svg>
+<header>
+  <h1>kds × เขาขนาบน้ำ</h1>
+  <p>ตัวย่อ kds / KDS (font Red Hat Display) ผสมกับ path จากไฟล์ เขาขนาบน้ำ.svg · ดูแบบ hero / dark / light / mono ขนาดเล็ก</p>
+</header>
+<main id="m"></main>
+<script>
+const M1='var(--m1)',M3='var(--m3)',ON='var(--on)',BG='var(--bg)';
+const VB='0 0 1200 446.17', LV='0 70 600 376.17', RV='610 0 590 446.17';
+const mt=(x,y,w,h,f=M3,which='both',x2='',vb=VB)=>`<svg x="${x}" y="${y}" width="${w}" height="${h}" viewBox="${vb}" preserveAspectRatio="xMidYMax meet" overflow="visible"><g fill="${f}" ${x2}>${which!='R'?'<use href="#KL"/>':''}${which!='L'?'<use href="#KR"/>':''}</g></svg>`;
+const mL=(x,y,w,h,f=M3,x2='')=>mt(x,y,w,h,f,'L',x2,LV);
+const mR=(x,y,w,h,f=M3,x2='')=>mt(x,y,w,h,f,'R',x2,RV);
+const HALO=w=>`stroke="var(--bg)" stroke-width="${w}" stroke-linejoin="round" style="paint-order:stroke"`;
+// text at font-size 80: kds = 131.7 wide (k 0–41.9, d 41.8–92.4, s 92.4–131.7); KDS = 163.4 wide (K 0–53.8, D 53.8–112.8, S 112.8–163.4)
+// caps span y 24–80, x-height 40–80, ascenders from ~22 (baseline 80)
+const T=(t,x,y,f,x2='',sz=80,wt=800)=>`<text x="${x}" y="${y}" font-family="Red Hat Display" font-weight="${wt}" font-size="${sz}" fill="${f}" ${x2}>${t}</text>`;
+
+const C=[
+{n:'Twin Ascenders',vb:'-20 2 156 82',st:'ใน "kds" ตัว k กับ d มีหางสูงคู่กัน · ตัดหางออกแล้วใส่เขาขนาบน้ำแทน = ตัวอักษรงอกเป็นเขาคู่',
+ g:u=>`<defs><clipPath id="c${u}"><rect x="-20" y="35" width="200" height="66"/></clipPath></defs><g clip-path="url(#c${u})">${T('kds',0,80,M3)}</g>`+mL(-9,10,40,42,M3)+mR(61,8,40,44,M3)},
+{n:'KDS Tile',vb:'0 0 100 100',st:'squircle สีน้ำเงิน ตัว KDS สีขาว เขาขนาบน้ำสีขาวล้นขอบล่าง · ใช้เป็น app icon ได้ทันที',
+ g:u=>`<defs><clipPath id="c${u}"><rect x="4" y="4" width="92" height="92" rx="24"/></clipPath></defs><rect x="4" y="4" width="92" height="92" rx="24" fill="${M1}"/><g clip-path="url(#c${u})">${mt(-4,62,108,40,ON)}</g>`+T('KDS',50,56,ON,'text-anchor="middle"',30,900)},
+{n:'kds. + Khanab',vb:'-2 14 196 72',st:'logotype "kds" ตัวพิมพ์เล็ก · จุดท้ายคำเปลี่ยนเป็นเขาขนาบน้ำจิ๋ว = full stop ของกระบี่',
+ g:u=>T('kds',0,80,M3)+mt(136,50,56,30,M1)},
+{n:'K[D]S Window',vb:'-2 20 166 64',st:'ตัว D วาดใหม่เป็นก้อนทึบสีน้ำเงิน มีเขาขนาบน้ำอยู่ข้างใน · K กับ S เป็นตัวพิมพ์ปกติ',
+ g:u=>`<defs><clipPath id="c${u}"><path d="M57 24 H80 A28 28 0 0 1 80 80 H57Z"/></clipPath></defs>`+T('K',0,80,M3)+`<path d="M57 24 H80 A28 28 0 0 1 80 80 H57Z" fill="${M1}"/><g clip-path="url(#c${u})">${mR(58,36,54,44,ON)}</g>`+T('S',112,80,M3)},
+{n:'Emblem',vb:'0 0 100 88',st:'เขาขนาบน้ำอยู่ด้านบน ตัว K D S เว้นระยะกว้างอยู่ด้านล่าง มีเส้นน้ำคั่นกลาง · ดูเป็นตราสัญลักษณ์',
+ g:u=>mt(2,2,96,36,M3)+`<path d="M6 44 H94" stroke="${M1}" stroke-width="3" stroke-linecap="round"/>`+T('K D S',50,78,M1,'text-anchor="middle" letter-spacing="2"',30,900)},
+{n:'Peaks on KDS',vb:'-4 -22 172 104',st:'ตัว KDS เป็นแผ่นดิน เขาขนาบน้ำตั้งอยู่บนหัวตัวอักษร',
+ g:u=>mt(14,-20,136,44,M3)+T('KDS',0,80,M1,'',80,900)},
+{n:'KDS Cutout',vb:'-2 20 168 62',st:'KDS ตัวหนาเป็นหน้าต่าง มองทะลุเห็นเขาขนาบน้ำอยู่ข้างใน (clip)',
+ g:u=>`<defs><clipPath id="c${u}">${T('KDS',0,80,'#000','',80,900)}</clipPath></defs><g clip-path="url(#c${u})"><rect x="-2" y="0" width="170" height="90" fill="${M1}"/>${mt(-4,18,172,64,M3)}</g>`},
+{n:'kds Badge',vb:'0 0 100 100',st:'วงกลมสีน้ำเงิน เขาสีขาวอยู่ครึ่งล่าง ตัว kds พิมพ์เล็กสีขาวอยู่บนฟ้า',
+ g:u=>`<defs><clipPath id="c${u}"><circle cx="50" cy="50" r="46"/></clipPath></defs><circle cx="50" cy="50" r="46" fill="${M1}"/><g clip-path="url(#c${u})">${mt(-4,58,108,40,ON)}</g>`+T('kds',50,52,ON,'text-anchor="middle"',32,800)},
+{n:'Flanked',vb:'0 26 240 70',st:'"ขนาบน้ำ" ตามชื่อ · เขาซ้าย-ขวาขนาบตัว kds ไว้ตรงกลางเหมือนสายน้ำ',
+ g:u=>mL(0,42,58,38,M1)+T('kds',70,80,M3,'',60)+mR(180,34,58,46,M1)+`<path d="M4 88 H236" stroke="${M1}" stroke-width="3" stroke-linecap="round"/>`},
+{n:'kd + River s',vb:'-2 16 138 70',st:'"kd" ตัวพิมพ์ + ตัว s วาดเป็นเส้นแม่น้ำคดเคี้ยว · มีเขาขนาบน้ำจิ๋วลอยอยู่เหนือ s เป็นจุด',
+ g:u=>T('kd',0,80,M3)+`<path d="M128 48 C124 40 100 38 100 51 C100 63 128 58 128 70 C128 84 104 84 97 76" fill="none" stroke="${M1}" stroke-width="11" stroke-linecap="round"/>`+mt(94,20,40,16,M1)}
+];
+let U=0;
+const sv=(c,h)=>`<svg viewBox="${c.vb}" style="height:${h}px" xmlns="http://www.w3.org/2000/svg">${c.g(++U)}</svg>`;
+const wm=`<div class="wm"><div class="a">Krabi Digital</div><div class="b">SOLUTIONS</div></div>`;
+document.getElementById('m').innerHTML=C.map((c,i)=>`
+<section class="concept">
+  <div class="head"><span class="num">KDS${i+1}</span><span class="name">${c.n}</span><span class="story">${c.st}</span></div>
+  <div class="tiles">
+    <div class="tile t-light hero">${sv(c,130)}</div>
+    <div class="tile t-dark"><div class="lock">${sv(c,58)}${wm}</div></div>
+    <div class="tile t-light"><div class="lock">${sv(c,58)}${wm}</div></div>
+    <div class="tile t-mono"><div class="sizes"><div class="r">${sv(c,40)}${sv(c,20)}</div><div class="cap">mono · 40 / 20px</div></div></div>
+  </div>
+</section>`).join('');
+</script>
+</body>
+</html>

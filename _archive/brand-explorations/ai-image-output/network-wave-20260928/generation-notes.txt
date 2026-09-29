@@ -1,0 +1,12 @@
+Created using the built-in image generation tool. Output is a raster PNG with a flat vector-style appearance, not an editable vector file.
+
+Initial prompt:
+Use case: logo-brand. Create a professional vector-style logo for a tech company named "Krabi Digital Solutions".
+Symbol: a semi-abstract mark inside a rounded-square outline. The bottom half shows an ocean wave built from connected network nodes: small circles joined by straight line segments that together make a flowing wave curve. A simple geometric silhouette of a limestone karst island (tall, steep sides, flat-ish top, like the islands of Krabi, Thailand) rises from the center of the wave. The mark joins nature and digital network technology.
+Colors (only these, flat): navy #041A53 for the karst island and the outline, electric blue #0059FF for the network lines, cyan #09FFFF for the node dots. Pure white background.
+Text exactly: "Krabi Digital Solutions" on ONE LINE in a bold geometric sans-serif like Poppins Bold. "Krabi" in navy #041A53, "Digital Solutions" in #0059FF.
+Layout: horizontal. Symbol on the left, text on the right, both centered vertically. Entire composition centered with generous white empty space all around. Wide landscape canvas.
+Style: flat vector appearance, minimal, balanced, modern tech startup identity. No gradients, no shadows, no 3D, no mockup, no extra text. Easy to read at small sizes. Crisp simple shapes.
+
+Final refinement prompt:
+Preserve exact text, typography, colors, white background, horizontal composition, rounded-square frame and generous margins. All blue network connections must be straight line segments joining cyan circular nodes. Arrange nodes in two sparse polygonal undulating rows with a few diagonal links to suggest an ocean wave. Simplify the island to one geometric limestone karst silhouette with tall steep angular sides and a broad flat-ish uneven top. Solid #041A53 for island/frame/Krabi, #0059FF for network lines and Digital Solutions, #09FFFF for dots, and #FFFFFF background. No texture, shading, shadows or gradients. Text exactly: Krabi Digital Solutions, on one line.

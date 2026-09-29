@@ -1,0 +1,26 @@
+services:
+  brandci:
+    image: nginx:alpine
+    container_name: brandci
+    restart: unless-stopped
+    ports:
+      - "8090:80"
+    volumes:
+      # site files live on the host; update them with pack.py + upload (see brand/README.md)
+      - /opt/brandci/html:/usr/share/nginx/html:ro
+    configs:
+      - source: brandci_nginx
+        target: /etc/nginx/conf.d/default.conf
+
+configs:
+  brandci_nginx:
+    content: |
+      server {
+        listen 80;
+        server_name _;
+        charset utf-8;
+        root /usr/share/nginx/html;
+        location / {
+          try_files $$uri $$uri/ =404;
+        }
+      }

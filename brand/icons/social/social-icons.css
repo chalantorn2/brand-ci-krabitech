@@ -1,0 +1,14 @@
+/* Krabi Digital · social & contact icons (needs krabi-tokens.css) */
+.kd-si{--kd-si-bg:var(--kd-navy);--kd-si-px:var(--kd-sky);--kd-si-sw:2.75;
+  display:inline-flex;width:32px;height:32px;color:#fff;border-radius:6px;flex:none;
+  transition:color .15s}
+.kd-si svg{width:100%;height:100%;display:block}
+.kd-si:hover{--kd-si-bg:var(--kd-blue)}
+.kd-si:focus-visible{outline:none;box-shadow:var(--kd-focus)}
+.kd-si--lg{width:48px;height:48px;border-radius:10px}
+.kd-si--sm{width:24px;height:24px;border-radius:5px}
+/* on Navy / Deep Night */
+.kd-on-dark .kd-si{--kd-si-bg:#fff;--kd-si-px:var(--kd-cyan);color:var(--kd-navy)}
+.kd-on-dark .kd-si:hover{--kd-si-bg:var(--kd-blue);color:#fff}
+/* glyph only, sits inline with text (16-20 px) */
+.kd-sg{--kd-si-sw:2;width:1.15em;height:1.15em;vertical-align:-.2em;flex:none}

@@ -1,0 +1,46 @@
+/* Krabi Digital Solutions · brand tokens v1.4 */
+:root{
+  /* color */
+  --kd-navy:#041A53;
+  --kd-blue:#0059FF;
+  --kd-blue-hover:#0047CC;
+  --kd-cyan:#09FFFF;   /* accent on dark only */
+  --kd-sky:#7FAEFF;    /* spark on light, never text */
+  --kd-mist:#EEF3FC;
+  --kd-line:#DCE3F0;
+  --kd-slate:#56627F;
+  --kd-ink:#0B1633;
+  --kd-deep:#020E30;
+
+  /* type */
+  --kd-font-head:"Red Hat Display","LINE Seed Sans TH",system-ui,sans-serif;
+  --kd-font-body:"Plus Jakarta Sans","IBM Plex Sans Thai",system-ui,sans-serif;
+  --kd-font-mono:"JetBrains Mono",ui-monospace,monospace;
+
+  /* radius */
+  --kd-radius-sm:6px;
+  --kd-radius-md:10px;
+  --kd-radius-lg:16px;
+  --kd-radius-xl:24px;
+
+  /* elevation & focus */
+  --kd-shadow-card:0 12px 28px -18px rgb(4 26 83 / .35);
+  --kd-focus:0 0 0 2px #fff,0 0 0 4px var(--kd-blue);
+
+  /* motion: UI moves smooth, pixels move in steps */
+  --kd-ease-out:cubic-bezier(.2,.8,.2,1);     /* enter, settle (default) */
+  --kd-ease-in:cubic-bezier(.5,0,.75,0);      /* exit */
+  --kd-ease-in-out:cubic-bezier(.65,0,.35,1); /* move, morph */
+  --kd-ease-pixel:steps(4,jump-end);          /* pixel elements only */
+  --kd-dur-instant:100ms;  /* hover color, press */
+  --kd-dur-fast:160ms;     /* button, toggle, tooltip */
+  --kd-dur-base:240ms;     /* card, dropdown, tab */
+  --kd-dur-slow:400ms;     /* modal, drawer, page */
+  --kd-dur-brand:900ms;    /* logo, hero, video only */
+  --kd-stagger:60ms;       /* delay between items in a list */
+  --kd-shift:8px;          /* enter distance, never more than 16px */
+}
+
+@media (prefers-reduced-motion:reduce){
+  :root{--kd-dur-fast:0ms;--kd-dur-base:0ms;--kd-dur-slow:0ms;--kd-dur-brand:0ms;--kd-stagger:0ms;--kd-shift:0px}
+}
